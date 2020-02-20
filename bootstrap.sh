@@ -2,7 +2,7 @@ echo "Allow quitting Finder via ⌘ + Q; doing so will also hide desktop icons"
 defaults write com.apple.finder QuitMenuItem -bool true
 
 echo "Set a blazingly fast keyboard repeat rate"
-defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain KeyRepeat -int 0
 
 echo "Set a shorter Delay until key repeat"
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
@@ -16,7 +16,10 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 echo "Avoid creating .DS_Store files on network volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# kitty
-echo "Copy kitty.conf"
-cp ./kitty/kitty.conf ~/Library/Preferences/kitty/kitty.conf
+echo "iTerm2"
+brew cask install iterm2
+# Import the profile on ./iterm2/Profiles.json into iterm2 Preferences > Profiles > Other Actions > Import JSON Profiles
 
+echo "Rectangle"
+brew cask install rectangle
+cp ./rectangle/com.knollsoft.Rectangle.plist ~/Library/Preferences/com.knollsoft.Rectangle.plist
