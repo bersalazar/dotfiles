@@ -16,5 +16,6 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 echo "Avoid creating .DS_Store files on network volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-
+# kitty
+cp ./kitty/kitty.conf ~/Library/Preferences/kitty/kitty.conf
 
