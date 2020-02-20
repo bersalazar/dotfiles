@@ -17,5 +17,6 @@ echo "Avoid creating .DS_Store files on network volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # kitty
+echo "Copy kitty.conf"
 cp ./kitty/kitty.conf ~/Library/Preferences/kitty/kitty.conf
 
