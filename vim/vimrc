@@ -4,6 +4,7 @@ Plug 'sjl/badwolf'
 
 call plug#end()
 
+# disables arrow keys
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 noremap <Up> <Nop>

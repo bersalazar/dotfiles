@@ -1,0 +1,202 @@
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+
+#######################################################
+################# CUSTOM ENV VARIABLES ################
+#######################################################
+
+# Overrides a security measure to avoid multithreading Python apps which was introduced in Mac OS High Sierra. More info: https://stackoverflow.com/questions/50168647/multiprocessing-causes-python-to-crash-and-gives-an-error-may-have-been-in-progr/52230415
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# Disables restrictions when connecting through the F5 VPN
+export REQUESTS_CA_BUNDLE="/Library/Application Support/Netskope/STAgent/data/nscacert.pem"
+export BASHRC=~/.bashrc
+export VAULT_ADDR=https://vault00.services.az.snowmen.se:443
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export LC_ALL=en_US.UTF-8
+
+function cr {
+  cp -r ~/.roles/$1.azure/ ~/projects/$1.azure
+}
+
+function venv {
+  python3 -m venv '$1'
+}
+
+function activate { 
+  source $1/bin/activate
+}
+function rst {
+  source $BASHRC
+  echo 'Shell reloaded!'
+}
+
+function set {
+  sethosts
+  if [ "$?" == 0 ]; then
+    echo "/etc/hosts set success"
+  fi
+
+  sp ansible
+  if [ "$?" == 0 ]; then
+    echo "sp ansible success"
+  fi
+}
+
+function _vault_logged_in(){
+    vault token lookup >/dev/null 2>&1
+    return $?
+}
+
+function _vault_login() {
+    local username pw
+
+    if [ -z "${username}" ]; then
+        [ -z "${username}" ] && read -p "Enter login name [bernardos]: " username
+        username="${username:-bernardos}"
+    fi
+
+    if [ -z "${pw}" ]; then
+        read -p "Enter password: " -s pw
+        echo
+    fi
+
+    local login_str="$(vault login -method=userpass username="${username}" password="${pw}" 2>&1)"
+    local login_rc=$?
+
+    [ $login_rc -ne 0 ] && printf "${login_str}\n" && return 1
+}
+
+function _vault_login_as_app_role() { 
+  local HV_APP_ROLE="ansible-local"
+  local hv_role_id="$(vault read -format=json auth/approle/role/$HV_APP_ROLE/role-id | jq -r ".data.role_id")"
+  local hv_secret_id="$(vault write -format=json -f auth/approle/role/$HV_APP_ROLE/secret-id | jq -r ".data.secret_id")"
+  export VAULT_TOKEN="$(vault write -field=token auth/approle/login role_id=$hv_role_id secret_id=$hv_secret_id)"       
+}
+
+function sp() {
+    local system=$1
+
+    if [ -z "${system}" ]; then
+        printf "Usage:\n\tsp [ansible|tf]\n"
+        return 1
+    fi
+    
+    _vault_logged_in || _vault_login
+    
+    local HV_BIN_PATH="/usr/local/bin/vault"
+    local HV_SP_PATH="secrets/terraform/service-principal"
+    local HV_CLIENT_SECRET_KEY="client_secret"
+    local HV_CLIENT_ID_KEY="client_id"
+
+    local SUBSCRIPTION_ID=38d2e732-eb62-4061-a6ef-91ab393fc71b
+    local TENANT_ID=72aa0d83-624a-4ebf-a683-1b9b45548610
+
+    local CLIENT_ID_VAR=AZURE_CLIENT_ID
+    local CLIENT_SECRET_VAR=AZURE_SECRET
+    local SUBSCRIPTION_ID_VAR=AZURE_SUBSCRIPTION_ID
+    local TENANT_ID_VAR=AZURE_TENANT
+
+    if [ "${system}" == "tf" ]; then
+        CLIENT_ID_VAR=ARM_CLIENT_ID
+        CLIENT_SECRET_VAR=ARM_CLIENT_SECRET
+        SUBSCRIPTION_ID_VAR=ARM_SUBSCRIPTION_ID
+        TENANT_ID_VAR=ARM_TENANT_ID
+    elif [ "${system}" == "ansible" ]; then
+        CLIENT_ID_VAR=AZURE_CLIENT_ID
+        CLIENT_SECRET_VAR=AZURE_SECRET
+        SUBSCRIPTION_ID_VAR=AZURE_SUBSCRIPTION_ID
+        TENANT_ID_VAR=AZURE_TENANT
+    else
+        printf "system %s not recognized.\n" "${system}"
+        return 1
+    fi
+
+    local hv_sp_data="$(${HV_BIN_PATH} kv get -format=json ${HV_SP_PATH})"
+    local client_id="$(echo ${hv_sp_data} | jq -r ".data.data.${HV_CLIENT_ID_KEY}")"
+    local client_secret="$(echo ${hv_sp_data} | jq -r ".data.data.${HV_CLIENT_SECRET_KEY}")"       
+
+    export ${CLIENT_ID_VAR}="${client_id}"
+    export ${CLIENT_SECRET_VAR}="${client_secret}"
+    export ${SUBSCRIPTION_ID_VAR}="${SUBSCRIPTION_ID}"
+    export ${TENANT_ID_VAR}="${TENANT_ID}"
+}
+
+function playbook {
+  ansible-playbook -i /Users/bernardosalazar/projects/azure-ansible-base/inventory/tc8.azure_rm.yml /Users/bernardosalazar/projects/azure-ansible-base/playbooks/sportsbook_servers/$1_server.yml
+}
+
+function playbookmts() {
+	ansible-playbook -i /Users/bernardosalazar/projects/azure-ansible-base/inventory/osiris-mts-test.azure_rm.yml /Users/bernardosalazar/projects/azure-ansible-base/playbooks/sportsbook_servers/$1_server.yml
+}
+
+function lint() {
+	ansible-lint /Users/bernardosalazar/projects/azure-ansible-base/playbooks/sportsbook_servers/$1_server.yml
+}
+
+function crqev() {
+	export OKTA_CLIENT_SECRET='rQdtasD-fcsFefEztyd10XFs9FUmVk-_cowzw1Td'
+	export OKTA_PASSWORD='iAmSecret.123'
+	export ATLASSIAN_PASSWORD='5qzjJLa1$Hn5FVyL42tYjRH%'
+	export ENVIRONMENT=dev
+	export DOCKER_IMAGE_PREFIX='engineeringautomation.azurecr.io/crq-api:'
+
+	echo 'Credentials set as env variables'
+}
+
+function deploycrq() {
+	local env=$1
+  local version="develop"
+
+  if [ "${env}" != "dev" ]; then
+    if [ ! -z "$2" ]; then
+      version=$2
+    else
+      echo "A version was not specified for a prod deployment"
+      return 1
+    fi
+  fi
+  
+	path="/Users/bernardosalazar/projects/crq-api/ansible"
+	ansible-playbook --inventory $path/hosts.ini --limit $env --extra-vars "deploy_to=$env version_tag=$version" $path/main.yml
+}
+
+function reinstall {
+  ansible-galaxy install git+https://gitlab.a.snowmen.se/azure_ansible/roles/$2.azure.git -f
+}
+
+function clone {  
+    echo Cloning $1 to ~/projects/$1  
+    cd ~/projects
+    git clone $1
+    cd $1
+}
+
+#####################
+####### ALIAS #######
+#####################
+
+alias ls="exa"
+alias l="exa -lahF"
+
+# Clipboard
+alias clip="pbcopy"
+alias paste="pbpaste"
+
+# Docker compose
+alias dc="docker-compose"  
+alias dcr="docker-compose run --rm"  
+alias dcb="docker-compose run --rm --build"
+
+# Refresh git repo's origin
+alias yoink="git checkout master && git fetch origin master && git merge origin/master"
+
+# bashrc
+alias brc="vim $BASHRC"
+alias se1="sudo root@se1ts00.a.snowmen.se"
+
+###########################################
+### CUSTOM SCRIPTS/FUNCTIONS AT STARTUP ###
+###########################################
