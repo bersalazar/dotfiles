@@ -23,3 +23,11 @@ brew cask install iterm2
 echo "Rectangle"
 brew cask install rectangle
 cp ./rectangle/com.knollsoft.Rectangle.plist ~/Library/Preferences/com.knollsoft.Rectangle.plist
+
+echo "bashrc"
+read -p "At work?" -n 1 -r; echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  cp ./bashrc/bashrc.work ~/.bashrc
+else
+  cp ./bashrc/bashrc.home ~/.bashrc
+fi
