@@ -1,12 +1,4 @@
-call plug#begin()
-
-Plug 'sjl/badwolf'
-
-call plug#end()
-
-# disables arrow keys
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+colorscheme gruvbox
