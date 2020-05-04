@@ -51,6 +51,7 @@ echo 'alias rst="source ~/.zshrc"' >> ~/.zshr
 # vim config
 mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim 
 git clone https://github.com/morhetz/gruvbox ~/.vim/bundle/gruvbox				# syntax highlighting/theme
+echo 'colorscheme gruvbox' >> ~/.vimrc								# set gruvbox colorscheme to .vimrc
 git clone https://github.com/preservim/nerdtree ~/.vim/bundle/nerdtree				# directory navigation plugin
 git clone https://github.com/jistr/vim-nerdtree-tabs ~/.vim/bundle/vim-nerdtree-tabs		# add tabs to nerdtree
 git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic	# code syntax checker
