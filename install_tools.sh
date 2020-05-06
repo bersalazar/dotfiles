@@ -48,16 +48,8 @@ echo 'alias upd="brew update; brew upgrade; brew cask upgrade; mas upgrade; brew
 echo 'alias weather="curl wttr.in/Tarrytown:NewYork"' >> ~/.zshrc
 echo 'alias rst="source ~/.zshrc"' >> ~/.zshr
 
-# vim config
-mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim 
-git clone https://github.com/morhetz/gruvbox ~/.vim/bundle/gruvbox				# syntax highlighting/theme
-echo 'colorscheme gruvbox' >> ~/.vimrc								# set gruvbox colorscheme to .vimrc
-git clone https://github.com/preservim/nerdtree ~/.vim/bundle/nerdtree				# directory navigation plugin
-git clone https://github.com/jistr/vim-nerdtree-tabs ~/.vim/bundle/vim-nerdtree-tabs		# add tabs to nerdtree
-git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic	# code syntax checker
-git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline			# status/tabline
-git clone https://github.com/nvie/vim-flake8.git ~/.vim/bundle/vim-flake8			# python linter
-git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim	# python autocomplete
+# install vim-plug 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # iterm config
 git clone https://github.com/morhetz/gruvbox-contrib; cp gruvbox-contrib/iterm2/gruvbox-dark.itemcolors
