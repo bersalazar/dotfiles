@@ -11,5 +11,6 @@ colorscheme gruvbox
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <C-p> :GFiles<CR>
+nmap <C-\> <C-^>
 set number  "sets line numbers
 
