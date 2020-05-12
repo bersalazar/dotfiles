@@ -8,6 +8,15 @@ Plug 'vim-airline/vim-airline'
 call plug#end()
 
 colorscheme gruvbox
+
+" Remaps
+:let mapleader = " "
+map <leader>h :wincmd h<CR>
+map <leader>j :wincmd j<CR>
+map <leader>k :wincmd k<CR>
+map <leader>l :wincmd l<CR>
+nnoremap <leader>pt :NERDTreeToggle<CR>
+nnoremap <silent> <leader>pv :NERDTreeFind<CR>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <C-p> :GFiles<CR>
