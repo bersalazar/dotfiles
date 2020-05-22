@@ -1,3 +1,18 @@
+syntax on
+set noerrorbells
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nu
+set nowrap
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
@@ -8,6 +23,7 @@ Plug 'vim-airline/vim-airline'
 call plug#end()
 
 colorscheme gruvbox
+set background=dark
 
 " Remaps
 :let mapleader = " "
@@ -21,5 +37,4 @@ nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <C-p> :GFiles<CR>
 nmap <C-\> <C-^>
-set number  "sets line numbers
 
