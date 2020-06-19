@@ -31,6 +31,7 @@ map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
+map <leader>c :w !pbcopy<CR>
 nnoremap <leader>pt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>pv :NERDTreeFind<CR>
 nmap <leader>gd <Plug>(coc-definition)
