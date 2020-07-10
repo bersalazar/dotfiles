@@ -12,6 +12,8 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set relativenumber
+set nu
+let NERDTreeShowHidden=1
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -39,3 +41,5 @@ nmap <leader>gr <Plug>(coc-references)
 nnoremap <C-p> :GFiles<CR>
 nmap <C-\> <C-^>
 
+" Custom Commands
+command WL :set wrap linebreak
