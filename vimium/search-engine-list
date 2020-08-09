@@ -1,0 +1,10 @@
+w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia
+y: https://www.youtube.com/results?search_query=%s Youtube
+az: https://www.amazon.es/s/?field-keywords=%s Amazon
+gr: https://www.goodreads.com/search?q=%s Goodreads
+gm: https://www.google.com/maps?q=%s Google Maps
+imdb: https://www.imdb.com/find?s=all&q=%s IMDB
+wa: https://www.wolframalpha.com/input/?i=%s Wolfram|Alpha
+so: https://stackoverflow.com/search?q=%s StackOverflow
+su: https://superuser.com/search?q=%s SuperUser
+g: https://gitlab.a.snowmen.se/search?search=%s Gitlab
