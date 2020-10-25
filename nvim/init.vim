@@ -65,8 +65,14 @@ map <leader>l :wincmd l<CR>
 map <leader>c :w !pbcopy<CR>
 nnoremap <leader>pt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>pv :NERDTreeFind<CR>
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <C-l> :Rg<CR>
 nmap <C-\> <S-^>
 
+" Terminal mode remappings
+tnoremap <Esc> <C-\><C-n>
+
 " Custom Commands
+command T :split term://zsh
 command WL :set wrap linebreak
+
