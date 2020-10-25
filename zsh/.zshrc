@@ -115,11 +115,12 @@ alias weather="curl wttr.in/Barcelona:Spain"
 alias rst="source ~/.zshrc; echo 'Reloaded zshrc!'"
 alias kk="fc -ln -1 | pbcopy"
 alias ngd="nikola github_deploy"
-alias vimrc="vim ~/.vimrc"
+alias vimrc="vim ~/.config/nvim/init.vim"
 alias brc="vim ~/.zshrc"
 alias py="python3"
 alias venv="python3 -m venv venv"
 alias activate="source venv/bin/activate"
+alias vim="nvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

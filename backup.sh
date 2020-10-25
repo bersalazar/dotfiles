@@ -3,6 +3,9 @@ echo 'Backing up all dot files'
 echo 'vimrc'
 cp ~/.vimrc ./vim/vimrc
 
+echo 'neovim config'
+cp ~/.config/nvim/* ./nvim/
+
 echo 'rectangle'
 cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/
 
