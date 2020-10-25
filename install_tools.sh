@@ -12,33 +12,22 @@ echo ""
 echo "Installing homebrew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# CLI apps
-#brew install bat                               # Syntax Highlighting
-#brew install openssl                           # SSL
-#brew install flake8                            # Python Linter
-#brew install gnupg                             # GPG Suite
+echo "Install CLI apps"
+brew install bat                               # Syntax Highlighting
+brew install flake8                            # Python Linter
 brew install htop                              # Performance Monitoring
 brew install iftop                             # Network Monitoring
-brew install node                              # NodeJS
-brew install telnet                            # Telnet
 brew install tmux                              # Terminal multiplexer
-brew install tree                              # Tree Command
-brew install z                                 # Jump Around based on directories
-brew install zsh			       # zsh shell
+brew install zsh			                   # zsh shell
 
-# GUI apps
+echo "Install GUI tools"
 brew cask install rectangle
-brew cask install postman                      # GUI for testing apis
 #brew install syncthing                         # Backup Software
 #brew services start syncthing
-#brew cask install hazel                        # Folder Cleanup
-#open /Applications/Hazel.app/
-#brew cask install quickhash                    # Hashing Program
-#brew cask install safeincloud-password-manager # Password Manager
-#brew cask install alfred                       # Mac os helper
-#open /Applications/Alfred\ 3.app/
-#brew cask install flux                         # Blue light solution
-#open /Applications/Flux.app/
+
+echo "Install tools used by neovim"
+brew install fzf        # fuzzy finder
+brew install repgrip    # recursive search tool for finding words withing files, and other fancy stuff I haven't looked into
 
 # zsh config
 echo '$(which zsh)' >> /etc/shells
