@@ -9,6 +9,8 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set splitright "vertical split is done to the right
+set splitbelow "horizontal split is done below
 
 set scrolloff=7
 set backspace=indent,eol,start 
@@ -56,6 +58,11 @@ let g:NERDTreeMinimalUI=1
 " NERDCommenter
 nmap <C-_> <Plug>NERDCommenterToggle
 
+" Custom Commands
+command HorizontalTerminalSplit :split term://zsh         "terminal mode horizontal split
+command VerticalTerminalSplit :vsplit term://zsh        "terminal mode vertical split
+command WL :set wrap linebreak
+
 " Remaps
 :let mapleader = " "
 map <leader>h :wincmd h<CR>
@@ -63,6 +70,8 @@ map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
 map <leader>c :w !pbcopy<CR>
+map <leader>v :VerticalTerminalSplit<CR>
+map <leader>t :HorizontalTerminalSplit<CR>
 nnoremap <leader>pt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>pv :NERDTreeFind<CR>
 nnoremap <C-p> :Files<CR>
@@ -71,8 +80,3 @@ nmap <C-\> <S-^>
 
 " Terminal mode remappings
 tnoremap <Esc> <C-\><C-n>
-
-" Custom Commands
-command T :split term://zsh
-command WL :set wrap linebreak
-
