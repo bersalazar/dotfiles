@@ -40,6 +40,7 @@ let g:airline_theme='gruvbox'
 set background=dark
 
 "Conquer of Completion (coc)
+let g:coc_global_extensions = ['coc-prettier', 'coc-json', 'coc-yaml', 'coc-python']
 set statusline^=%{coc#status()}
 " use <CR> to confirm autocomplete
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
@@ -75,8 +76,11 @@ map <leader>t :HorizontalTerminalSplit<CR>
 nnoremap <leader>pt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>pv :NERDTreeFind<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <C-l> :Rg<CR>
+nnoremap <C-s> :Rg<CR>
+nnoremap <C-l> :tabn<CR>
+nnoremap <C-h> :tabp<CR>
 nmap <C-\> <S-^>
+nmap <leader>b <C-6><CR>
 
 " Terminal mode remappings
 tnoremap <Esc> <C-\><C-n>
