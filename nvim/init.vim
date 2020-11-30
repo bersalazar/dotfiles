@@ -32,6 +32,7 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -84,3 +85,7 @@ nmap <leader>b <C-6><CR>
 
 " Terminal mode remappings
 tnoremap <Esc> <C-\><C-n>
+
+" Linter and fixer
+let g:ale_fixers = ['autopep8']
+let g:autopep8_max_line_length=120
