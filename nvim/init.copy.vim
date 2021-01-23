@@ -1,6 +1,7 @@
 syntax enable
 set encoding=utf-8
-set number relativenumber
+set number 
+"set relativenumber
 set noswapfile
 set noerrorbells
 set nowrap
@@ -19,6 +20,7 @@ set autoindent
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
+set autoindent
 set fileformat=unix
 
 call plug#begin('~/.vim/plugged')
@@ -38,27 +40,6 @@ call plug#end()
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
 set background=dark
-
-" Linter and fixer
-let g:ale_disable_lsp = 1
-let g:ale_fixers = ['autopep8']
-let g:ale_linters = {
-            \   'python': ['flake8'],
-            \}
-let g:ale_python_flake8_options = '--max-line-length=250'
-"let g:autopep8_max_line_length=150
-
-" Conquer of Completion (coc)
-let g:coc_global_extensions = ['coc-json', 'coc-yaml']
-set statusline^=%{coc#status()}
-" use <CR> to confirm autocomplete
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -89,7 +70,21 @@ nnoremap <C-s> :Rg<CR>
 nnoremap <C-l> :tabn<CR>
 nnoremap <C-h> :tabp<CR>
 nmap <C-\> <S-^>
-nmap <leader>b <C-6><CR>
 
 " Terminal mode remappings
 tnoremap <Esc> <C-\><C-n>
+
+" Linters and fixers
+let g:ale_fixers = ['autopep8']
+
+"Conquer of Completion (coc)
+let g:coc_global_extensions = ['coc-prettier', 'coc-json', 'coc-yaml', 'coc-python']
+set statusline^=%{coc#status()}
+" use <CR> to confirm autocomplete
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
