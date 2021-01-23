@@ -121,6 +121,9 @@ alias py="python3"
 alias venv="python3 -m venv venv"
 alias activate="source venv/bin/activate"
 alias vim="nvim"
+alias idea="/Applications/IntelliJ\ IDEA\ CE.app/Contents/MacOS/idea &"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export JAVA_HOME="/usr/local/opt/openjdk"

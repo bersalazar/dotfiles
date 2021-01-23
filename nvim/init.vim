@@ -1,6 +1,6 @@
 syntax enable
 set encoding=utf-8
-set number relativenumber
+set number
 set noswapfile
 set noerrorbells
 set nowrap
@@ -46,7 +46,6 @@ let g:ale_linters = {
             \   'python': ['flake8'],
             \}
 let g:ale_python_flake8_options = '--max-line-length=250'
-"let g:autopep8_max_line_length=150
 
 " Conquer of Completion (coc)
 let g:coc_global_extensions = ['coc-json', 'coc-yaml']
@@ -69,9 +68,9 @@ let g:NERDTreeMinimalUI=1
 nmap <C-_> <Plug>NERDCommenterToggle
 
 " Custom Commands
-command HorizontalTerminalSplit :split term://zsh         "terminal mode horizontal split
-command VerticalTerminalSplit :vsplit term://zsh        "terminal mode vertical split
-command WL :set wrap linebreak
+"command HorizontalTerminalSplit :split term://zsh         "terminal mode horizontal split
+"command VerticalTerminalSplit :vsplit term://zsh        "terminal mode vertical split
+"command WL :set wrap linebreak
 
 " Remaps
 :let mapleader = " "
@@ -82,6 +81,7 @@ map <leader>l :wincmd l<CR>
 map <leader>c :w !pbcopy<CR>
 map <leader>v :VerticalTerminalSplit<CR>
 map <leader>t :HorizontalTerminalSplit<CR>
+map <leader>n :ALENextWrap<CR>
 nnoremap <leader>pt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>pv :NERDTreeFind<CR>
 nnoremap <C-p> :Files<CR>
