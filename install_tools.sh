@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #######################
 # This script is based on the wonderful https://github.com/hunttom/bodega/blob/master/developer_setup/dev_env.sh
 
@@ -22,7 +24,7 @@ brew install zsh			                   # zsh shell
 
 echo "Install GUI tools"
 brew cask install rectangle
-#brew install syncthing                         # Backup Software
+#brew install syncthing                         # Backup Software    
 #brew services start syncthing
 
 echo "Install tools used by neovim"

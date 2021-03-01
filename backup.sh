@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo 'Backing up all dot files'
 
 echo 'vimrc'

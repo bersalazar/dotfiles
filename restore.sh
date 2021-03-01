@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo 'Restoring all dot files'
 
 echo 'neovim config'
