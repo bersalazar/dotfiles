@@ -15,36 +15,38 @@ echo "Installing homebrew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Install CLI apps"
-brew install bat                               # Syntax Highlighting
-brew install flake8                            # Python Linter
-brew install htop                              # Performance Monitoring
-brew install iftop                             # Network Monitoring
-brew install tmux                              # Terminal multiplexer
-brew install zsh			                   # zsh shell
+brew install bat     # Syntax Highlighting
+brew install htop    # Performance Monitoring
+brew install iftop   # Network Monitoring
+brew install tmux    # Terminal multiplexer
+brew install zsh     # zsh shell
+brew install ansible # Configuration management tool
+brew install git     # Well... it's git
+
+echo "Install package managers and languages"
+brew install node    # nodejs and npm
+brew install python3 # python3
+brew instakk openjdk # Java development kit and runtime
+
+echo "Install linters and formatters"
+brew install flake8                     # Python Linter
+brew install shellcheck                 # Bash linter
+brew install shfmt                      # Bash formatter
+brew install hashicorp/tap/terraform-ls # Terraform language server (linter)
+npm install markdownlint --save-dev     # Markdown linter
+pip3 install vim-vint                   # Vim linter
 
 echo "Install GUI tools"
 brew cask install rectangle
-#brew install syncthing                         # Backup Software    
+#brew install syncthing # Backup Software
 #brew services start syncthing
 
 echo "Install tools used by neovim"
-brew install fzf        # fuzzy finder
-brew install repgrip    # recursive search tool for finding words withing files, and other fancy stuff I haven't looked into
+brew install fzf     # fuzzy finder
+brew install repgrip # recursive search tool for finding words withing files, and other fancy stuff I haven't looked into
 
-# zsh config
-echo '$(which zsh)' >> /etc/shells
-chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"       # Oh my zsh install
-echo 'alias upd="brew update; brew upgrade; brew cask upgrade; mas upgrade; brew cleanup --prune-prefix; brew doctor; brew cleanup;' >> ~/.zshrc
-echo 'alias weather="curl wttr.in/Tarrytown:NewYork"' >> ~/.zshrc
-echo 'alias rst="source ~/.zshrc"' >> ~/.zshr
-
-# install vim-plug 
+# install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# iterm config
-git clone https://github.com/morhetz/gruvbox-contrib; cp gruvbox-contrib/iterm2/gruvbox-dark.itemcolors
-echo "Go to iTerm2 preferences > Profiles > Colors > Color Presets > Import gruvbox-dark.itemcolors"
 
 # Mac specific configs
 echo "Expand save panel by default"
