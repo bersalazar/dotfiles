@@ -13,6 +13,8 @@ cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/
 
 echo 'zshrc'
 cp ~/.zshrc ./zsh/
+cp ~/.zshrc-personal ./zsh/
+cp ~/.zshrc-work ./zsh/
 
 echo 'iterm2'
 cp ~/Library/Preferences/com.googlecode.iterm2.plist ./iterm2/
@@ -22,3 +24,5 @@ cp ~/.p10k.zsh ./powerlevel10k/
 
 echo 'git global config'
 cp ~/.gitconfig ./git/
+cp ~/.gitconfig-personal ./git/
+cp ~/.gitconfig-work ./git/
