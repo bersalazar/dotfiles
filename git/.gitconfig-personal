@@ -3,6 +3,10 @@
 	name = Bernardo Salazar
 	email = bersalazar@gmail.com
 
+[core]
+    editor = /usr/local/bin/nvim
+    autocrlf = input
+
 [delta]
     plus-color = "#012800"
     minus-color = "#340001"
@@ -11,11 +15,5 @@
 
 [interactive]
     diffFilter = delta --color-only
-
 [pull]
 	rebase = true
-
-[core]
-	autocrlf = input
-	attributesfile = /Users/bernardosalazar/.gitattributes
-	editor = /usr/local/bin/nvim

@@ -16,23 +16,25 @@ set scrolloff=7
 set backspace=indent,eol,start
 " set smartindent
 set autoindent
-set tabstop=2 softtabstop=2
-set shiftwidth=4
-set expandtab
 set fileformat=unix
+
+set tabstop=2 softtabstop=2
+set shiftwidth=2
+set noexpandtab
+autocmd Filetype py setlocal tabstop=4
+autocmd Filetype py setlocal softtabstop=4
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
-Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -40,23 +42,18 @@ colorscheme gruvbox
 let g:airline_theme='gruvbox'
 set background=dark
 
-" Terraform plugin
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
-
 " Linter and fixer
+let g:airline#extensions#ale#enabled = 1
 let g:ale_disable_lsp = 1
+let b:ale_fixers = {
+            \'python': ['autopep8']
+            \}
 let g:ale_linters = {
-            \   'python': ['flake8', 'pycodestyle']
+            \'python': ['flake8'],
+            \'markdown': ['markdownlint', 'writegood'],
+            \'shell': ['shellcheck'],
             \}
 let g:ale_python_flake8_options = '--max-line-length=250'
-let g:airline#extensions#ale#enabled = 1
- let b:ale_fixers = {
- \   '*': ['remove_trailing_lines', 'trim_whitespace'],
- \   'javascript': ['eslint'],
- \   'python': ['autopep8']
- \}
-let g:ale_fix_on_save = 1
 
 " Conquer of Completion (coc)
 let g:coc_global_extensions = ['coc-json', 'coc-yaml']
@@ -66,9 +63,6 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
-  " I changed =~ to =~? recently. Come back to this if the behavior changes
-  " and gives problems
-  "return !col || getline('.')[col - 1]  =~ '\s'
   return !col || getline('.')[col - 1]  =~? '\s'
 endfunction
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
@@ -85,6 +79,7 @@ nmap <C-_> <Plug>NERDCommenterToggle
 command HorizontalTerminalSplit :split term://zsh         "terminal mode horizontal split
 command VerticalTerminalSplit :vsplit term://zsh        "terminal mode vertical split
 command WL :set wrap linebreak
+command FormatJson :%!jq .
 
 " Remaps
 :let mapleader = ' '
@@ -96,14 +91,23 @@ map <leader>c :w !pbcopy<CR>
 map <leader>v :VerticalTerminalSplit<CR>
 map <leader>t :HorizontalTerminalSplit<CR>
 map <leader>n :ALENextWrap<CR>
+map <leader>f :FormatJson<CR>
 nnoremap <leader>pt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>pv :NERDTreeFind<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-s> :Rg<CR>
 nnoremap <C-l> :tabn<CR>
 nnoremap <C-h> :tabp<CR>
-nmap <C-\> <S-^>
 nmap <leader>b <C-6><CR>
+" I want a shortcut for Ctrl+^ to go to first char of a line. This doesn't work:
+" nmap <C-\> <S-^>
+
+" CoC GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gb :e#<CR>
 
 " Terminal mode remappings
 tnoremap <Esc> <C-\><C-n>
