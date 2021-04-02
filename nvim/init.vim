@@ -14,15 +14,20 @@ set splitbelow "horizontal split is done below
 
 set scrolloff=7
 set backspace=indent,eol,start
-" set smartindent
+set smartindent
 set autoindent
 set fileformat=unix
 
+" Tab key configuration
 set tabstop=2 softtabstop=2
 set shiftwidth=2
 set noexpandtab
-autocmd Filetype py setlocal tabstop=4
-autocmd Filetype py setlocal softtabstop=4
+
+" autocmd is used for changing tabstop values for python files
+augroup python
+	autocmd python Filetype py setlocal tabstop=4
+	autocmd python Filetype py setlocal softtabstop=4
+augroup END
 
 call plug#begin('~/.vim/plugged')
 
