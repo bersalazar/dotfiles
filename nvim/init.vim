@@ -43,11 +43,12 @@ Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
+" Gruvbox color scheme
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
 set background=dark
 
-" Linter and fixer
+" ALE linter and fixer
 let g:airline#extensions#ale#enabled = 1
 let g:ale_disable_lsp = 1
 let b:ale_fixers = {
@@ -60,8 +61,9 @@ let g:ale_linters = {
             \}
 let g:ale_python_flake8_options = '--max-line-length=250'
 
-" Conquer of Completion (coc)
+" coc.nvim (code completion plugin)
 let g:coc_global_extensions = ['coc-json', 'coc-yaml']
+" use coc status in the status line
 set statusline^=%{coc#status()}
 " use <CR> to confirm autocomplete
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
@@ -72,6 +74,13 @@ function! s:check_back_space() abort
 endfunction
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 
+" coc.nvim goto code navigation remaps
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gb :e#<CR>
+
 " NERDTree
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=0
@@ -80,13 +89,13 @@ let g:NERDTreeMinimalUI=1
 " NERDCommenter
 nmap <C-_> <Plug>NERDCommenterToggle
 
-" Custom Commands
+" custom commands
 command HorizontalTerminalSplit :split term://zsh         "terminal mode horizontal split
 command VerticalTerminalSplit :vsplit term://zsh        "terminal mode vertical split
 command WL :set wrap linebreak
 command FormatJson :%!jq .
 
-" Remaps
+" key remaps
 :let mapleader = ' '
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
@@ -107,12 +116,5 @@ nmap <leader>b <C-6><CR>
 " I want a shortcut for Ctrl+^ to go to first char of a line. This doesn't work:
 " nmap <C-\> <S-^>
 
-" CoC GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gb :e#<CR>
-
-" Terminal mode remappings
+" terminal mode remappings
 tnoremap <Esc> <C-\><C-n>
