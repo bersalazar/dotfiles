@@ -2,3 +2,5 @@
   path = ~/.gitconfig-personal
 [includeIf "gitdir:~/proj/"]
   path = ~/.gitconfig-work
+[init]
+	defaultBranch = master

@@ -3,7 +3,7 @@
 echo 'Backing up all dot files'
 
 echo 'neovim config'
-cp ~/.config/nvim/* ./nvim/
+cp -r ~/.config/nvim/* ./nvim/
 
 echo 'rectangle'
 cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/

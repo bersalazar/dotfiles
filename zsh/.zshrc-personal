@@ -121,10 +121,14 @@ alias idea="/Applications/IntelliJ\ IDEA\ CE.app/Contents/MacOS/idea &"
 alias sinkhole-logs="ssh sterner journalctl -f -u sinkhole-updater"
 alias debug="PYTHONBREAKPOINT=pudb.set_trace"
 alias gitconfig="vim ~/.gitconfig-personal"
+alias bash="/usr/local/bin/bash"
+alias torrenter="~/pers/pi-rack/tools/torrenter.sh"
+alias nvimtree="vim ~/.config/nvim/plugins.d/nvim-tree.vim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export JAVA_HOME="/usr/local/opt/openjdk"
 export NOMAD_ADDR="http://newport:4646"
 export EDITOR=vim
