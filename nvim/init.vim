@@ -48,15 +48,20 @@ Plug 'morhetz/gruvbox'
 Plug 'hashivim/vim-terraform'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+" nvim-tree
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
+"
+" Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
 
-" load plugins configurations
+" load plugins configurations from plugins.d
 for f in split(glob('~/.config/nvim/plugins.d/*.vim'), '\n')
     exe 'source' f
 endfor
@@ -70,7 +75,7 @@ set background=dark
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
-" ALE Linter and fixer
+" ALE/coc.nvim (linter/fixer/code completion)
 let g:airline#extensions#ale#enabled = 1
 let g:ale_disable_lsp = 1
 let b:ale_fixers = {
@@ -82,57 +87,51 @@ let g:ale_linters = {
             \'shell': ['shellcheck'],
             \}
 let g:ale_python_flake8_options = '--max-line-length=250'
-
-" coc.nvim (code completion plugin)
 let g:coc_global_extensions = ['coc-json', 'coc-yaml']
+"
 " use coc status in the status line
 set statusline^=%{coc#status()}
+
 " use <CR> to confirm autocomplete
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-" use <tab> for trigger completion and navigate to the next complete item
+
+" use <tab> to trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~? '\s'
 endfunction
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 
-" coc.nvim goto code navigation remaps
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gb :e#<CR>
-
-" Custom Commands
 command HorizontalTerminalSplit :split term://zsh         "terminal mode horizontal split
 command VerticalTerminalSplit :vsplit term://zsh        "terminal mode vertical split
 command WL :set wrap linebreak
 command FormatJson :%!jq .
 
-" key remaps
 :let mapleader = ' '
-map <leader>h :wincmd h<CR>
-map <leader>j :wincmd j<CR>
-map <leader>k :wincmd k<CR>
-map <leader>l :wincmd l<CR>
-map <leader>c :w !pbcopy<CR>
-map <leader>v :VerticalTerminalSplit<CR>
-map <leader>t :HorizontalTerminalSplit<CR>
-map <leader>n :ALENextWrap<CR>
+" coc.nvim goto code navigation remaps
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gb :e#<CR>
+
+nnoremap <leader>c :w !pbcopy<CR>
+nnoremap <leader>v :VerticalTerminalSplit<CR>
+nnoremap <leader>t :HorizontalTerminalSplit<CR>
+nnoremap <leader>n :ALENextWrap<CR>
+nnoremap <leader>gg <cmd>Telescope live_grep<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fb <cmd>Telescope file_browser<CR>
+nnoremap <leader>man <cmd>Telescope man_pages<CR>
+nnoremap <leader>b ^
+
+" movement key remaps
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
 nnoremap <C-l> :tabn<CR>
 nnoremap <C-h> :tabp<CR>
-nmap <leader>b <C-6><CR>
-" I want a shortcut for Ctrl+^ to go to first char of a line. This doesn't work:
-" nmap <C-\> <S-^>
 
-" Find files using Telescope command-line sugar.
-nnoremap <C-s> <cmd>Telescope live_grep<CR>
-nnoremap <C-p> <cmd>Telescope find_files<CR>
-nnoremap <C-x> <cmd>Telescope file_browser<CR>
-
-"nnoremap <leader>fb <cmd>Telescope buffers<CR>
-"nnoremap <leader>fh <cmd>Telescope help_tags<CR>
-
-" Terminal mode remappings
+" terminal mode remappings
 tnoremap <Esc> <C-\><C-n>
-
