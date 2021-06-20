@@ -19,7 +19,7 @@ echo 'iterm2'
 cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/
 
 echo 'powerlevel10k'
-cp ./powerlevel10k/.p10k.zsh ~/ 
+cp ./powerlevel10k/.p10k.zsh ~/
 
 echo 'git global config'
 cp ./git/.gitconfig  ~/
