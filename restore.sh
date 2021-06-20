@@ -3,7 +3,7 @@
 echo 'Restoring all dot files'
 
 echo 'neovim config'
-cp ./nvim/* ~/.config/nvim/
+cp -r ./nvim/* ~/.config/nvim/
 
 echo 'rectangle'
 cp ./rectangle/com.knollsoft.Rectangle.plist ~/Library/Preferences/
