@@ -132,3 +132,4 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export JAVA_HOME="/usr/local/opt/openjdk"
 export NOMAD_ADDR="http://newport:4646"
 export EDITOR=vim
+export PATH="/usr/local/sbin:$PATH"
