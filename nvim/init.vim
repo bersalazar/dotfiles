@@ -123,6 +123,7 @@ nnoremap <leader>gg <cmd>Telescope live_grep<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>man <cmd>Telescope man_pages<CR>
+nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>b ^
 
 " movement key remaps

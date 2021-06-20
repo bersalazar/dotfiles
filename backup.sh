@@ -9,8 +9,7 @@ echo 'rectangle'
 cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/
 
 echo 'zshrc'
-cp ~/.zshrc ./zsh/
-cp ~/.zshrc-personal ./zsh/
+cp ~/.zshrc ./zsh/.zshrc
 
 echo 'iterm2'
 cp ~/Library/Preferences/com.googlecode.iterm2.plist ./iterm2/

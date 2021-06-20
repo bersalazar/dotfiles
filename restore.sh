@@ -9,8 +9,11 @@ echo 'rectangle'
 cp ./rectangle/com.knollsoft.Rectangle.plist ~/Library/Preferences/
 
 echo 'zshrc'
-cp ./zsh/.zshrc ~/
-cp ./zsh/.zshrc-personal ~/
+if test -f "$HOME/.is_personal_computer"; then
+	cp ./zsh/.zshrc ~/
+else
+	echo "Skipping restore of .zshrc"
+fi
 
 echo 'iterm2'
 cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/
