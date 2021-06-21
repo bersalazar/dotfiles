@@ -25,4 +25,7 @@ echo 'git global config'
 cp ./git/.gitconfig  ~/
 cp ./git/.gitconfig-personal ~/
 
+echo 'tmux'
+cp ./tmux/.tmux.conf ~/.tmux.conf
+
 echo "all done!"
