@@ -6,6 +6,7 @@ syntax enable  " enables syntax highlighting
 set number " display line numbers
 set noswapfile " avoids creating a swap file, which is annoying when creating new file (buffers)
 set noerrorbells " avoids making a sound on errored commands
+set visualbell
 set nowrap " avoids line wraping
 set smartcase
 set nobackup
@@ -22,7 +23,7 @@ set autoindent
 set fileformat=unix
 
 " Tab key configuration
-set tabstop=2 softtabstop=2
+set tabstop=4 softtabstop=4
 set shiftwidth=2
 set noexpandtab
 
@@ -45,6 +46,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'hashivim/vim-terraform'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -119,9 +121,9 @@ nnoremap <leader>c :w !pbcopy<CR>
 nnoremap <leader>v :VerticalTerminalSplit<CR>
 nnoremap <leader>t :HorizontalTerminalSplit<CR>
 nnoremap <leader>n :ALENextWrap<CR>
-nnoremap <leader>gg <cmd>Telescope live_grep<CR>
-nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>fb <cmd>Telescope file_browser<CR>
+nnoremap <C-s> <cmd>Telescope live_grep<CR>
+nnoremap <C-p> <cmd>Telescope find_files<CR>
+nnoremap <C-f> <cmd>Telescope file_browser<CR>
 nnoremap <leader>man <cmd>Telescope man_pages<CR>
 nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>b ^
