@@ -33,5 +33,6 @@ cp ~/.tmux.conf ./tmux/
 
 echo 'qutebrowser'
 cp ~/.qutebrowser/config.py ./qutebrowser/
+cp -r ~/.qutebrowser/userscripts ./qutebrowser/
 
 echo "all done!"
