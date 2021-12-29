@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo 'Creating backup folders'
-mkdir -p {nvim,rectangle,zshrc,iterm2,powerlevel10k,git,tmux}
+mkdir -p {nvim,rectangle,zshrc,iterm2,powerlevel10k,git,tmux,qutebrowser}
 
 echo 'Backing up all dot files'
 
@@ -13,9 +13,9 @@ cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/
 
 echo 'zshrc'
 if test -f "$HOME/.is_personal_computer"; then
-	cp ~/.zshrc ./zsh/.zshrc
+  cp ~/.zshrc ./zsh/.zshrc
 else
-	echo "Skipping backup of .zshrc"
+  echo "Skipping backup of .zshrc"
 fi
 
 echo 'iterm2'
@@ -30,5 +30,8 @@ cp ~/.gitconfig-personal ./git/
 
 echo 'tmux'
 cp ~/.tmux.conf ./tmux/
+
+echo 'qutebrowser'
+cp ~/.qutebrowser/config.py ./qutebrowser/
 
 echo "all done!"
