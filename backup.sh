@@ -35,4 +35,7 @@ echo 'qutebrowser'
 cp ~/.qutebrowser/config.py ./qutebrowser/
 cp -r ~/.qutebrowser/userscripts ./qutebrowser/
 
+echo 'scripts'
+cp -r ~/.scripts/ ./scripts/
+
 echo "all done!"
