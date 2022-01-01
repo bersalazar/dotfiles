@@ -72,6 +72,9 @@ nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-s> <cmd>Telescope live_grep<CR>
 nnoremap <C-\> <cmd>b#<CR>
 nnoremap <C-j> :FloatermToggle<CR>
+nnoremap <S-F8> <ESC>:set hls! hls?<cr>
+inoremap <S-F8> <C-o>:set hls! hls?<cr>
+vnoremap <S-F8> <ESC>:set hls! hls?<cr> <bar> gv
 
 nnoremap <F5> :buffers<CR>:buffer<Space>
 

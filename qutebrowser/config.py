@@ -3,6 +3,8 @@ config.load_autoconfig(True)
 c.editor.command = ['/usr/local/bin/gvim', '{file}']
 c.content.default_encoding = 'utf-8'
 c.content.pdfjs = True
+c.content.blocking.method = 'both'
+c.content.cookies.accept = 'all'
 c.fonts.default_size = '11pt'
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
@@ -13,3 +15,4 @@ c.url.searchengines = {
 
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
+config.bind('<Ctrl-Shift-P>', 'spawn --userscript pocket.sh')

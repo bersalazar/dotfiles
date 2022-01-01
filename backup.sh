@@ -35,6 +35,9 @@ echo 'qutebrowser'
 cp ~/.qutebrowser/config.py ./qutebrowser/
 cp -r ~/.qutebrowser/userscripts ./qutebrowser/
 
+echo 'mpv'
+cp -r ~/.config/mpv/ ./mpv/
+
 echo 'scripts'
 cp -r ~/.scripts/ ./scripts/
 
