@@ -15,4 +15,5 @@ c.url.searchengines = {
 
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
-config.bind('<Ctrl-Shift-P>', 'spawn --userscript pocket.sh')
+config.bind(',p', 'spawn --userscript pocket.sh')
+config.bind(',m', 'spawn mpv {url}')
