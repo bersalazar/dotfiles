@@ -1,4 +1,63 @@
+[user]
+    name = Bernardo Salazar
+    signingkey = 4D6FA0B98B9F0D4D
+
+# Includes user attributes based on the directory where the repo is checked out.
 [includeIf "gitdir:~/pers/"]
   path = ~/.gitconfig-personal
 [includeIf "gitdir:~/proj/"]
   path = ~/.gitconfig-work
+
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Monokai Extended
+    side-by-side = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[pull]
+    rebase = true
+
+[core]
+    autocrlf = input
+    attributesfile = /Users/bernardosalazar/.gitattributes
+    editor = /usr/local/bin/nvim
+
+[commit]
+    gpgsign = true
+
+[url "ssh://git@github.com"]
+    insteadOf = https://github.com
+    insteadof = git://github.com
+    insteadOf = https://github.com
+
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+
+[gpg]
+    program = gpg2
+
+[merge "npm-merge-driver"]
+    name = Automatically merge npm lock files
+    driver = npx npm-merge-driver merge %A %O %B %P
+
+[merge "yarn-merge-driver"]
+    name = Automatically merge yarn lock files
+    driver = npx npm-merge-driver merge %A %O %B %P -c yarn
+
+[trailer "Co-Authored-By"]
+    where = after
+    ifexists = addIfDifferent
+
+[merge "npm-merge-driver"]
+    name = Automatically merge npm lock files
+    driver = npx npm-merge-driver merge %A %O %B %P
+
+[merge "yarn-merge-driver"]
+    name = Automatically merge yarn lock files
+    driver = npx npm-merge-driver merge %A %O %B %P -c yarn
