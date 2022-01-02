@@ -27,6 +27,7 @@ cp ~/.p10k.zsh ./powerlevel10k/
 echo 'git global config'
 cp ~/.gitconfig ./git/
 cp ~/.gitconfig-personal ./git/
+cp ~/.gitconfig-work ./git/
 
 echo 'tmux'
 cp ~/.tmux.conf ./tmux/

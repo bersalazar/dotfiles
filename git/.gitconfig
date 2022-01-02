@@ -1,6 +1,5 @@
 [user]
     name = Bernardo Salazar
-    signingkey = 4D6FA0B98B9F0D4D
 
 # Includes user attributes based on the directory where the repo is checked out.
 [includeIf "gitdir:~/pers/"]
