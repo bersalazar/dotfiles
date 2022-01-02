@@ -28,4 +28,15 @@ cp ./git/.gitconfig-personal ~/
 echo 'tmux'
 cp ./tmux/.tmux.conf ~/.tmux.conf
 
+echo 'qutebrowser'
+cp ./qutebrowser/config.py ~/.qutebrowser/
+mkdir -p ~/.qutebrowser/userscripts
+cp -r ./qutebrowser/userscripts/* ~/.qutebrowser/userscripts/
+
+echo 'mpv'
+cp -r ./mpv/* ~/.config/mpv/
+
+echo 'scripts'
+cp -r ./scripts/* ~/.scripts/
+
 echo "all done!"

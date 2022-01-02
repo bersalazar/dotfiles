@@ -3,7 +3,7 @@
 echo 'Creating backup folders'
 mkdir -p {nvim,rectangle,zshrc,iterm2,powerlevel10k,git,tmux,qutebrowser}
 
-echo 'Backing up all dot files'
+echo 'Backing up all dotfiles'
 
 echo 'neovim config'
 cp -r ~/.config/nvim/* ./nvim/

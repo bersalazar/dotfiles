@@ -15,11 +15,11 @@ echo "Installing homebrew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Install CLI apps"
-brew install bat     # Syntax Highlighting
-brew install htop    # Performance Monitoring
-brew install iftop   # Network Monitoring
-brew install tmux    # Terminal multiplexer
 brew install zsh     # zsh shell
+brew install bat     # Syntax highlighting
+brew install htop    # Performance monitoring
+brew install iftop   # Network monitoring
+brew install tmux    # Terminal multiplexer
 brew install ansible # Configuration management tool
 brew install git     # Well... it's git
 
@@ -37,9 +37,13 @@ npm install markdownlint --save-dev     # Markdown linter
 pip3 install vim-vint                   # Vim linter
 
 echo "Install GUI tools"
-brew cask install rectangle
-#brew install syncthing # Backup Software
-#brew services start syncthing
+brew cask install rectangle   # Window resizing manager: https://rectangleapp.com
+brew install --cask syncthing # Backup Software: https://syncthing.net
+brew install qutebrowser      # Browser: https://qutebrowser.org/
+brew install mpv              # Video player: https://mpv.io/
+
+echo "Start services"
+brew services start syncthing
 
 echo "Install tools used by neovim"
 brew install fzf     # fuzzy finder
