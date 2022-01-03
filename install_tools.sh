@@ -61,3 +61,6 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 echo "Avoid creating .DS_Store files on network volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+echo "Other tools to install that are not included in brew"
+echo "karabiner-elements: https://karabiner-elements.pqrs.org/docs/getting-started/installation/"

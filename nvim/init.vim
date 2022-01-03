@@ -82,11 +82,11 @@ map gf :edit <cfile><CR>
 
 " terminal mode
 tnoremap <Esc> <C-\><C-n><CR>
-tnoremap <C-j> <C-\><C-n>:FloatermToggle<CR>
-tnoremap <C-k> <C-\><C-n>:FloatermKill<CR>
+"tnoremap <C-j> <C-\><C-n>:FloatermToggle<CR>
+"tnoremap <C-k> <C-\><C-n>:FloatermKill<CR>
 "tnoremap <C-l> <C-\><C-n>:FloatermNext<CR>
-tnoremap <C-h> <C-\><C-n>:FloatermPrev<CR>
-tnoremap <C-n> <C-\><C-n>:FloatermNew<CR>
+"tnoremap <C-h> <C-\><C-n>:FloatermPrev<CR>
+"tnoremap <C-n> <C-\><C-n>:FloatermNew<CR>
 
 " --------------------------
 "  plugins
