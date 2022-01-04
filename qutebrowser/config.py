@@ -8,9 +8,9 @@ c.content.cookies.accept = 'all'
 c.fonts.default_size = '11pt'
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
-    'y': 'https://www.youtube.com/results?search_query={}',
-    'w': 'https://en.wikipedia.org/wiki/{}',
-    'go': 'https://www.goodreads.com/search?q={}',
+    'yt': 'https://www.youtube.com/results?search_query={}',
+    'wk': 'https://en.wikipedia.org/wiki/{}',
+    'gr': 'https://www.goodreads.com/search?q={}',
     'az': 'https://www.amazon.es/s?k={}',
     }
 

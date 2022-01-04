@@ -42,6 +42,7 @@ command FormatJson :%!jq .
 command SourceVimrc :source ~/.config/nvim/init.vim
 command HorizontalTerminalSplit :split term://zsh
 command VerticalTerminalSplit :vsplit term://zsh
+command Mdp :MarkdownPreview
 
 nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
