@@ -131,6 +131,11 @@ augroup python " autocmd is used for changing tabstop values for python files
   autocmd python Filetype py setlocal softtabstop=4
 augroup END
 
+augroup typescript " autocmd is used for changing tabstop values for typescript files
+  autocmd typescript Filetype ts setlocal tabstop=4
+  autocmd typescript Filetype ts setlocal softtabstop=4
+augroup END
+
 augroup ftgroovy " interpret Jenkinsfile as groovy syntax
   autocmd!
   autocmd BufRead,BufNewFile *.Jenkinsfile set filetype=groovy

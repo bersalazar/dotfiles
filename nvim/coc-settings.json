@@ -12,5 +12,6 @@
         "!Split sequence",
         "!Sub",
         "!Base64"
-    ]
+    ],
+    "tsserver.enable": true
 }

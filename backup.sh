@@ -45,4 +45,7 @@ cp -r ~/.scripts/ ./scripts/
 echo 'karabiner-elements'
 cp ~/.config/karabiner/karabiner.json ./karabiner/
 
+echo 'eslint'
+cp ~/.eslintrc.yml ./eslint/
+
 echo "all done!"
