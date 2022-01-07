@@ -44,10 +44,12 @@ command HorizontalTerminalSplit :split term://zsh
 command VerticalTerminalSplit :vsplit term://zsh
 command Mdp :MarkdownPreview
 
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
 nnoremap <silent> gb :e#<CR>
 
 nnoremap <leader>v :VerticalTerminalSplit<CR>

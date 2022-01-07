@@ -13,5 +13,6 @@
         "!Sub",
         "!Base64"
     ],
-    "tsserver.enable": true
+    "tsserver.enable": true,
+    "typescript.preferences.quoteStyle": "double"
 }
