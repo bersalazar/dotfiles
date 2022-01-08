@@ -35,9 +35,17 @@ mkdir -p ~/.qutebrowser/userscripts
 cp -r ./qutebrowser/userscripts/* ~/.qutebrowser/userscripts/
 
 echo 'mpv'
+mkdir -p ~/.config/mpv
 cp -r ./mpv/* ~/.config/mpv/
 
 echo 'scripts'
-cp -r ./scripts/* ~/.scripts/
+cp -r ./scripts ~/.scripts/
+
+echo 'karabiner-elements'
+mkdir -p ~/.config/karabiner
+cp ./karabiner/karabiner.json ~/.config/karabiner/
+
+echo 'eslint'
+cp ./eslint/.eslintrc.yml ~/
 
 echo "all done!"
