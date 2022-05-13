@@ -55,3 +55,6 @@
 
 [alias]
   last = "!git --no-pager log -1 HEAD"
+
+[gpg]
+  program = "/usr/local/bin/gpg"
