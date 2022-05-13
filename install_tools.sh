@@ -39,8 +39,6 @@ pip3 install vim-vint                   # Vim linter
 echo "Install GUI tools"
 brew cask install rectangle   # Window resizing manager: https://rectangleapp.com
 brew install --cask syncthing # Backup Software: https://syncthing.net
-brew install qutebrowser      # Browser: https://qutebrowser.org/
-brew install mpv              # Video player: https://mpv.io/
 
 echo "Start services"
 brew services start syncthing
@@ -64,3 +62,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 echo "Other tools to install that are not included in brew"
 echo "karabiner-elements: https://karabiner-elements.pqrs.org/docs/getting-started/installation/"
+
+### Retired tools which could be useful again some day
+#brew install qutebrowser      # A cute, keyboard-oriented browser: https://qutebrowser.org/
+#brew install mpv              # Video player: https://mpv.io/

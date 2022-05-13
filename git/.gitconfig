@@ -53,10 +53,5 @@
     where = after
     ifexists = addIfDifferent
 
-[merge "npm-merge-driver"]
-    name = Automatically merge npm lock files
-    driver = npx npm-merge-driver merge %A %O %B %P
-
-[merge "yarn-merge-driver"]
-    name = Automatically merge yarn lock files
-    driver = npx npm-merge-driver merge %A %O %B %P -c yarn
+[alias]
+  last = "!git --no-pager log -1 HEAD"
