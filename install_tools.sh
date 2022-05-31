@@ -22,6 +22,7 @@ brew install iftop   # Network monitoring
 brew install tmux    # Terminal multiplexer
 brew install ansible # Configuration management tool
 brew install git     # Well... it's git
+brew install zsh-autosuggestions
 
 echo "Install package managers and languages"
 brew install node    # nodejs and npm

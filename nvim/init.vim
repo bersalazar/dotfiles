@@ -42,7 +42,10 @@ command FormatJson :%!jq .
 command SourceVimrc :source ~/.config/nvim/init.vim
 command HorizontalTerminalSplit :split term://zsh
 command VerticalTerminalSplit :vsplit term://zsh
+command TerminalInNewTab :tabnew term://zsh
 command Mdp :MarkdownPreview
+command ReloadCurrentFile :e
+command RnuToggle :set rnu!
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -67,6 +70,7 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>rnu :RnuToggle<CR>
 
 nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
@@ -75,21 +79,14 @@ nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-s> <cmd>Telescope live_grep<CR>
 nnoremap <C-\> <cmd>b#<CR>
 nnoremap <C-j> :FloatermToggle<CR>
-nnoremap <S-F8> <ESC>:set hls! hls?<cr>
-inoremap <S-F8> <C-o>:set hls! hls?<cr>
-vnoremap <S-F8> <ESC>:set hls! hls?<cr> <bar> gv
+nnoremap <C-F8> :noh<CR>
+inoremap <C-F8> :noh<CR>
 
 nnoremap <F5> :buffers<CR>:buffer<Space>
 
 map gf :edit <cfile><CR>
 
-" terminal mode
 tnoremap <Esc> <C-\><C-n><CR>
-"tnoremap <C-j> <C-\><C-n>:FloatermToggle<CR>
-"tnoremap <C-k> <C-\><C-n>:FloatermKill<CR>
-"tnoremap <C-l> <C-\><C-n>:FloatermNext<CR>
-"tnoremap <C-h> <C-\><C-n>:FloatermPrev<CR>
-"tnoremap <C-n> <C-\><C-n>:FloatermNew<CR>
 
 " --------------------------
 "  plugins
@@ -100,13 +97,14 @@ Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'github/copilot.vim'
 Plug 'morhetz/gruvbox'
-Plug 'voldikss/vim-floaterm'
+Plug 'wittyjudge/gruvbox-material.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'hashivim/vim-terraform'
+" Plug 'hashivim/vim-terraform'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -116,7 +114,6 @@ Plug 'nvim-telescope/telescope.nvim'
 source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/ale.vim
 source ~/.config/nvim/plugins/coc.vim
-source ~/.config/nvim/plugins/floaterm.vim
 source ~/.config/nvim/plugins/vim-terraform.vim
 
 call plug#end()
@@ -126,8 +123,12 @@ for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
 endfor
 
 " --------------------------
-" groupings
+" autocmd groupings
 " --------------------------
+augroup notion
+  autocmd BufNewFile,BufRead ~/sync/notion/* :Goyo<CR>
+augroup END
+
 augroup python " autocmd is used for changing tabstop values for python files
   autocmd python Filetype py setlocal tabstop=4
   autocmd python Filetype py setlocal softtabstop=4
@@ -147,6 +148,6 @@ augroup END
 " --------------------------
 " other
 " --------------------------
-colorscheme gruvbox
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'base16_gruvbox_dark_medium'
+colorscheme gruvbox-material
 set background=dark

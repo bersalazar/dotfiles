@@ -1,5 +1,5 @@
 [user]
-    name = Bernardo Salazar
+  name = Bernardo Salazar
 
 # Includes user attributes based on the directory where the repo is checked out.
 [includeIf "gitdir:~/pers/"]
@@ -8,53 +8,58 @@
   path = ~/.gitconfig-work
 
 [delta]
-    plus-color = "#012800"
-    minus-color = "#340001"
-    syntax-theme = Monokai Extended
-    side-by-side = true
+  plus-color = "#012800"
+  minus-color = "#340001"
+  syntax-theme = Monokai Extended
+  side-by-side = true
 
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
 [pull]
-    rebase = true
+  rebase = true
 
 [core]
-    autocrlf = input
-    attributesfile = /Users/bernardosalazar/.gitattributes
-    editor = /usr/local/bin/nvim
+  autocrlf = input
+  attributesfile = /Users/bernardosalazar/.gitattributes
+  editor = /usr/local/bin/nvim
 
 [commit]
-    gpgsign = true
+  gpgsign = true
 
 [url "ssh://git@github.com"]
-    insteadOf = https://github.com
-    insteadof = git://github.com
-    insteadOf = https://github.com
+  insteadOf = https://github.com
+  insteadof = git://github.com
+  insteadOf = https://github.com
 
 [filter "lfs"]
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
-    clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
 
 [gpg]
-    program = gpg2
+  program = gpg2
 
-[merge "npm-merge-driver"]
-    name = Automatically merge npm lock files
-    driver = npx npm-merge-driver merge %A %O %B %P
-
-[merge "yarn-merge-driver"]
-    name = Automatically merge yarn lock files
-    driver = npx npm-merge-driver merge %A %O %B %P -c yarn
+[branch]
+  sort = committerdate
 
 [trailer "Co-Authored-By"]
-    where = after
-    ifexists = addIfDifferent
+  where = after
+  ifexists = addIfDifferent
 
 [alias]
   last = "!git --no-pager log -1 HEAD"
 
 [gpg]
   program = "/usr/local/bin/gpg"
+  where = after
+  ifExists = addIfDifferent
+
+[merge "npm-merge-driver"]
+  name = Automatically merge npm lock files
+  driver = npx npm-merge-driver merge %A %O %B %P
+
+[merge "yarn-merge-driver"]
+  name = Automatically merge yarn lock files
+  driver = npx npm-merge-driver merge %A %O %B %P -c yarn
