@@ -27,15 +27,28 @@ brew install zsh-autosuggestions
 echo "Install package managers and languages"
 brew install node    # nodejs and npm
 brew install python3 # python3
-brew instakk openjdk # Java development kit and runtime
+brew install openjdk # Java development kit and runtime
+
+echo "Install language servers"
+brew install hashicorp/tap/terraform-ls # Terraform language server (linter)
+npm i -g vscode-langservers-extracted # Includes html, css, json and eslint language servers
+npm i -g bash-language-server
+npm i -g pyright
+npm install -g typescript typescript-language-server
+npm install -g dockerfile-language-server-nodejs
+npm i -g grammarly-languageserver
+pip install python-lsp-server
+#npm install -g @ansible/ansible-language-server
 
 echo "Install linters and formatters"
-brew install flake8                     # Python Linter
 brew install shellcheck                 # Bash linter
 brew install shfmt                      # Bash formatter
-brew install hashicorp/tap/terraform-ls # Terraform language server (linter)
 npm install markdownlint --save-dev     # Markdown linter
 pip3 install vim-vint                   # Vim linter
+
+echo "Install tools used by neovim"
+brew install fzf     # fuzzy finder
+brew install repgrip # recursive search tool for finding words withing files, and other fancy stuff I haven't looked into
 
 echo "Install GUI tools"
 brew cask install rectangle   # Window resizing manager: https://rectangleapp.com
@@ -43,10 +56,6 @@ brew install --cask syncthing # Backup Software: https://syncthing.net
 
 echo "Start services"
 brew services start syncthing
-
-echo "Install tools used by neovim"
-brew install fzf     # fuzzy finder
-brew install repgrip # recursive search tool for finding words withing files, and other fancy stuff I haven't looked into
 
 # install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
