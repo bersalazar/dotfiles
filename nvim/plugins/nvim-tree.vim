@@ -1,58 +1,13 @@
 scriptencoding utf-8
 
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_highlight_opened_files = 0 "0 by default, will enable folder and file icon highlight for opened files/directories.
-let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-"let g:nvim_tree_width_allow_resize  = 1 "0 by default, will not resize the tree when opening a file
-let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
-let g:nvim_tree_special_files = [ 'README.md', 'Makefile', 'MAKEFILE' ] " List of filenames that gets highlighted with NvimTreeSpecialFile
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 0,
-    \ 'files': 0,
-    \ }
-"If 0, do not show the icons for one of 'git' 'folder' and 'files'
-"1 by default, notice that if 'files' is 1, it will only display
-"if nvim-web-devicons is installed and on your runtimepath
-
-" default will show icon by default if no icon is provided
-" default shows no icon by default
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': '✗',
-    \   'staged': '✓',
-    \   'unmerged': '',
-    \   'renamed': '➜',
-    \   'untracked': '★',
-    \   'deleted': '',
-    \   'ignored': '◌'
-    \   },
-    \ 'folder': {
-    \   'default': '',
-    \   'open': '',
-    \   'empty': '',
-    \   'empty_open': '',
-    \   'symlink': '',
-    \   'symlink_open': '',
-    \   },
-    \   'lsp': {
-    \     'hint': '',
-    \     'info': '',
-    \     'warning': '',
-    \     'error': '',
-    \   }
-    \ }
-
-nnoremap <C-n> :NvimTreeFindFileToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
+nnoremap <C-n>  =NvimTreeFindFileToggle<CR>
+nnoremap <leader>r  =NvimTreeRefresh<CR>
+nnoremap <leader>n  =NvimTreeFindFile<CR>
 " NvimTreeOpen and NvimTreeClose are also available if you need them
 
 set termguicolors " this variable must be enabled for colors to be applied properly
 
-" a list of groups can be found at `:help nvim_tree_highlight`
+" a list of groups can be found at ` =help nvim_tree_highlight`
 highlight NvimTreeFolderIcon guibg=blue
 
 lua <<EOF
@@ -158,6 +113,38 @@ lua <<EOF
     renderer = {
       indent_markers = {
         enable = true
+      },
+      add_trailing = true,
+      highlight_opened_files = 'icon',
+      root_folder_modifier = ' =~',
+      highlight_git = true,
+      icons = {
+        show = {
+          file = false,
+          folder = false,
+          git = true
+        },
+        glyphs = {
+          default = '',
+          symlink = '',
+          git = {
+            unstaged = '✗',
+            staged = '✓',
+            unmerged = '',
+            renamed = '➜',
+            untracked = '★',
+            deleted = '',
+            ignored = '◌'
+          },
+          folder = {
+            default = '',
+            open = '',
+            empty = '',
+            empty_open = '',
+            symlink = '',
+            symlink_open = '',
+          }
+        }
       }
     }
   }

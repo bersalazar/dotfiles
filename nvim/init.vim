@@ -1,4 +1,36 @@
 " --------------------------
+"  plugins
+" --------------------------
+call plug#begin('~/.vim/plugged')
+
+"Plug 'github/copilot.vim'
+Plug 'morhetz/gruvbox'
+Plug 'wittyjudge/gruvbox-material.nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'hashivim/vim-terraform'
+Plug 'nvim-treesitter/nvim-treesitter'
+
+" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'neovim/nvim-lspconfig'
+
+call plug#end()
+
+" Extra plugins are installed in here
+source ~/.config/nvim/lua/init.lua
+source ~/.config/nvim/lua/plugins.lua
+
+source ~/.config/nvim/plugins/airline.vim
+source ~/.config/nvim/plugins/nvim-tree.vim
+source ~/.config/nvim/plugins/vim-terraform.vim
+
+" --------------------------
 " general settings
 " --------------------------
 set expandtab
@@ -33,10 +65,8 @@ scriptencoding utf-8
 syntax enable  " enables syntax highlighting
 
 " --------------------------
-" keymaps
+" commands
 " --------------------------
-:let mapleader = ' '
-
 command WL :set wrap linebreak
 command FormatJson :%!jq .
 command SourceVimrc :source ~/.config/nvim/init.vim
@@ -47,25 +77,21 @@ command Mdp :MarkdownPreview
 command ReloadCurrentFile :e
 command RnuToggle :set rnu!
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-nmap <silent> g] <Plug>(coc-diagnostic-next)
+" --------------------------
+" keymaps
+" --------------------------
+:let mapleader = ' '
+
 nnoremap <silent> gb :e#<CR>
 
 nnoremap <leader>v :VerticalTerminalSplit<CR>
 nnoremap <leader>t :HorizontalTerminalSplit<CR>
 nnoremap <leader>so :SourceVimrc<CR>
-nnoremap <leader>n :ALENextWrap<CR>
 nnoremap <leader>man <cmd>Telescope man_pages<CR>
 nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>b ^
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
-nnoremap <leader>fn :FloatermNew<CR>
-nnoremap <leader>fk :FloatermKill<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -84,43 +110,10 @@ inoremap <C-F8> :noh<CR>
 
 nnoremap <F5> :buffers<CR>:buffer<Space>
 
-map gf :edit <cfile><CR>
+map gf :tabnew <cfile><CR>
 
 tnoremap <Esc> <C-\><C-n><CR>
 
-" --------------------------
-"  plugins
-" --------------------------
-call plug#begin('~/.vim/plugged')
-
-Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'github/copilot.vim'
-Plug 'morhetz/gruvbox'
-Plug 'wittyjudge/gruvbox-material.nvim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Plug 'hashivim/vim-terraform'
-Plug 'nvim-treesitter/nvim-treesitter'
-
-" telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-source ~/.config/nvim/plugins/airline.vim
-source ~/.config/nvim/plugins/ale.vim
-source ~/.config/nvim/plugins/coc.vim
-source ~/.config/nvim/plugins/vim-terraform.vim
-
-call plug#end()
-
-for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
-    exe 'source' f
-endfor
 
 " --------------------------
 " autocmd groupings
@@ -134,10 +127,10 @@ augroup python " autocmd is used for changing tabstop values for python files
   autocmd python Filetype py setlocal softtabstop=4
 augroup END
 
-augroup typescript " autocmd is used for changing tabstop values for typescript files
-  autocmd typescript Filetype ts setlocal tabstop=4
-  autocmd typescript Filetype ts setlocal softtabstop=4
-augroup END
+"augroup typescript " autocmd is used for changing tabstop values for typescript files
+"  autocmd typescript Filetype ts setlocal tabstop=4
+"  autocmd typescript Filetype ts setlocal softtabstop=4
+"augroup END
 
 augroup ftgroovy " interpret Jenkinsfile as groovy syntax
   autocmd!
