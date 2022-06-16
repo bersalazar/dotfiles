@@ -9,11 +9,7 @@ echo 'rectangle'
 cp ./rectangle/com.knollsoft.Rectangle.plist ~/Library/Preferences/
 
 echo 'zshrc'
-if test -f "$HOME/.is_personal_computer"; then
-	cp ./zsh/.zshrc ~/
-else
-	echo "Skipping restore of .zshrc"
-fi
+cp ./zsh/.zshrc ~/
 
 echo 'iterm2'
 cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/
@@ -28,15 +24,6 @@ cp ./git/.gitconfig-work ~/
 
 echo 'tmux'
 cp ./tmux/.tmux.conf ~/.tmux.conf
-
-echo 'qutebrowser'
-cp ./qutebrowser/config.py ~/.qutebrowser/
-mkdir -p ~/.qutebrowser/userscripts
-cp -r ./qutebrowser/userscripts/* ~/.qutebrowser/userscripts/
-
-echo 'mpv'
-mkdir -p ~/.config/mpv
-cp -r ./mpv/* ~/.config/mpv/
 
 echo 'scripts'
 cp -r ./scripts ~/.scripts/

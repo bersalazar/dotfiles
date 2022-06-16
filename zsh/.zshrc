@@ -1,3 +1,7 @@
+# Disable error sounds from zsh
+#
+setopt NO_BEEP
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -9,7 +13,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/bernardo/.oh-my-zsh"
+export ZSH="/Users/bernardosalazar/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -17,6 +21,7 @@ export ZSH="/Users/bernardo/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
+#source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -38,7 +43,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+ export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -76,7 +81,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting docker)
+plugins=(git docker wd gradle gpg-agent asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,48 +93,43 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='vim'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias upd="brew update; brew upgrade; brew cask upgrade; mas upgrade; brew cleanup --prune-prefix; brew doctor; brew cleanup;"
-alias weather="curl wttr.in/Barcelona:Spain"
-alias rst="source ~/.zshrc; echo 'Reloaded zshrc!'"
-alias kk="fc -ln -1 | pbcopy"
-alias ngd="nikola github_deploy"
-alias vimrc="vim ~/.config/nvim/init.vim"
-alias brc="vim ~/.zshrc"
-alias py="python3"
-alias venv="python3 -m venv venv"
-alias activate="source venv/bin/activate"
-alias vim="nvim"
-alias idea="/Applications/IntelliJ\ IDEA\ CE.app/Contents/MacOS/idea &"
-alias sinkhole-logs="ssh sterner journalctl -f -u sinkhole-updater"
-alias debug="PYTHONBREAKPOINT=pudb.set_trace"
-alias gitconfig="vim ~/.gitconfig-personal"
-alias bash="/usr/local/bin/bash"
-alias torrenter="~/pers/pi-rack/tools/torrenter.sh"
-alias nvimtree="vim ~/.config/nvim/plugins.d/nvim-tree.vim"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-export JAVA_HOME="/usr/local/opt/openjdk"
-export NOMAD_ADDR="http://newport:4646"
-export EDITOR=vim
+#export JAVA_HOME="/usr/local/opt/openjdk"
+
+# autocompleters
+#autoload bashcompinit && bashcompinit
+#autoload -Uz compinit && compinit
+#complete -C '/usr/local/bin/aws_completer' aws
+source <(kubectl completion zsh)
+if [ -f '~/.shims/google-cloud-sdk/completion.zsh.inc' ]; then . '~/.shims/google-cloud-sdk/completion.zsh.inc'; fi
+
+path=("${HOME}/.local/bin" $path) ; path+=("${HOME}/bin") ; export PATH
+eval "$(asdf exec direnv hook zsh)"
+direnv() { asdf exec direnv "$@"; }
+
+for file in ~/.{aliases,functions,extra}; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done
+
+
+# Required to avoid timeouts of kubectl port-forward
+ulimit -n 65536
+
+export GPG_TTY=$(tty)
+export JAVA_HOME="/Users/bernardosalazar/.asdf/installs/java/zulu-11.45.27"
 export PATH="/usr/local/sbin:$PATH"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.acronyms # structure useful environment variables for making usage of deployer faster
+source ~/.additional_env_vars
