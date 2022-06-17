@@ -16,13 +16,14 @@ echo "Installing homebrew..."
 
 echo "Install CLI apps"
 brew install zsh     # zsh shell
-brew install bat     # Syntax highlighting
+brew install bat     # Syntax highlighting for cat command
 brew install htop    # Performance monitoring
 brew install iftop   # Network monitoring
 brew install tmux    # Terminal multiplexer
 brew install ansible # Configuration management tool
 brew install git     # Well... it's git
 brew install zsh-autosuggestions
+brew install zsh-syntax-highlighting
 
 echo "Install package managers and languages"
 brew install node    # nodejs and npm
