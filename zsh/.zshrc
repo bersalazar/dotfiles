@@ -13,7 +13,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/bernardosalazar/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -81,7 +81,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker wd gradle gpg-agent asdf)
+if test -f "$HOME/.is_personal_computer"; then
+  plugins=(git docker wd gradle gpg-agent)
+else
+  plugins=(git docker wd gradle gpg-agent asdf)
+  path=("${HOME}/.local/bin" $path) ; path+=("${HOME}/bin") ; export PATH
+  eval "$(asdf exec direnv hook zsh)"
+  direnv() { asdf exec direnv "$@"; }
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,22 +121,16 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 source <(kubectl completion zsh)
 if [ -f '~/.shims/google-cloud-sdk/completion.zsh.inc' ]; then . '~/.shims/google-cloud-sdk/completion.zsh.inc'; fi
 
-path=("${HOME}/.local/bin" $path) ; path+=("${HOME}/bin") ; export PATH
-eval "$(asdf exec direnv hook zsh)"
-direnv() { asdf exec direnv "$@"; }
-
 for file in ~/.{aliases,functions,extra}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
-
 
 # Required to avoid timeouts of kubectl port-forward
 ulimit -n 65536
 
 export GPG_TTY=$(tty)
-export JAVA_HOME="/Users/bernardosalazar/.asdf/installs/java/zulu-11.45.27"
 export PATH="/usr/local/sbin:$PATH"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.acronyms # structure useful environment variables for making usage of deployer faster
-source ~/.additional_env_vars
+source ~/.acronyms
+source ~/.extra_env_vars

@@ -22,13 +22,16 @@ Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
-" Extra plugins are installed in here
-source ~/.config/nvim/lua/init.lua
-source ~/.config/nvim/lua/plugins.lua
-
+" config for VimScript plugins
 source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/nvim-tree.vim
 source ~/.config/nvim/plugins/vim-terraform.vim
+
+" config for Lua plugins
+source ~/.config/nvim/lua/init.lua
+source ~/.config/nvim/lua/nvim-cmp.lua
+source ~/.config/nvim/lua/plugins.lua
+
 
 " --------------------------
 " general settings

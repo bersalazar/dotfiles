@@ -29,7 +29,7 @@ echo 'tmux'
 cp ~/.tmux.conf ./tmux/
 
 echo 'scripts'
-cp -r ~/.scripts/ ./scripts/
+cp -r ~/.scripts/* ./scripts/
 
 echo 'karabiner-elements'
 cp ~/.config/karabiner/karabiner.json ./karabiner/
