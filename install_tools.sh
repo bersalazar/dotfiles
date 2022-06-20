@@ -38,6 +38,7 @@ npm i -g pyright
 npm install -g typescript typescript-language-server
 npm install -g dockerfile-language-server-nodejs
 npm i -g grammarly-languageserver
+npm i -g jsonls
 pip install python-lsp-server
 #npm install -g @ansible/ansible-language-server
 

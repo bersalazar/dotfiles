@@ -36,33 +36,33 @@ source ~/.config/nvim/lua/plugins.lua
 " --------------------------
 " general settings
 " --------------------------
-set expandtab
-set shiftwidth=2
-set tabstop=4 softtabstop=4
+"set autoindent
+set backspace=indent,eol,start
+set clipboard=unnamed
 set encoding=utf-8
+set expandtab
 set fileencoding=utf-8
-set number
-set relativenumber
-set noswapfile " avoids creating a swap file, which is annoying when creating new file (buffers)
-set noerrorbells " avoids making a sound on errored commands
+set fileformat=unix
 set hidden
-set title
+set incsearch
 set list
 set listchars=trail:·
-set nowrap
-set smartcase " makes searches case-insensitive
-set smartindent
-set autoindent
 set nobackup
+set noerrorbells " avoids making a sound on errored commands
+set noswapfile " avoids creating a swap file, which is annoying when creating new file (buffers)
+set nowrap
+set number
+set relativenumber
+set scrolloff=7
+set shiftwidth=2
+set smartcase " makes searches case-insensitive
+"set smartindent
+set splitbelow
+set splitright
+set tabstop=4 softtabstop=4
+set title
 set undodir=~/.vim/undodir " sets the undo directory
 set undofile " enables undo file
-set incsearch
-set splitright
-set splitbelow
-set scrolloff=7
-set backspace=indent,eol,start
-set fileformat=unix
-set clipboard=unnamed
 
 scriptencoding utf-8
 syntax enable  " enables syntax highlighting
@@ -107,7 +107,6 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-s> <cmd>Telescope live_grep<CR>
 nnoremap <C-\> <cmd>b#<CR>
-nnoremap <C-j> :FloatermToggle<CR>
 nnoremap <C-F8> :noh<CR>
 inoremap <C-F8> :noh<CR>
 
@@ -121,19 +120,15 @@ tnoremap <Esc> <C-\><C-n><CR>
 " --------------------------
 " autocmd groupings
 " --------------------------
-augroup notion
-  autocmd BufNewFile,BufRead ~/sync/notion/* :Goyo<CR>
-augroup END
-
 augroup python " autocmd is used for changing tabstop values for python files
   autocmd python Filetype py setlocal tabstop=4
   autocmd python Filetype py setlocal softtabstop=4
 augroup END
 
-"augroup typescript " autocmd is used for changing tabstop values for typescript files
-"  autocmd typescript Filetype ts setlocal tabstop=4
-"  autocmd typescript Filetype ts setlocal softtabstop=4
-"augroup END
+augroup typescript " autocmd is used for changing tabstop values for typescript files
+  autocmd typescript Filetype ts setlocal tabstop=4
+  autocmd typescript Filetype ts setlocal softtabstop=4
+augroup END
 
 augroup ftgroovy " interpret Jenkinsfile as groovy syntax
   autocmd!
