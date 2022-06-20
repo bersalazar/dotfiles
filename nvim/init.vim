@@ -13,12 +13,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-treesitter/nvim-treesitter'
-
-" telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/popup.nvim'
 
 call plug#end()
 
@@ -120,6 +116,10 @@ tnoremap <Esc> <C-\><C-n><CR>
 " --------------------------
 " autocmd groupings
 " --------------------------
+augroup lua_plugins
+  autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
+augroup END
+
 augroup python " autocmd is used for changing tabstop values for python files
   autocmd python Filetype py setlocal tabstop=4
   autocmd python Filetype py setlocal softtabstop=4

@@ -1,7 +1,3 @@
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -37,6 +33,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
+
 -- map buffer local keybindings when the language server attaches
 local servers = {
   'bashls',
@@ -45,7 +42,7 @@ local servers = {
   'pylsp',
   'pyright',
   'terraformls',
-  'terraform_lsp',
+--  'terraform_lsp',
   'tsserver',
 }
 

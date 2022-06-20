@@ -1,4 +1,7 @@
--- nvim-cmp setup
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
@@ -21,7 +24,6 @@ cmp.setup {
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-
       else
         fallback()
       end
@@ -36,6 +38,5 @@ cmp.setup {
   }),
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
   },
 }
