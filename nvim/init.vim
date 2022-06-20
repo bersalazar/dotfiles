@@ -88,7 +88,6 @@ nnoremap <leader>t :HorizontalTerminalSplit<CR>
 nnoremap <leader>so :SourceVimrc<CR>
 nnoremap <leader>man <cmd>Telescope man_pages<CR>
 nnoremap <leader>gs <cmd>Telescope git_status<CR>
-nnoremap <leader>b ^
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 nnoremap <leader>h :wincmd h<CR>
@@ -105,6 +104,8 @@ nnoremap <C-s> <cmd>Telescope live_grep<CR>
 nnoremap <C-\> <cmd>b#<CR>
 nnoremap <C-F8> :noh<CR>
 inoremap <C-F8> :noh<CR>
+nnoremap <C-b> ^
+nnoremap <S-b> $
 
 nnoremap <F5> :buffers<CR>:buffer<Space>
 
