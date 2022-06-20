@@ -26,7 +26,7 @@ echo 'tmux'
 cp ./tmux/.tmux.conf ~/.tmux.conf
 
 echo 'scripts'
-cp -r ./scripts ~/.scripts/
+cp -r ./scripts/* ~/.scripts/
 
 echo 'karabiner-elements'
 mkdir -p ~/.config/karabiner
