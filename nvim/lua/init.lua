@@ -41,7 +41,7 @@ local servers = {
   'jsonls',
   'pylsp',
   'pyright',
-  'terraformls',
+--  'terraformls',
 --  'terraform_lsp',
   'tsserver',
 }
