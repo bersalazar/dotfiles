@@ -25,14 +25,18 @@ brew install git     # Well... it's git
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
 brew install switchaudio-osx # Switches the OS' audio input/output
+brew install openfortivpn # Fortinet VPN CLI
+brew install graphviz # dependency for Plant UML preview
 
 echo "Install package managers and languages"
 brew install node    # nodejs and npm
 brew install python3 # python3
 brew install openjdk # Java development kit and runtime
+brew install go
 
 echo "Install language servers"
 brew install hashicorp/tap/terraform-ls # Terraform language server (linter)
+brew install lua-language-server
 npm i -g vscode-langservers-extracted # Includes html, css, json and eslint language servers
 npm i -g bash-language-server
 npm i -g pyright
@@ -42,6 +46,9 @@ npm i -g grammarly-languageserver
 npm i -g jsonls
 pip install python-lsp-server
 #npm install -g @ansible/ansible-language-server
+
+# with ASDF
+asdf install terraform-lsp
 
 echo "Install linters and formatters"
 brew install shellcheck                 # Bash linter
@@ -56,6 +63,8 @@ brew install repgrip # recursive search tool for finding words withing files, an
 echo "Install GUI tools"
 brew cask install rectangle   # Window resizing manager: https://rectangleapp.com
 brew install --cask syncthing # Backup Software: https://syncthing.net
+brew install romkatv/powerlevel10k/powerlevel10k
+echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 
 echo "Start services"
 brew services start syncthing

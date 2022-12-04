@@ -19,10 +19,9 @@ cp ./powerlevel10k/.p10k.zsh ~/
 
 echo 'git global config'
 cp ./git/.gitconfig  ~/
-cp ./git/.gitconfig-personal ~/
-cp ./git/.gitconfig-work ~/
 
 echo 'tmux'
+cp -r ./tmux/.tmux ~/
 cp ./tmux/.tmux.conf ~/.tmux.conf
 
 echo 'scripts'
@@ -36,8 +35,3 @@ echo 'eslint'
 cp ./eslint/.eslintrc.yml ~/
 
 echo "all done!"
-
-
-
-
-

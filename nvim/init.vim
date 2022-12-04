@@ -6,15 +6,18 @@ call plug#begin('~/.vim/plugged')
 "Plug 'github/copilot.vim'
 Plug 'morhetz/gruvbox'
 Plug 'wittyjudge/gruvbox-material.nvim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/popup.nvim'
+Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tyru/open-browser.vim'
+Plug 'weirongxu/plantuml-previewer.vim'
 
 call plug#end()
 
@@ -28,20 +31,22 @@ source ~/.config/nvim/lua/init.lua
 source ~/.config/nvim/lua/nvim-cmp.lua
 source ~/.config/nvim/lua/plugins.lua
 
-
 " --------------------------
 " general settings
 " --------------------------
 "set autoindent
+set laststatus=2
 set backspace=indent,eol,start
 set clipboard=unnamed
+set cursorline
+set cursorcolumn
 set encoding=utf-8
 set expandtab
 set fileencoding=utf-8
 set fileformat=unix
 set hidden
 set incsearch
-set list
+set nolist
 set listchars=trail:·
 set nobackup
 set noerrorbells " avoids making a sound on errored commands
@@ -50,9 +55,8 @@ set nowrap
 set number
 set relativenumber
 set scrolloff=7
-set shiftwidth=2
+set shiftwidth=4
 set smartcase " makes searches case-insensitive
-"set smartindent
 set splitbelow
 set splitright
 set tabstop=4 softtabstop=4
@@ -73,8 +77,8 @@ command HorizontalTerminalSplit :split term://zsh
 command VerticalTerminalSplit :vsplit term://zsh
 command TerminalInNewTab :tabnew term://zsh
 command Mdp :MarkdownPreview
-command ReloadCurrentFile :e
 command RnuToggle :set rnu!
+command RemoveWhitespace :%s/\s\+$//e
 
 " --------------------------
 " keymaps
@@ -85,9 +89,6 @@ nnoremap <silent> gb :e#<CR>
 
 nnoremap <leader>v :VerticalTerminalSplit<CR>
 nnoremap <leader>t :HorizontalTerminalSplit<CR>
-nnoremap <leader>so :SourceVimrc<CR>
-nnoremap <leader>man <cmd>Telescope man_pages<CR>
-nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 nnoremap <leader>h :wincmd h<CR>
@@ -95,6 +96,11 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>rnu :RnuToggle<CR>
+nnoremap <leader>man <cmd>Telescope man_pages<CR>
+nnoremap <leader>gs <cmd>Telescope git_status<CR>
+nnoremap <leader>src :SourceVimrc<CR>
+nnoremap <leader>rw :RemoveWhitespace<CR>
+nnoremap <leader>git :Git<CR>
 
 nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
@@ -113,6 +119,24 @@ map gf :tabnew <cfile><CR>
 
 tnoremap <Esc> <C-\><C-n><CR>
 
+" -----------------------------
+" lightline (vim's status line)
+" -----------------------------
+let g:lightline = {
+  \ 'component_function': {
+  \   'filename': 'AbsolutePathFilename',
+  \   'gitbranch': 'FugitiveHead'
+  \ },
+  \ 'colorscheme': 'gruvbox'
+  \ }
+
+function! AbsolutePathFilename() " show full path of filename in lighline's status line
+  return expand('%')
+endfunction
+
+function! FugitiveHead() " show full path of filename in lighline's status line
+  return expand('%')
+endfunction
 
 " --------------------------
 " autocmd groupings
@@ -140,6 +164,6 @@ augroup END
 " --------------------------
 " other
 " --------------------------
-let g:airline_theme = 'base16_gruvbox_dark_medium'
 colorscheme gruvbox-material
 set background=dark
+

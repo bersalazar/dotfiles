@@ -6,9 +6,10 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   capabilities = capabilities
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -33,21 +34,38 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-
--- map buffer local keybindings when the language server attaches
+-- General LSPs
 local servers = {
   'bashls',
   'dockerls',
   'jsonls',
   'pylsp',
   'pyright',
---  'terraformls',
---  'terraform_lsp',
   'tsserver',
+  'terraform_lsp',
+  'tflint',
 }
 
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
+    on_attach = on_attach, -- map buffer local keybindings when the language server attaches
   }
 end
+
+-- terraformls
+--require'lspconfig'.terraformls.setup{}
+--vim.api.nvim_create_autocmd({"BufWritePre"}, {
+--  pattern = {"*.tf", "*.tfvars"},
+--  callback = vim.lsp.buf.formatting_sync,
+--})
+
+-- lua-language-server (sumneko)
+require'lspconfig'.sumneko_lua.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+}
