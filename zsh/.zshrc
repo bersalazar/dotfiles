@@ -34,7 +34,6 @@ else
 fi
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/pers/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # --- global settings (for personal or work)
 
