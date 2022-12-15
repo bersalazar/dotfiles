@@ -22,7 +22,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 CASE_SENSITIVE="true" # case-sensitive completion
 DISABLE_UPDATE_PROMPT="true" # automatically update without prompting
 DISABLE_AUTO_TITLE="true"
-ENABLE_CORRECTION="true"
 
 if test -f "$HOME/.is_personal_computer"; then
   plugins=(git docker wd gradle gpg-agent)
@@ -34,14 +33,14 @@ else
 fi
 
 source $ZSH/oh-my-zsh.sh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # --- global settings (for personal or work)
-
 for file in ~/.{aliases,functions,extra}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
 
-# autocompleters
+# --- autocompleters
 #autoload bashcompinit && bashcompinit
 #autoload -Uz compinit && compinit
 #complete -C '/usr/local/bin/aws_completer' aws

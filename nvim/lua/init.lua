@@ -38,6 +38,7 @@ end
 local servers = {
   'bashls',
   'dockerls',
+  'eslint',
   'jsonls',
   'pylsp',
   'pyright',

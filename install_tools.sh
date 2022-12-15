@@ -55,6 +55,7 @@ brew install shellcheck                 # Bash linter
 brew install shfmt                      # Bash formatter
 npm install markdownlint --save-dev     # Markdown linter
 pip3 install vim-vint                   # Vim linter
+brew install eslint                     # javascript linter
 
 echo "Install tools used by neovim"
 brew install fzf     # fuzzy finder

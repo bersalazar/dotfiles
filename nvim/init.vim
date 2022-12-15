@@ -3,7 +3,6 @@
 " --------------------------
 call plug#begin('~/.vim/plugged')
 
-"Plug 'github/copilot.vim'
 Plug 'morhetz/gruvbox'
 Plug 'wittyjudge/gruvbox-material.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -18,6 +17,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tyru/open-browser.vim'
 Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'MunifTanjim/eslint.nvim'
 
 call plug#end()
 
