@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# --- powerlevel10k
+# -- powerlevel10k
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -12,7 +12,7 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# --- zsh
+# -- zsh
 
 setopt NO_BEEP # disable error sounds from zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -32,24 +32,27 @@ else
   direnv() { asdf exec direnv "$@"; }
 fi
 
-source $ZSH/oh-my-zsh.sh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# --- global settings (for personal or work)
+# -- global settings (for personal or work)
 for file in ~/.{aliases,functions,extra}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
 
-# --- autocompleters
+# -- autocompleters
 #autoload bashcompinit && bashcompinit
 #autoload -Uz compinit && compinit
 #complete -C '/usr/local/bin/aws_completer' aws
 source <(kubectl completion zsh)
 if [ -f '~/.shims/google-cloud-sdk/completion.zsh.inc' ]; then . '~/.shims/google-cloud-sdk/completion.zsh.inc'; fi
 
+# -- environment variables
+
 export EDITOR='vim'
 export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
 export GPG_TTY=$(tty)
 
+# -- other sources
+
+source $ZSH/oh-my-zsh.sh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.extra

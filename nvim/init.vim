@@ -1,36 +1,24 @@
-" --------------------------
+"--------------------------
 "  plugins
 " --------------------------
 call plug#begin('~/.vim/plugged')
 
-Plug 'morhetz/gruvbox'
-Plug 'wittyjudge/gruvbox-material.nvim'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hashivim/vim-terraform'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/popup.nvim'
-Plug 'itchyny/lightline.vim'
-Plug 'shinchu/lightline-gruvbox.vim'
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
 Plug 'edkolev/tmuxline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tyru/open-browser.vim'
-Plug 'weirongxu/plantuml-previewer.vim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'MunifTanjim/eslint.nvim'
 
 call plug#end()
 
 " config for VimScript plugins
-source ~/.config/nvim/plugins/airline.vim
-source ~/.config/nvim/plugins/nvim-tree.vim
-source ~/.config/nvim/plugins/vim-terraform.vim
 
 " config for Lua plugins
-source ~/.config/nvim/lua/init.lua
-source ~/.config/nvim/lua/nvim-cmp.lua
-source ~/.config/nvim/lua/plugins.lua
+source ~/.config/nvim/lua/plugins/init.lua
+source ~/.config/nvim/lua/plugins/nvim-tree.lua
+source ~/.config/nvim/lua/plugins/nvim-cmp.lua
+source ~/.config/nvim/lua/plugins/lualine.lua
+source ~/.config/nvim/lua/lsps/init.lua
 
 " --------------------------
 " general settings
@@ -67,6 +55,7 @@ set undofile " enables undo file
 
 scriptencoding utf-8
 syntax enable  " enables syntax highlighting
+highlight NvimTreeFolderIcon guibg=blue
 
 " --------------------------
 " commands
@@ -102,15 +91,14 @@ nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>src :SourceVimrc<CR>
 nnoremap <leader>rw :RemoveWhitespace<CR>
 nnoremap <leader>git :Git<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>ff :NvimTreeFindFile<CR>
 
+nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
-nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-s> <cmd>Telescope live_grep<CR>
-nnoremap <C-\> <cmd>b#<CR>
-nnoremap <C-F8> :noh<CR>
-inoremap <C-F8> :noh<CR>
 nnoremap <C-b> ^
 nnoremap <S-b> $
 
@@ -119,25 +107,6 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 map gf :tabnew <cfile><CR>
 
 tnoremap <Esc> <C-\><C-n><CR>
-
-" -----------------------------
-" lightline (vim's status line)
-" -----------------------------
-let g:lightline = {
-  \ 'component_function': {
-  \   'filename': 'AbsolutePathFilename',
-  \   'gitbranch': 'FugitiveHead'
-  \ },
-  \ 'colorscheme': 'gruvbox'
-  \ }
-
-function! AbsolutePathFilename() " show full path of filename in lighline's status line
-  return expand('%')
-endfunction
-
-function! FugitiveHead() " show full path of filename in lighline's status line
-  return expand('%')
-endfunction
 
 " --------------------------
 " autocmd groupings
@@ -165,6 +134,5 @@ augroup END
 " --------------------------
 " other
 " --------------------------
-colorscheme gruvbox-material
+colorscheme gruvbox
 set background=dark
-
