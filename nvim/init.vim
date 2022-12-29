@@ -11,19 +11,19 @@ Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
 
-" config for VimScript plugins
-
 " config for Lua plugins
 source ~/.config/nvim/lua/plugins/init.lua
 source ~/.config/nvim/lua/plugins/nvim-tree.lua
 source ~/.config/nvim/lua/plugins/nvim-cmp.lua
 source ~/.config/nvim/lua/plugins/lualine.lua
 source ~/.config/nvim/lua/lsps/init.lua
+"source ~/.config/nvim/lua/lsps/nvim-jdtls.lua
 
 " --------------------------
 " general settings
 " --------------------------
-"set autoindent
+set autoindent
+set autowrite
 set laststatus=2
 set backspace=indent,eol,start
 set clipboard=unnamed

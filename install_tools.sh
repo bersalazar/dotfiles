@@ -45,6 +45,7 @@ npm install -g dockerfile-language-server-nodejs
 npm i -g grammarly-languageserver
 npm i -g jsonls
 pip install python-lsp-server
+brew install jdtls
 #npm install -g @ansible/ansible-language-server
 
 # with ASDF

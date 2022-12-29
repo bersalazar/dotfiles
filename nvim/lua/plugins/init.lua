@@ -1,3 +1,10 @@
+-- disable language provider support (lua and vimscript plugins only)
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_python3_provider = 0
+
 -- packer
 local use = require('packer').use
 require('packer').startup(function()
@@ -29,6 +36,7 @@ require('packer').startup(function()
     use 'jose-elias-alvarez/null-ls.nvim' -- enables some linters like eslint
     use 'MunifTanjim/eslint.nvim' -- eslint plugin for neovim's LSP client
     use 'tpope/vim-fugitive'
+    use 'mfussenegger/nvim-jdtls'
 
     -- lualine (vim status bar)
     use {
