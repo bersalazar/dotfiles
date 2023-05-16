@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#######################
 # This script is based on the wonderful https://github.com/hunttom/bodega/blob/master/developer_setup/dev_env.sh
 
 echo "Updating system install..."
