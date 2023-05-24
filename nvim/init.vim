@@ -17,7 +17,6 @@ source ~/.config/nvim/lua/plugins/nvim-tree.lua
 source ~/.config/nvim/lua/plugins/nvim-cmp.lua
 source ~/.config/nvim/lua/plugins/lualine.lua
 source ~/.config/nvim/lua/lsps/init.lua
-"source ~/.config/nvim/lua/lsps/nvim-jdtls.lua
 
 " --------------------------
 " general settings
@@ -26,7 +25,7 @@ set autoindent
 set autowrite
 set laststatus=2
 set backspace=indent,eol,start
-set clipboard=unnamed
+set clipboard=unnamedplus " unnamedplus makes yanking work with system-wide clipboard
 set cursorline
 set cursorcolumn
 set encoding=utf-8
@@ -55,7 +54,7 @@ set undofile " enables undo file
 
 scriptencoding utf-8
 syntax enable  " enables syntax highlighting
-highlight NvimTreeFolderIcon guibg=blue
+"highlight NvimTreeFolderIcon guibg=blue
 
 " --------------------------
 " commands
@@ -111,9 +110,9 @@ tnoremap <Esc> <C-\><C-n><CR>
 " --------------------------
 " autocmd groupings
 " --------------------------
-augroup lua_plugins
-  autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
-augroup END
+"augroup lua_plugins
+"  autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
+"augroup END
 
 augroup python " autocmd is used for changing tabstop values for python files
   autocmd python Filetype py setlocal tabstop=4

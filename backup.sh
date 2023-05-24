@@ -1,38 +1,51 @@
 #!/bin/bash
 
-echo 'Creating backup folders'
-mkdir -p {nvim,rectangle,zshrc,iterm2,powerlevel10k,git,tmux,qutebrowser}
+declare -r os="$(uname)"
 
-echo 'Backing up all dotfiles'
+echo "Creating backup folders"
+mkdir -p {eslint,git,i3,iterm2,karabiner,logicprox,logind,nvim,powerlevel10k,rectangle,scripts,tmux,zsh}
 
-echo 'neovim config'
+echo "Backing up all dotfiles"
+
+echo "neovim config"
 cp -r ~/.config/nvim/* ./nvim/
 
-echo 'rectangle'
-cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/
-
-echo 'zshrc'
+echo "zshrc"
 cp ~/.zshrc ./zsh/.zshrc
 
-echo 'iterm2'
-cp ~/Library/Preferences/com.googlecode.iterm2.plist ./iterm2/
-
-echo 'powerlevel10k'
+echo "powerlevel10k"
 cp ~/.p10k.zsh ./powerlevel10k/
 
-echo 'git global config'
+echo "git global config"
 cp ~/.gitconfig ./git/
 
-echo 'tmux'
+echo "tmux"
 cp ~/.tmux.conf ./tmux/
 
-echo 'scripts'
-cp -r ~/.scripts/global ./scripts/
-
-echo 'karabiner-elements'
-cp ~/.config/karabiner/karabiner.json ./karabiner/
-
-echo 'eslint'
+echo "eslint"
 cp ~/.eslintrc.yml ./eslint/
+
+# OS-specific backup
+echo "This OS is ${os}. Backing up OS-specific files"
+if [[ "${os}" == "Linux" ]]; then
+    echo "systemd/logind.conf"
+    sudo cp /etc/systemd/logind.conf ./logind/
+
+    echo "i3"
+    cp ~/.i3/config ./i3/
+
+else [[ "${os}" == "Darwin" ]]
+    echo "iterm2"
+    cp ~/Library/Preferences/com.googlecode.iterm2.plist ./iterm2/
+
+    echo "rectangle"
+    cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/
+
+    echo "scripts-mac"
+    cp ~/.scripts/* ./scripts-mac/
+
+    echo "karabiner-elements"
+    cp ~/.config/karabiner/karabiner.json ./karabiner/
+fi
 
 echo "all done!"

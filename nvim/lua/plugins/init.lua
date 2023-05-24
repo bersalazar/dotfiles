@@ -38,6 +38,14 @@ require('packer').startup(function()
     use 'tpope/vim-fugitive'
     use 'mfussenegger/nvim-jdtls'
 
+    -- nvim-tree (file browser)
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+        },
+    }
+
     -- lualine (vim status bar)
     use {
         'nvim-lualine/lualine.nvim',
@@ -56,14 +64,6 @@ require('packer').startup(function()
               run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
             }
         }
-    }
-
-    -- nvim-tree (file browser)
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons',
-        },
     }
 
     use {

@@ -5,19 +5,22 @@
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/proj/"]
     path = ~/.gitconfig-work
+[includeIf "gitdir:~/proj/edison/"]
+    path = ~/.gitconfig-edison
 
 [core]
-    autocrlf = input
-    attributesfile = /Users/bernardosalazar/.gitattributes
+	autocrlf = input
+	attributesfile = /home/bernardo/.gitattributes
     editor = /usr/local/bin/nvim
     pager = delta
 
 [delta]
+    features = decorations
     syntax-theme = Monokai Extended
     side-by-side = false
     line-numbers = true
 
-[interactive]
+[delta]
     diffFilter = delta --color-only --features=interactive
 
 [pull]
@@ -30,6 +33,11 @@
     insteadOf = https://github.com
     insteadof = git://github.com
     insteadOf = https://github.com
+
+[url "ssh://git@gitlab.com"]
+    insteadOf = https://gitlab.com
+    insteadof = git://gitlab.com
+    insteadOf = https://gitlab.com
 
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
@@ -47,11 +55,5 @@
     conflictstyle = diff3
 
 [trailer "Co-Authored-By"]
-    where = after
-    ifExists = addIfDifferent
-[merge "npm-merge-driver"]
-    name = Automatically merge npm lock files
-    driver = npx npm-merge-driver merge %A %O %B %P
-[merge "yarn-merge-driver"]
-    name = Automatically merge yarn lock files
-    driver = npx npm-merge-driver merge %A %O %B %P -c yarn
+	where = after
+	ifExists = addIfDifferent

@@ -22,17 +22,21 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 CASE_SENSITIVE="true" # case-sensitive completion
 DISABLE_UPDATE_PROMPT="true" # automatically update without prompting
 DISABLE_AUTO_TITLE="true"
+HISTSIZE=1000000 # 1 million commands
+SAVEHIST=1000000
 
 if test -f "$HOME/.is_personal_computer"; then
   plugins=(git docker wd gradle gpg-agent)
 else
   plugins=(git docker wd gradle gpg-agent asdf)
   path=("${HOME}/.local/bin" $path) ; path+=("${HOME}/bin") ; export PATH
-  eval "$(asdf exec direnv hook zsh)"
+  eval "$("${HOME}/.asdf/bin/asdf" exec direnv hook zsh)"
   direnv() { asdf exec direnv "$@"; }
 fi
 
 # -- global settings (for personal or work)
+xset r rate 200 50 # key repeat rate setting
+
 for file in ~/.{aliases,functions,extra}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
@@ -41,8 +45,8 @@ done
 #autoload bashcompinit && bashcompinit
 #autoload -Uz compinit && compinit
 #complete -C '/usr/local/bin/aws_completer' aws
-source <(kubectl completion zsh)
-if [ -f '~/.shims/google-cloud-sdk/completion.zsh.inc' ]; then . '~/.shims/google-cloud-sdk/completion.zsh.inc'; fi
+#source <(kubectl completion zsh)
+#if [ -f '~/.shims/google-cloud-sdk/completion.zsh.inc' ]; then . '~/.shims/google-cloud-sdk/completion.zsh.inc'; fi
 
 # -- environment variables
 
@@ -54,5 +58,8 @@ export GPG_TTY=$(tty)
 # -- other sources
 
 source $ZSH/oh-my-zsh.sh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.extra
+
+xmodmap -e "keycode 66 = Home"
+xset r rate 250 50
+
+source ~/.kube/completion.zsh
