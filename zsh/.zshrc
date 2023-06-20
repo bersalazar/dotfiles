@@ -59,7 +59,11 @@ export GPG_TTY=$(tty)
 
 source $ZSH/oh-my-zsh.sh
 
-xmodmap -e "keycode 66 = Home"
-xset r rate 250 50
+# -- x11 settings
+
+xmodmap -e "keycode 66 = Home" # remap caps lock to home
+xset r rate 250 50 # key repeat rate setting
+xinput --set-prop 13 303 1 # enable tapping for touchpad
+xinput --set-prop 13 323 0.5 # set touchpad sensitivity
 
 source ~/.kube/completion.zsh

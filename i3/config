@@ -242,9 +242,6 @@ bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i
 # auto configure display settings
 bindsym Shift+Control+u exec xrandr --auto
 
-# disable laptop display
-bindsym Shift+Control+i exec xrandr --output eDP --off
-
 # move windows between monitors
 bindsym Control+Shift+greater move container to output right
 bindsym Control+Shift+less move container to output left
