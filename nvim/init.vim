@@ -8,6 +8,7 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 Plug 'edkolev/tmuxline.vim'
+Plug 'towolf/vim-helm'
 
 call plug#end()
 
@@ -130,6 +131,11 @@ augroup ftgroovy " interpret Jenkinsfile as groovy syntax
   autocmd BufRead,BufNewFile *.Jenkinsfile set filetype=groovy
   autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
 augroup END
+
+augroup miscellaneous " miscellaneous autocmds
+  autocmd BufWritePre * :%s/\s\+$//e " removes trailing whitespace on save
+augroup END
+
 
 " --------------------------
 " other

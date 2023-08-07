@@ -42,11 +42,14 @@ for file in ~/.{aliases,functions,extra}; do
 done
 
 # -- autocompleters
-#autoload bashcompinit && bashcompinit
-#autoload -Uz compinit && compinit
-#complete -C '/usr/local/bin/aws_completer' aws
-#source <(kubectl completion zsh)
-#if [ -f '~/.shims/google-cloud-sdk/completion.zsh.inc' ]; then . '~/.shims/google-cloud-sdk/completion.zsh.inc'; fi
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/home/bernardo/.asdf/shims/aws_completer' aws
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+source <(helmfile completion zsh)
+source <(minikube completion zsh)
+source <(vcluster completion zsh)
 
 # -- environment variables
 
@@ -56,14 +59,4 @@ export MANPATH="/usr/local/man:$MANPATH"
 export GPG_TTY=$(tty)
 
 # -- other sources
-
 source $ZSH/oh-my-zsh.sh
-
-# -- x11 settings
-
-xmodmap -e "keycode 66 = Home" # remap caps lock to home
-xset r rate 250 50 # key repeat rate setting
-xinput --set-prop 13 303 1 # enable tapping for touchpad
-xinput --set-prop 13 323 0.5 # set touchpad sensitivity
-
-source ~/.kube/completion.zsh

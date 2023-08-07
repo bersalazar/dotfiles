@@ -42,3 +42,9 @@ sudo apt install wmctrl
 
 # install screen auto-lock tool
 sudo apt install xautolock
+
+# install notifications management tool
+sudo apt install dunst
+
+# install a tool to query the battery level
+sudo apt install acpi

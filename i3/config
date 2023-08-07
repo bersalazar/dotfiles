@@ -43,6 +43,21 @@ exec --no-startup-id xset r rate 200 50
 # starts the Xorg compositor to avoid screen tearing
 exec --no-startup-id compton --config ~/.config/compton.conf
 
+ # remap caps lock to home
+exec --no-startup-id xmodmap -e "keycode 66 = Home"
+
+# key repeat rate setting
+exec --no-startup-id xset r rate 250 50 
+
+# enable tapping for touchpad
+exec --no-startup-id xinput --set-prop 13 303 1 
+
+ # set touchpad sensitivity
+exec --no-startup-id xinput --set-prop 13 323 0.5
+
+# enable natural scrolling for touchpad
+exec --no-startup-id xinput --set-prop 13 311 1 
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -200,7 +215,6 @@ bar {
         position top
 }
 
-
 # focus follows mouse
 focus_follows_mouse no
 
@@ -241,6 +255,15 @@ bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i
 
 # auto configure display settings
 bindsym Shift+Control+u exec xrandr --auto
+
+# audio output controls
+bindsym Shift+Control+d exec "$HOME/.scripts/change_audio_output.sh dell"
+bindsym Shift+Control+s exec "$HOME/.scripts/change_audio_output.sh senheisser"
+bindsym Shift+Control+i exec "$HOME/.scripts/change_audio_output.sh phillips"
+
+# set keyboard layout shortcuts
+bindsym $mod+Control+e exec setxkbmap -layout es
+bindsym $mod+Control+u exec setxkbmap -layout us
 
 # move windows between monitors
 bindsym Control+Shift+greater move container to output right
