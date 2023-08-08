@@ -32,7 +32,7 @@ if [[ "${os}" == "Linux" ]]; then
     sudo cp /etc/systemd/logind.conf ./logind/
 
     echo "i3"
-    cp ~/.i3/config ./i3/
+    cp ~/.i3/* ./i3/
 
 else [[ "${os}" == "Darwin" ]]
     echo "iterm2"
