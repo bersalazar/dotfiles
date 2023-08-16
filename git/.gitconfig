@@ -5,8 +5,6 @@
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/proj/"]
     path = ~/.gitconfig-work
-[includeIf "gitdir:~/proj/edison/"]
-    path = ~/.gitconfig-edison
 
 [core]
 	autocrlf = input

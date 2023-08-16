@@ -34,6 +34,9 @@ if [[ "${os}" == "Linux" ]]; then
     echo "i3"
     cp ~/.i3/* ./i3/
 
+    echo "dunst"
+    cp ~/.config/dunst/dunstrc ./dunst/
+
 else [[ "${os}" == "Darwin" ]]
     echo "iterm2"
     cp ~/Library/Preferences/com.googlecode.iterm2.plist ./iterm2/
