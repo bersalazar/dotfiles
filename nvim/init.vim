@@ -22,41 +22,41 @@ source ~/.config/nvim/lua/lsps/init.lua
 " --------------------------
 " general settings
 " --------------------------
-set autoindent
-set autowrite
-set laststatus=2
-set backspace=indent,eol,start
+set autoindent " copies indentation from previous line
+set autowrite " automatically writes the file when switching buffers
+set backspace=indent,eol,start " allows backspacing over everything
 set clipboard=unnamedplus " unnamedplus makes yanking work with system-wide clipboard
-set cursorline
-set cursorcolumn
-set encoding=utf-8
-set expandtab
-set fileencoding=utf-8
-set fileformat=unix
-set hidden
-set incsearch
-set nolist
-set listchars=trail:·
-set nobackup
+set cursorcolumn " highlights the current column
+set cursorline " highlights the current line
+set encoding=utf-8 " sets the encoding to utf-8
+set expandtab " converts tabs to spaces
+set fileencoding=utf-8 " sets the file encoding to utf-8
+set fileformat=unix " sets the file format to unix
+set hidden " allows switching between buffers without saving
+set hlsearch " highlights search results
+set incsearch " highlights search results as you type
+set laststatus=2 " always show status line
+set listchars=trail:· " shows trailing whitespace as a dot
+set nobackup " avoids creating backup files
 set noerrorbells " avoids making a sound on errored commands
+set nolist " avoids showing listchars
 set noswapfile " avoids creating a swap file, which is annoying when creating new file (buffers)
-set nowrap
-set number
-set relativenumber
-set scrolloff=7
-set shiftwidth=4
+set nowrap " disables line wrapping
+set number " shows line numbers
+set relativenumber " shows relative line numbers
+set scrolloff=7 " keeps 7 lines above and below the cursor
+set shiftwidth=4 " sets the number of spaces inserted for indentation
 set smartcase " makes searches case-insensitive
-set splitbelow
-set splitright
-set tabstop=4 softtabstop=4
-set title
+set splitbelow " opens new windows below the current window
+set splitright " opens new windows to the right of the current window
+set tabstop=4 softtabstop=4 " sets the number of spaces inserted for indentation
+set title " sets the title of the terminal window
 set undodir=~/.vim/undodir " sets the undo directory
 set undofile " enables undo file
 
 scriptencoding utf-8
 syntax enable  " enables syntax highlighting
 "highlight NvimTreeFolderIcon guibg=blue
-
 
 " --------------------------
 " commands
@@ -94,6 +94,7 @@ nnoremap <leader>rw :RemoveWhitespace<CR>
 nnoremap <leader>git :Git<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>ff :NvimTreeFindFile<CR>
+xnoremap <leader>b !bash<CR>
 
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-h> :tabp<CR>

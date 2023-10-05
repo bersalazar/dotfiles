@@ -50,6 +50,7 @@ source <(helm completion zsh)
 source <(helmfile completion zsh)
 source <(minikube completion zsh)
 source <(vcluster completion zsh)
+source <(fly completion --shell zsh)
 
 # -- environment variables
 
