@@ -13,7 +13,6 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # -- zsh
-
 setopt NO_BEEP # disable error sounds from zsh
 export ZSH="$HOME/.oh-my-zsh"
 export UPDATE_ZSH_DAYS=7 # how often to zsh auto-update (in days)
@@ -29,7 +28,7 @@ if test -f "$HOME/.is_personal_computer"; then
   plugins=(git docker wd gradle gpg-agent)
 else
   plugins=(git docker wd gradle gpg-agent asdf)
-  path=("${HOME}/.local/bin" $path) ; path+=("${HOME}/bin") ; export PATH
+  export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
   eval "$("${HOME}/.asdf/bin/asdf" exec direnv hook zsh)"
   direnv() { asdf exec direnv "$@"; }
 fi
@@ -50,14 +49,13 @@ source <(helm completion zsh)
 source <(helmfile completion zsh)
 source <(minikube completion zsh)
 source <(vcluster completion zsh)
-source <(fly completion --shell zsh)
 
 # -- environment variables
-
 export EDITOR='vim'
 export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
 export GPG_TTY=$(tty)
+export PATH="$HOME/go/bin:$PATH"
 
 # -- other sources
 source $ZSH/oh-my-zsh.sh

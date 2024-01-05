@@ -43,7 +43,7 @@ set nolist " avoids showing listchars
 set noswapfile " avoids creating a swap file, which is annoying when creating new file (buffers)
 set nowrap " disables line wrapping
 set number " shows line numbers
-set relativenumber " shows relative line numbers
+set norelativenumber " shows relative line numbers
 set scrolloff=7 " keeps 7 lines above and below the cursor
 set shiftwidth=4 " sets the number of spaces inserted for indentation
 set smartcase " makes searches case-insensitive

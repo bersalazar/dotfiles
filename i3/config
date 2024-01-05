@@ -3,7 +3,6 @@
 #
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
-#
 
 # i3 config file (v4)
 #
@@ -23,15 +22,9 @@ font pango:Ubuntu Nerd Font Complete 10
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i $HOME/Pictures/wallpaper.png
-
-# auto-lock the screen
-exec --no-startup-id xautolock -time 45 -locker "i3lock -i $HOME/Pictures/wallpaper.png"
+# Restore the wallpaper that's managed by nitrogen
+# To set a new wallpaper: nitrogen $HOME/Pictures
+exec --no-startup-id nitrogen --restore
 
 # disable the X server screen saver
 exec --no-startup-id xset s off
@@ -59,7 +52,13 @@ exec --no-startup-id xinput --set-prop 13 323 0.5
 exec --no-startup-id xinput --set-prop 13 311 1
 
 # always set desktop background image, produces the script in ~/.fehbg which is loaded by ~/.xinitrc
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+#exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+
+# start diodon, a copy/paste enabler
+exec --no-startup-id diodon
+
+# load the xrandr screen setup
+exec --no-startup "${HOME}/.scripts/screens.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -223,9 +222,6 @@ focus_follows_mouse no
 
 ### custom keybindings
 
-# copy/paste
-exec --no-startup-id diodon
-
 # open chatgpt
 bindcode $mod+49 workspace 0; exec $HOME/.scripts/open_chatgpt.sh
 
@@ -236,7 +232,7 @@ bindsym $mod+Shift+f workspace 2; exec firefox
 bindsym $mod+Shift+s workspace 3; exec slack
 
 # open notes
-bindsym $mod+Shift+n workspace 4; exec $HOME/.scripts/open_notes_dir.sh
+#bindsym $mod+Shift+n workspace 4; exec $HOME/.scripts/open_notes_dir.sh
 
 # open zoom
 bindsym $mod+Shift+z workspace 5; exec zoom
@@ -269,5 +265,8 @@ bindsym $mod+Control+e exec setxkbmap -layout es
 bindsym $mod+Control+u exec setxkbmap -layout us
 
 # move windows between monitors
-bindsym Control+Shift+h move workspace to output left
-bindsym Control+Shift+l move workspace to output right
+bindsym Control+Shift+h move workspace to output up
+bindsym Control+Shift+l move workspace to output down
+
+# soundpeats' controlling spotify PlayPause
+bindcode 208 exec "$HOME/.scripts/mpris_player_control -p spotify -a playpause"
