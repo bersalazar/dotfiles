@@ -48,17 +48,14 @@ exec --no-startup-id xinput --set-prop 13 303 1
  # set touchpad sensitivity
 exec --no-startup-id xinput --set-prop 13 323 0.5
 
-# enable natural scrolling for touchpad
-exec --no-startup-id xinput --set-prop 13 311 1
-
-# always set desktop background image, produces the script in ~/.fehbg which is loaded by ~/.xinitrc
-#exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+# enable reverse scrolling for touchpad
+exec --no-startup-id xinput --set-prop 13 311 0
 
 # start diodon, a copy/paste enabler
 exec --no-startup-id diodon
 
 # load the xrandr screen setup
-exec --no-startup "${HOME}/.scripts/screens.sh
+#exec --no-startup-id source "$HOME/.scripts/screens.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -244,7 +241,7 @@ bindsym $mod+Shift+p workspace 9; exec pavucontrol
 bindsym $mod+Shift+y workspace 10; exec spotify
 
 # lock the screen
-bindsym $mod+Shift+q exec i3lock -i $HOME/Pictures/wallpaper.png
+bindsym $mod+Shift+q exec i3lock -t -i $HOME/Pictures/sunset-mountain.png
 
 # screen capture
 bindsym $mod+Control+p exec shutter -s

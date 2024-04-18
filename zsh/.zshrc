@@ -40,6 +40,10 @@ for file in ~/.{aliases,functions,extra}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
 
+# -- other sources
+# -- must go before autocompleters
+source $ZSH/oh-my-zsh.sh
+
 # -- autocompleters
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
@@ -56,6 +60,3 @@ export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
 export GPG_TTY=$(tty)
 export PATH="$HOME/go/bin:$PATH"
-
-# -- other sources
-source $ZSH/oh-my-zsh.sh
