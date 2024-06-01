@@ -33,10 +33,7 @@ require('packer').startup(function()
     }
 
     use 'ellisonleao/gruvbox.nvim' -- gruvbox theme for neovim
-    use 'jose-elias-alvarez/null-ls.nvim' -- enables some linters like eslint
-    use 'MunifTanjim/eslint.nvim' -- eslint plugin for neovim's LSP client
     use 'tpope/vim-fugitive'
-    use 'mfussenegger/nvim-jdtls'
 
     -- nvim-tree (file browser)
     use {
@@ -56,9 +53,7 @@ require('packer').startup(function()
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
-            {
-              'nvim-lua/plenary.nvim'
-            },
+            {'nvim-lua/plenary.nvim'},
             {
               'nvim-telescope/telescope-fzf-native.nvim',
               run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'

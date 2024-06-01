@@ -48,8 +48,14 @@ exec --no-startup-id xinput --set-prop 13 303 1
  # set touchpad sensitivity
 exec --no-startup-id xinput --set-prop 13 323 0.5
 
-# enable reverse scrolling for touchpad
-exec --no-startup-id xinput --set-prop 13 311 0
+# enable reverse scrolling for touchpad and mouse
+# touchpad
+exec --no-startup-id xinput --set-prop "pointer:Logitech MX Master 3" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput --set-prop "pointer:SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput --set-prop "pointer:Dell Dell Universal Receiver Mouse" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput --set-prop 20 "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput --set-prop 14 "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput --set-prop 12 "libinput Natural Scrolling Enabled" 1
 
 # start diodon, a copy/paste enabler
 exec --no-startup-id diodon
