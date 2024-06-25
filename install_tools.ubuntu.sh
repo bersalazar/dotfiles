@@ -48,3 +48,9 @@ sudo apt install dunst
 
 # install a tool to query the battery level
 sudo apt install acpi
+
+# install autorandr - a tool to manage screen configurations
+pip install autorandr
+
+#
+sudo apt install playerctl
