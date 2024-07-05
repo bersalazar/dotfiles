@@ -259,17 +259,19 @@ bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i
 bindsym Shift+Control+u exec xrandr --auto
 
 # audio output controls
-bindsym Shift+Control+d exec "$HOME/.scripts/change_audio_output.sh dell"
-bindsym Shift+Control+s exec "$HOME/.scripts/change_audio_output.sh senheisser"
-bindsym Shift+Control+i exec "$HOME/.scripts/change_audio_output.sh phillips"
+#bindsym Shift+Control+d exec "$HOME/.scripts/change_audio_output.sh dell"
+#bindsym Shift+Control+s exec "$HOME/.scripts/change_audio_output.sh senheisser"
+#bindsym Shift+Control+i exec "$HOME/.scripts/change_audio_output.sh phillips"
 
 # set keyboard layout shortcuts
 bindsym $mod+Control+e exec setxkbmap -layout es
 bindsym $mod+Control+u exec setxkbmap -layout us
 
 # move windows between monitors
-bindsym Control+Shift+h move workspace to output up
-bindsym Control+Shift+l move workspace to output down
+bindsym Control+Shift+k move workspace to output up
+bindsym Control+Shift+j move workspace to output down
+bindsym Control+Shift+h move workspace to output left
+bindsym Control+Shift+l move workspace to output right
 
-# soundpeats' controlling spotify PlayPause
-bindcode 208 exec "$HOME/.scripts/mpris_player_control -p spotify -a playpause"
+# soundpeats' controlling media PlayPause
+bindcode 208 exec "playerctl play-pause"

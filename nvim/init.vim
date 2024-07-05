@@ -26,7 +26,7 @@ set autoindent " copies indentation from previous line
 set autowrite " automatically writes the file when switching buffers
 set backspace=indent,eol,start " allows backspacing over everything
 set clipboard=unnamedplus " unnamedplus makes yanking work with system-wide clipboard
-set cursorcolumn " highlights the current column
+"set cursorcolumn " highlights the current column
 set cursorline " highlights the current line
 set encoding=utf-8 " sets the encoding to utf-8
 set expandtab " converts tabs to spaces
