@@ -256,7 +256,7 @@ bindsym $mod+Control+p exec shutter -s
 bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i -sel clipboard
 
 # auto configure display settings
-bindsym Shift+Control+u exec xrandr --auto
+bindsym Shift+Control+u exec $HOME/.scripts/reset.sh
 
 # audio output controls
 #bindsym Shift+Control+d exec "$HOME/.scripts/change_audio_output.sh dell"
