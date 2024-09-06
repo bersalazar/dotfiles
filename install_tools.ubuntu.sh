@@ -52,5 +52,8 @@ sudo apt install acpi
 # install autorandr - a tool to manage screen configurations
 pip install autorandr
 
-#
+# media playback controller
 sudo apt install playerctl
+
+# go formatting
+go install -v github.com/incu6us/goimports-reviser/v3@latest

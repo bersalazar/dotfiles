@@ -275,3 +275,16 @@ bindsym Control+Shift+l move workspace to output right
 
 # soundpeats' controlling media PlayPause
 bindcode 208 exec "playerctl play-pause"
+
+# toggle mute with magic keyboard
+bindcode 90 exec "amixer sset Master toggle"
+
+# volume and playback control with magic keyboard
+bindcode 87 exec amixer sset Master 30%
+bindcode 88 exec amixer sset Master 60%
+bindcode 89 exec amixer sset Master 85%
+bindcode 63 exec playerctl play-pause
+bindcode 83 exec playerctl --player spotify position 10-
+bindcode 84 exec playerctl --player spotify play-pause
+bindcode 85 exec playerctl --player spotify position 10+
+bindcode 86 exec playerctl --player spotify next

@@ -54,6 +54,9 @@ for _, lsp in pairs(servers) do
 end
 
 -- terraformls
+-- this plugin creates awful performance hits to neovim.
+-- avoid at all costs or wait until it's better, or replaced by another.
+
 --require'lspconfig'.terraformls.setup{}
 --vim.api.nvim_create_autocmd({"BufWritePre"}, {
 --  pattern = {"*.tf", "*.tfvars"},
