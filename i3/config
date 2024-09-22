@@ -49,7 +49,6 @@ exec --no-startup-id xinput --set-prop 13 303 1
 exec --no-startup-id xinput --set-prop 13 323 0.5
 
 # enable reverse scrolling for touchpad and mouse
-# touchpad
 exec --no-startup-id xinput --set-prop "pointer:Logitech MX Master 3" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput --set-prop "pointer:SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput --set-prop "pointer:Dell Dell Universal Receiver Mouse" "libinput Natural Scrolling Enabled" 1
@@ -76,6 +75,9 @@ floating_modifier $mod
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
+
+# Remove the title bar in all windows
+for_window [class="^.*"] border pixel 0
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -279,12 +281,18 @@ bindcode 208 exec "playerctl play-pause"
 # toggle mute with magic keyboard
 bindcode 90 exec "amixer sset Master toggle"
 
-# volume and playback control with magic keyboard
-bindcode 87 exec amixer sset Master 30%
+# numpad keys
+# numpad always on on startup
+exec --no-startup-id setxkbmap -option numpad:mac
+
+# screen capture
+bindcode 79 exec shutter -s
+
+# volume and playback control with magic keyboard numpad
+bindcode 87 exec amixer sset Master 45%
 bindcode 88 exec amixer sset Master 60%
 bindcode 89 exec amixer sset Master 85%
 bindcode 63 exec playerctl play-pause
 bindcode 83 exec playerctl --player spotify position 10-
 bindcode 84 exec playerctl --player spotify play-pause
-bindcode 85 exec playerctl --player spotify position 10+
-bindcode 86 exec playerctl --player spotify next
+bindcode 85 exec playerctl --player spotify next
