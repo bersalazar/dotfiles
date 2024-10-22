@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-declare -r os="$(uname)"
+declare -r os
+os="$(uname)"
 
 echo "Creating backup folders"
 mkdir -p {eslint,git,i3,iterm2,karabiner,logicprox,logind,nvim,powerlevel10k,rectangle,scripts,tmux,zsh}
@@ -43,9 +44,6 @@ else [[ "${os}" == "Darwin" ]]
 
     echo "rectangle"
     cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/
-
-    echo "scripts-mac"
-    cp ~/.scripts/* ./scripts-mac/
 
     echo "karabiner-elements"
     cp ~/.config/karabiner/karabiner.json ./karabiner/
