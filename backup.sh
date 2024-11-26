@@ -26,6 +26,9 @@ cp ~/.tmux.conf ./tmux/
 echo "eslint"
 cp ~/.eslintrc.yml ./eslint/
 
+echo "input-leap"
+cp ~/.inputleap.conf ./input-leap/
+
 # OS-specific backup
 echo "This OS is ${os}. Backing up OS-specific files"
 if [[ "${os}" == "Linux" ]]; then
