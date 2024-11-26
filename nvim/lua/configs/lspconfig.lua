@@ -9,6 +9,7 @@ local servers = {
     settings = {
       gopls = {
         completeUnimported = true,
+        staticcheck = true,
         usePlaceholders = true,
       }
     }
@@ -28,6 +29,12 @@ local servers = {
   terraform_lsp = {},
   tflint = {},
   ts_ls = {},
+  yamlls = {
+    format = {
+      enable = true,
+      validate = false,
+    },
+  },
 }
 
 for name, opts in pairs(servers) do

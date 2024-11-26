@@ -40,7 +40,7 @@ exec --no-startup-id compton --config ~/.config/compton.conf
 exec --no-startup-id xmodmap -e "keycode 66 = Home"
 
 # xset allows updating key repeat rate and key repeat delay
-exec --no-startup-id xset r rate 250 50
+exec --no-startup-id xset r rate 200 30
 
 # enable tapping for touchpad
 exec --no-startup-id xinput --set-prop 13 303 1
@@ -289,9 +289,9 @@ exec --no-startup-id setxkbmap -option numpad:mac
 bindcode 79 exec shutter -s
 
 # volume and playback control with magic keyboard numpad
-bindcode 87 exec amixer sset Master 45%
-bindcode 88 exec amixer sset Master 60%
-bindcode 89 exec amixer sset Master 85%
+bindcode 87 exec amixer sset Master 60%
+bindcode 88 exec amixer sset Master 70%
+bindcode 89 exec amixer sset Master 80%
 bindcode 63 exec playerctl play-pause
 bindcode 83 exec playerctl --player spotify position 10-
 bindcode 84 exec playerctl --player spotify play-pause

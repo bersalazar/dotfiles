@@ -7,7 +7,7 @@ local M = {}
 M.base46 = {
   theme = "aquarium",
   theme_toggle = {
-    "aquarium", 
+    "aquarium",
     "material-lighter",
   },
   integrations = {

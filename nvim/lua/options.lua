@@ -33,10 +33,13 @@ vim.opt.backspace = { "indent", "eol", "start" } -- allows backspacing over ever
 
 -- Global options
 local g = vim.g
-g.copilot_node_command = os.getenv("HOME") .. ".asdf/shims/node"
+g.copilot_enabled = 1
+g.copilot_node_command = os.getenv("HOME") .. "/.asdf/shims/node"
+g.copilot_no_tab_map = true
 
 -- Filetypes
-vim.filetype.add({
+vim.filetype.add(
+  {
   extension = {
     gotmpl = 'gotmpl',
   },

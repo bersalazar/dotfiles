@@ -60,3 +60,6 @@ export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
 export GPG_TTY=$(tty)
 export PATH="$HOME/go/bin:$PATH"
+
+export TERRAGRUNT_PROVIDER_CACHE=1
+export TERRAGRUNT_PROVIDER_CACHE_DIR="$HOME/.cache/terragrunt-cache"

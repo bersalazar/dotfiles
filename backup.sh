@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-declare -r os
+set -euo pipefail
+
 os="$(uname)"
 
 echo "Creating backup folders"
@@ -27,7 +28,7 @@ echo "eslint"
 cp ~/.eslintrc.yml ./eslint/
 
 echo "input-leap"
-cp ~/.inputleap.conf ./input-leap/
+cp ~/inputleap.conf ./inputleap/
 
 # OS-specific backup
 echo "This OS is ${os}. Backing up OS-specific files"

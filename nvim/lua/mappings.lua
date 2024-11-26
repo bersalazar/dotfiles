@@ -20,6 +20,8 @@ map("n", "<leader>sr", ":source ~/.config/nvim/init.vim")
 map("n", "<leader>ff", ":NvimTreeFindFile<CR>")
 map("n", "<leader>nn", ":nohlsearch<CR>")
 map("n", "<leader>mdp", ":MarkdownPreview<CR>")
+map("n", "<leader>co", ":CopilotToggle<CR>")
+map("n", "<leader>cs", ":Copilot status<CR>")
 
 -- coding goodies
 map("n", "<C-/>", "gcc")
@@ -27,7 +29,7 @@ map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
     expr = true,
     replace_keycodes = false
 })
-vim.g.copilot_no_tab_map = true
+map("n", "zO", "zz")
 
 local nomap = vim.keymap.del
 nomap("n", "<leader>h")
@@ -44,3 +46,14 @@ cmds("FormatJson", ":%!jq .", {})
 cmds("SourceVimrc", ":source ~/.config/nvim/init.lua", {})
 cmds("RemoveWhitespace", ":%s/\\s\\+$//e", {})
 cmds("Mdp", ":MarkdownPreview", {})
+cmds("CopilotToggle", ":lua ToggleCopilot()", {})
+cmds("IsCopilotEnabled", ":lua print(vim.g.copilot_enabled)", {})
+
+-- supporting functions
+function ToggleCopilot()
+    if vim.g.copilot_enabled == 1 then
+        vim.g.copilot_enabled = 0
+    else
+        vim.g.copilot_enabled = 1
+    end
+end
