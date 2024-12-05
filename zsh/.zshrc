@@ -14,7 +14,7 @@ fi
 
 # -- zsh
 setopt NO_BEEP # disable error sounds from zsh
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 export UPDATE_ZSH_DAYS=7 # how often to zsh auto-update (in days)
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -28,7 +28,7 @@ if test -f "$HOME/.is_personal_computer"; then
   plugins=(git docker wd gradle gpg-agent)
 else
   plugins=(git docker wd gradle gpg-agent asdf)
-  export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+  export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}"
   eval "$("${HOME}/.asdf/bin/asdf" exec direnv hook zsh)"
   direnv() { asdf exec direnv "$@"; }
 fi
@@ -57,9 +57,10 @@ source <(vcluster completion zsh)
 # -- environment variables
 export EDITOR='vim'
 export LANG=en_US.UTF-8
-export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:${MANPATH}"
 export GPG_TTY=$(tty)
-export PATH="$HOME/go/bin:$PATH"
+export PATH="${HOME}/go/bin:${PATH}"
+export PATH="${PATH}:${HOME}/.scripts"
 
 export TERRAGRUNT_PROVIDER_CACHE=1
 export TERRAGRUNT_PROVIDER_CACHE_DIR="$HOME/.cache/terragrunt-cache"

@@ -34,6 +34,7 @@ local servers = {
       enable = true,
       validate = false,
     },
+    cmd = { "yaml-language-server", "--stdio" },
   },
 }
 
