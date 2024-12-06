@@ -1,9 +1,8 @@
 [user]
 	name = Bernardo Salazar
+	email = bersalazar@gmail.com
 
 [includeIf "gitdir:~/pers/"]
-    path = ~/.gitconfig-personal
-[includeIf "gitdir:~/go/src/k8s.io/"]
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/proj/"]
     path = ~/.gitconfig-work
