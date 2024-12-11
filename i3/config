@@ -37,7 +37,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id compton --config ~/.config/compton.conf
 
  # remap caps lock to home
-exec --no-startup-id xmodmap -e "keycode 66 = Home"
+exec --no-startup-id xmodmap -e "keycode 66 = F9"
 
 # xset allows updating key repeat rate and key repeat delay
 exec --no-startup-id xset r rate 200 30

@@ -26,7 +26,18 @@ M.ui = {
   },
 
   statusline = {
-    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "cwd", "cursor" },
+    separator_style = "arrow",
+    order = {
+      "mode",
+      "file",
+      "git",
+      "%=",
+      "lsp_msg",
+      "%=",
+      "diagnostics",
+      "cwd",
+      "cursor"
+    },
   }
 }
 
