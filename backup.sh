@@ -24,18 +24,12 @@ cp ~/.gitconfig ./git/
 echo "tmux"
 cp ~/.tmux.conf ./tmux/
 
-echo "eslint"
-cp ~/.eslintrc.yml ./eslint/
-
 echo "input-leap"
 cp ~/inputleap.conf ./inputleap/
 
 # OS-specific backup
 echo "This OS is ${os}. Backing up OS-specific files"
 if [[ "${os}" == "Linux" ]]; then
-    echo "systemd/logind.conf"
-    sudo cp /etc/systemd/logind.conf ./logind/
-
     echo "i3"
     cp ~/.i3/* ./i3/
 
@@ -43,14 +37,11 @@ if [[ "${os}" == "Linux" ]]; then
     cp ~/.config/dunst/dunstrc ./dunst/
 
 else [[ "${os}" == "Darwin" ]]
-    echo "iterm2"
-    cp ~/Library/Preferences/com.googlecode.iterm2.plist ./iterm2/
+    echo "rio"
+    cp "$HOME/config/rio/config.toml" ./rio/
 
     echo "rectangle"
     cp ~/Library/Preferences/com.knollsoft.Rectangle.plist ./rectangle/
-
-    echo "karabiner-elements"
-    cp ~/.config/karabiner/karabiner.json ./karabiner/
 fi
 
 echo "all done!"
