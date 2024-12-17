@@ -5,9 +5,9 @@
 local M = {}
 
 M.base46 = {
-  theme = "aquarium",
+  theme = "everblush",
   theme_toggle = {
-    "aquarium",
+    "everblush",
     "material-lighter",
   },
   integrations = {

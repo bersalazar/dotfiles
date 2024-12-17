@@ -44,6 +44,9 @@ done
 # -- must go before autocompleters
 source $ZSH/oh-my-zsh.sh
 
+# -- map caps lock to F9
+xmodmap -e "keycode 66 = F9"
+
 # -- autocompleters
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
@@ -53,6 +56,7 @@ source <(helm completion zsh)
 source <(helmfile completion zsh)
 source <(minikube completion zsh)
 source <(vcluster completion zsh)
+source <(rclone completion zsh)
 
 # -- environment variables
 export EDITOR='vim'
