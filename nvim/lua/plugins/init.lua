@@ -30,6 +30,10 @@ return {
       lazy = false
     },
     {
+      "tpope/vim-fugitive",
+      lazy = false
+    },
+    {
       "nvim-tree/nvim-tree.lua",
       opts = {
         actions = {

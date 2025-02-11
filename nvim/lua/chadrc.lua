@@ -5,9 +5,9 @@
 local M = {}
 
 M.base46 = {
-  theme = "everblush",
+  theme = "doomchad",
   theme_toggle = {
-    "everblush",
+    "doomchad",
     "material-lighter",
   },
   integrations = {
@@ -26,6 +26,7 @@ M.ui = {
   },
 
   statusline = {
+    theme = "vscode",
     separator_style = "arrow",
     order = {
       "mode",

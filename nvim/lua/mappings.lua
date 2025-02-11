@@ -11,6 +11,7 @@ map("n", "<C-p>", "<cmd>Telescope find_files<CR>")
 map("n", "<C-s>", "<cmd>Telescope live_grep<CR>")
 map("n", "<C-b>", "^")
 map("n", "<S-b>", "$")
+map("n", "<C-c>", "<ESC>")
 
 -- goodies using the leader key (space)
 map("n", "<leader>rn", ":set rnu!<CR>")

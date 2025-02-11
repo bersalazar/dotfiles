@@ -30,7 +30,6 @@ else
   plugins=(git docker wd gradle gpg-agent asdf)
   export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}"
   eval "$("${HOME}/.asdf/bin/asdf" exec direnv hook zsh)"
-  direnv() { asdf exec direnv "$@"; }
 fi
 
 # -- global settings (for personal or work)
@@ -51,12 +50,14 @@ xmodmap -e "keycode 66 = F9"
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 complete -C '/home/bernardo/.asdf/shims/aws_completer' aws
+eval "$(register-python-argcomplete pipx)"
 source <(kubectl completion zsh)
 source <(helm completion zsh)
 source <(helmfile completion zsh)
-source <(minikube completion zsh)
+# source <(minikube completion zsh)
 source <(vcluster completion zsh)
 source <(rclone completion zsh)
+source <(pip completion --zsh)
 
 # -- environment variables
 export EDITOR='vim'
@@ -68,3 +69,5 @@ export PATH="${PATH}:${HOME}/.scripts"
 
 export TERRAGRUNT_PROVIDER_CACHE=1
 export TERRAGRUNT_PROVIDER_CACHE_DIR="$HOME/.cache/terragrunt-cache"
+path=("${HOME}/.local/bin" $path) ; path+=("${HOME}/bin") ; export PATH
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
