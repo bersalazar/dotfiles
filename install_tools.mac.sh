@@ -32,6 +32,11 @@ echo "Install tools used by neovim"
 #brew install fzf     # fuzzy finder
 #brew install repgrip # recursive search tool for finding words withing files, and other fancy stuff I haven't looked into
 
+echo "Install LSPs"
+brew install vscode-langservers-extracted
+brew install bash-language-server
+brew install typescript-language-server
+
 echo "Install GUI tools"
 brew cask install rectangle   # Window resizing manager: https://rectangleapp.com
 brew install --cask syncthing # Backup Software: https://syncthing.net

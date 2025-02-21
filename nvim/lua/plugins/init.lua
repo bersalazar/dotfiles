@@ -34,6 +34,12 @@ return {
       lazy = false
     },
     {
+      "nvim-telescope/telescope.nvim",
+      config = function()
+        require "configs.telescope"
+      end,
+    },
+    {
       "nvim-tree/nvim-tree.lua",
       opts = {
         actions = {
