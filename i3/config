@@ -9,6 +9,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -242,6 +243,16 @@ bindsym $mod+Shift+s workspace 3; exec slack
 
 # open zoom
 bindsym $mod+Shift+z workspace 5; exec zoom
+bindcode 164 exec zoom
+
+# close zoom
+bindcode Control+164 exec pkill zoom
+
+# reset caps lock map to home
+bindcode Shift+$mod+164 exec xmodmap -e "keycode 66 = F9"
+
+# suspend
+bindcode Control+$mod+$alt+164 exec $HOME/.scripts/suspend.sh
 
 # open pavucontrol (audio control)
 bindsym $mod+Shift+p workspace 9; exec pavucontrol
@@ -252,19 +263,11 @@ bindsym $mod+Shift+y workspace 10; exec spotify
 # lock the screen
 bindsym $mod+Shift+q exec i3lock -t -i $HOME/Pictures/sunset-mountain.png
 
-# screen capture
-bindsym $mod+Control+p exec shutter -s
-
 # copy email to clipboard
 bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i -sel clipboard
 
 # auto configure display settings
 bindsym Shift+Control+u exec $HOME/.scripts/reset.sh
-
-# audio output controls
-#bindsym Shift+Control+d exec "$HOME/.scripts/change_audio_output.sh dell"
-#bindsym Shift+Control+s exec "$HOME/.scripts/change_audio_output.sh senheisser"
-#bindsym Shift+Control+i exec "$HOME/.scripts/change_audio_output.sh phillips"
 
 # set keyboard layout shortcuts
 # bindsym $mod+Control+e exec setxkbmap -layout es
@@ -281,15 +284,19 @@ bindsym Control+Shift+j move workspace to output down
 bindsym Control+Shift+h move workspace to output left
 bindsym Control+Shift+l move workspace to output right
 
+# adjust brightness
+bindcode 232 exec brightnessctl set 20%-
+bindcode 233 exec brightnessctl set +20%
+
 # soundpeats' controlling media PlayPause
 bindcode 208 exec "playerctl play-pause"
 
 # toggle mute with magic keyboard
 bindcode 90 exec "amixer sset Master toggle"
 
-
 # screen capture
 bindcode 79 exec shutter -s
+bindsym $mod+Control+p exec shutter -s
 
 # volume and playback control with magic keyboard numpad
 bindcode 87 exec amixer sset Master 60%

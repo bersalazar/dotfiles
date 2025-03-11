@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # -- powerlevel10k
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -24,9 +23,7 @@ DISABLE_AUTO_TITLE="true"
 HISTSIZE=1000000 # 1 million commands
 SAVEHIST=1000000
 
-if test -f "$HOME/.is_personal_computer"; then
-  plugins=(git docker wd gradle gpg-agent)
-else
+if ! test -f "$HOME/.is_personal_computer"; then
   plugins=(git docker wd gradle gpg-agent asdf)
   export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}"
   eval "$("${HOME}/.asdf/bin/asdf" exec direnv hook zsh)"
@@ -64,10 +61,9 @@ export EDITOR='vim'
 export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:${MANPATH}"
 export GPG_TTY=$(tty)
-export PATH="${HOME}/go/bin:${PATH}"
-export PATH="${PATH}:${HOME}/.scripts"
+export PATH="${PATH}:${HOME}/.scripts:${HOME}/.local/bin:${HOME}/bin:${HOME}/go/bin"
 
-export TERRAGRUNT_PROVIDER_CACHE=1
-export TERRAGRUNT_PROVIDER_CACHE_DIR="$HOME/.cache/terragrunt-cache"
-path=("${HOME}/.local/bin" $path) ; path+=("${HOME}/bin") ; export PATH
+# export TG_PROVIDER_CACHE=1
+# export TG_PROVIDER_CACHE_DIR="$HOME/.cache/terragrunt-cache"
+
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
