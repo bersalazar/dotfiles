@@ -30,13 +30,7 @@
 
 [url "ssh://git@github.com"]
     insteadOf = https://github.com
-    insteadof = git://github.com
-    insteadOf = https://github.com
-
-[url "ssh://git@gitlab.com"]
-    insteadOf = https://gitlab.com
-    insteadof = git://gitlab.com
-    insteadOf = https://gitlab.com
+    insteadOf = git://github.com
 
 [filter "lfs"]
     smudge = git-lfs smudge -- %f

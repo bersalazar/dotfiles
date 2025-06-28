@@ -37,9 +37,6 @@ exec --no-startup-id nm-applet
 # starts the Xorg compositor to avoid screen tearing
 exec --no-startup-id compton --config ~/.config/compton.conf
 
- # remap caps lock to home
-exec --no-startup-id xmodmap -e "keycode 66 = F9"
-
 # xset allows updating key repeat rate and key repeat delay
 exec --no-startup-id xset r rate 200 30
 
@@ -230,7 +227,7 @@ focus_follows_mouse no
 ### custom keybindings
 
 # open chatgpt
-bindcode $mod+49 workspace 0; exec $HOME/.scripts/open_chatgpt.sh
+bindcode $mod+49 workspace 0;
 
 # open firefox
 bindsym $mod+Shift+f workspace 2; exec firefox
@@ -247,9 +244,6 @@ bindcode 164 exec zoom
 
 # close zoom
 bindcode Control+164 exec pkill zoom
-
-# reset caps lock map to home
-bindcode Shift+$mod+164 exec xmodmap -e "keycode 66 = F9"
 
 # suspend
 bindcode Control+$mod+$alt+164 exec $HOME/.scripts/suspend.sh

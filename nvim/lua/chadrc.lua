@@ -15,14 +15,35 @@ M.base46 = {
   },
 }
 
+-- M.plugins = {
+--     ["nvim-telescope/telescope.nvim"] = {
+--         override_options = function()
+--             return {
+--                 defaults = {
+--                     pickers = {
+--                       find_files = {
+--                         find_command = {
+--                           'fd',
+--                           '--type',
+--                           'f',
+--                           '--color=never',
+--                           '--hidden',
+--                           '--follow',
+--                           '-E',
+--                           '.git/*'
+--                         }
+--                       }
+--                     }
+--                 }
+--             }
+--         end,
+--     }
+-- }
+
 M.ui = {
   -- I don't enjoy tabufline. It has a funky way of dealing with tabs.
   tabufline = {
-      enabled = false
-  },
-
-  telescope = {
-    style = "bordered",
+      enabled = false,
   },
 
   statusline = {
@@ -41,5 +62,7 @@ M.ui = {
     },
   }
 }
+
+-- M.ui.statusline.theme = "vscode_colored"
 
 return M

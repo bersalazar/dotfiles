@@ -26,7 +26,6 @@ local servers = {
       },
     },
   },
-  terraform_lsp = {},
   tflint = {},
   ts_ls = {},
   yamlls = {

@@ -2,6 +2,14 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+local nomap = vim.keymap.del
+
+-- disable default mappings
+nomap("n", "<leader>h")
+nomap("n", "<leader>v")
+nomap("n", "<leader>e")
+nomap("n", "<A-h>")
+
 -- essential navigation
 map("n", "<C-h>", ":wincmd h <CR>")
 map("n", "<C-j>", ":wincmd j <CR>")
@@ -9,6 +17,7 @@ map("n", "<C-k>", ":wincmd k <CR>")
 map("n", "<C-l>", ":wincmd l <CR>")
 map("n", "<C-p>", "<cmd>Telescope find_files<CR>")
 map("n", "<C-s>", "<cmd>Telescope live_grep<CR>")
+map("n", "<C-a>", "<cmd>Telescope buffers<CR>")
 map("n", "<C-b>", "^")
 map("n", "<S-b>", "$")
 map("n", "<C-c>", "<ESC>")
@@ -23,6 +32,20 @@ map("n", "<leader>nn", ":nohlsearch<CR>")
 map("n", "<leader>mdp", ":MarkdownPreview<CR>")
 map("n", "<leader>co", ":CopilotToggle<CR>")
 map("n", "<leader>cs", ":Copilot status<CR>")
+map("n", "<leader>h", ":Copilot status<CR>")
+
+--tab management
+map("n", "<A-t>", ":tabnew<CR>")
+map("n", "<A-h>", ":tabprevious<CR>")
+map("n", "<A-l>", ":tabnext<CR>")
+map("n", "<A-q>", ":tabclose<CR>")
+map("n", "<A-o>", ":tabonly<CR>")
+map("n", "<A-1>", ":tabnext 1<CR>")
+map("n", "<A-2>", ":tabnext 2<CR>")
+map("n", "<A-3>", ":tabnext 3<CR>")
+map("n", "<A-4>", ":tabnext 4<CR>")
+map("n", "<A-5>", ":tabnext 5<CR>")
+
 
 -- coding goodies
 map("n", "<C-/>", "gcc")
@@ -31,11 +54,6 @@ map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
     replace_keycodes = false
 })
 map("n", "zO", "zz")
-
-local nomap = vim.keymap.del
-nomap("n", "<leader>h")
-nomap("n", "<leader>v")
-nomap("n", "<leader>e")
 
 -- Custom user commands
 local cmds = vim.api.nvim_create_user_command

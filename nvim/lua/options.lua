@@ -34,7 +34,7 @@ vim.opt.backspace = { "indent", "eol", "start" } -- allows backspacing over ever
 -- Global options
 local g = vim.g
 g.copilot_enabled = 1
--- g.copilot_node_command = "/usr/local/bin/node"
+g.copilot_node_command = "/home/linuxbrew/.linuxbrew/bin/node"
 g.copilot_no_tab_map = true
 
 -- Filetypes
