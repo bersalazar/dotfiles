@@ -46,7 +46,6 @@ map("n", "<A-3>", ":tabnext 3<CR>")
 map("n", "<A-4>", ":tabnext 4<CR>")
 map("n", "<A-5>", ":tabnext 5<CR>")
 
-
 -- coding goodies
 map("n", "<C-/>", "gcc")
 map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
@@ -54,6 +53,18 @@ map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
     replace_keycodes = false
 })
 map("n", "zO", "zz")
+
+-- dap debugging
+map("n", "<leader>db", ":DapToggleBreakpoint<CR>")
+map("n", "<leader>ds", ":DapNew<CR>")
+map("n", "<leader>dc", ":DapContinue<CR>")
+map("n", "<leader>dx", ":DapDisconnect<CR>")
+map("n", "<leader>dl", ":DapClearBreakpoints<CR>")
+map("n", "<leader>di", ":DapStepInto<CR>")
+map("n", "<leader>do", ":DapStepOut<CR>")
+map("n", "<leader>dp", ":DapStepOver<CR>")
+map("n", "<leader>dui", ":lua require('dapui').open()<CR>")
+map("n", "<leader>dux", ":lua require('dapui').close()<CR>")
 
 -- Custom user commands
 local cmds = vim.api.nvim_create_user_command

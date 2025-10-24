@@ -9,7 +9,6 @@ o.cursorlineopt = "both"
 o.cursorline = true -- highlights the current line
 o.encoding = "utf-8" -- sets the encoding to utf-8
 o.expandtab = true -- converts tabs to spaces
-o.fileencoding = "utf-8" -- sets the file encoding to utf-8
 o.fileformat = "unix" -- sets the file format to unix
 o.hidden = true -- allows switching between buffers without saving
 o.hlsearch = true -- highlights search results
@@ -34,7 +33,6 @@ vim.opt.backspace = { "indent", "eol", "start" } -- allows backspacing over ever
 -- Global options
 local g = vim.g
 g.copilot_enabled = 1
-g.copilot_node_command = "/home/linuxbrew/.linuxbrew/bin/node"
 g.copilot_no_tab_map = true
 
 -- Filetypes

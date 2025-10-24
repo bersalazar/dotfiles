@@ -29,8 +29,13 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
+-- load settings files
 require "options"
 require "autocmds"
+
+-- load other plugins
+require('dap-go').setup()
+require('dapui').setup()
 
 vim.schedule(function()
   require "mappings"
