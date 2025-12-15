@@ -59,7 +59,10 @@ sudo apt install playerctl
 go install -v github.com/incu6us/goimports-reviser/v3@latest
 
 # install yaml language server
-sudo snap install yaml-language-server
+sudo snap install yaml-language-server -y
 
 # install Dell Display Manager utility
-sudo apt install ddcutil
+sudo apt install ddcutil -y
+
+# install zsh
+sudo apt install zsh -y
