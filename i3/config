@@ -17,7 +17,7 @@ set $alt Mod1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Ubuntu Nerd Font Complete 10
+font pango:Ubuntu Nerd Font Propo 10
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -189,27 +189,27 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+  # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 25 px or 25 ppt
-        bindsym j resize grow height 25 px or 25 ppt
-        bindsym k resize shrink height 25 px or 25 ppt
-        bindsym l resize grow width 25 px or 25 ppt
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym h resize shrink width 25 px or 25 ppt
+  bindsym j resize grow height 25 px or 25 ppt
+  bindsym k resize shrink height 25 px or 25 ppt
+  bindsym l resize grow width 25 px or 25 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -217,8 +217,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status --config ~/.i3/i3status.conf
-        position top
+  status_command i3status --config ~/.i3/i3status.conf
+  position top
 }
 
 # focus follows mouse
@@ -264,13 +264,9 @@ bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i
 bindsym Shift+Control+u exec $HOME/.scripts/reset.sh
 
 # set keyboard layout shortcuts
-# bindsym $mod+Control+e exec setxkbmap -layout es
-# bindsym $mod+Control+u exec setxkbmap -layout us
-bindsym Control+Escape exec $HOME/.scripts/toggle-layout.sh
-
-# numpad keys
-# numpad always on on startup
-#exec --no-startup-id setxkbmap -option numpad:mac
+bindsym $mod+Control+e exec setxkbmap -layout es
+bindsym $mod+Control+u exec setxkbmap -layout us
+#bindsym Control+Escape exec $HOME/.scripts/toggle-layout.sh
 
 # move windows between monitors
 bindsym Control+Shift+k move workspace to output up
@@ -292,11 +288,10 @@ bindcode 90 exec "amixer sset Master toggle"
 bindcode 79 exec shutter -s
 bindsym $mod+Control+p exec shutter -s
 
-# volume and playback control with magic keyboard numpad
-bindcode 87 exec amixer sset Master 60%
-bindcode 88 exec amixer sset Master 70%
-bindcode 89 exec amixer sset Master 80%
-bindcode 63 exec playerctl play-pause
-bindcode 83 exec playerctl --player spotify position 10-
-bindcode 84 exec playerctl --player spotify play-pause
-bindcode 85 exec playerctl --player spotify next
+############
+## unused ##
+############
+
+# numpad enable always on startup
+#exec --no-startup-id setxkbmap -option numpad:mac
+

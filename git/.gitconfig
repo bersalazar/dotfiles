@@ -8,7 +8,7 @@
 
 [core]
 	autocrlf = input
-  editor = /usr/local/bin/nvim
+  editor = nvim
   pager = delta
 
 [commit]

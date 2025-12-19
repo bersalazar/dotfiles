@@ -67,6 +67,9 @@ sudo apt install ddcutil -y
 # install zsh
 sudo apt install zsh -y
 
+# install shutter - screenshot tool
+sudo apt install shutter
+
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -81,3 +84,4 @@ sudo npm install -g bash-language-server
 # set firefox as default browser
 xdg-mime default firefox_firefox.desktop x-scheme-handler/https x-scheme-handler/http
 xdg-settings set default-web-browser firefox_firefox.desktop
+
