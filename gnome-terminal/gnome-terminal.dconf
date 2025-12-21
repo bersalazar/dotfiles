@@ -8,6 +8,18 @@ paste='<Super>v'
 
 [legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 audible-bell=false
-default-size-columns=97
-font='Ubuntu Nerd Font 10'
-use-system-font=true
+cell-height-scale=1.0
+cell-width-scale=1.0
+cursor-blink-mode='off'
+cursor-shape='block'
+default-size-columns=85
+default-size-rows=22
+font='FiraCode Nerd Font 9'
+palette=['rgb(0,0,0)', 'rgb(205,0,0)', 'rgb(0,205,0)', 'rgb(205,205,0)', 'rgb(0,0,205)', 'rgb(205,0,205)', 'rgb(0,205,205)', 'rgb(250,235,215)', 'rgb(64,64,64)', 'rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(255,255,0)', 'rgb(0,0,255)', 'rgb(255,0,255)', 'rgb(0,255,255)', 'rgb(255,255,255)']
+scroll-on-keystroke=true
+scroll-on-output=false
+scrollback-unlimited=false
+scrollbar-policy='never'
+text-blink-mode='always'
+use-system-font=false
+visible-name='bernardo'
