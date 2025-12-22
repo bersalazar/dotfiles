@@ -42,4 +42,7 @@ fi
 echo "neovim config"
 cp -r ~/.config/nvim/* ./nvim/
 
+echo "ghostty"
+cp -r ~/.config/ghostty/* ./ghostty/
+
 echo "all done!"

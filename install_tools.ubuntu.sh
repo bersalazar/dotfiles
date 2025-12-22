@@ -49,17 +49,11 @@ sudo apt install dunst
 # install a tool to query the battery level
 sudo apt install acpi
 
-# install autorandr - a tool to manage screen configurations
-pip install autorandr
-
 # media playback controller
 sudo apt install playerctl
 
 # go formatting
 go install -v github.com/incu6us/goimports-reviser/v3@latest
-
-# install yaml language server
-sudo snap install yaml-language-server -y
 
 # install Dell Display Manager utility
 sudo apt install ddcutil -y
@@ -77,11 +71,19 @@ brew install \
   npm \
   ripgrep \
   git-delta
+  typescript-language-server \
+  jdtls \
+  yaml-language-server \
+  pylsp \
+  vscode-langservers-extracted \
+  docker-language-server
+
+# install pyright using pipx as root
+sudo /home/linuxbrew/.linuxbrew/bin/pipx install --global pyright
 
 # install bash language server
 sudo npm install -g bash-language-server
 
 # set firefox as default browser
-xdg-mime default firefox_firefox.desktop x-scheme-handler/https x-scheme-handler/http
-xdg-settings set default-web-browser firefox_firefox.desktop
-
+xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
+xdg-settings "set default-web-browser firefox.desktop"
