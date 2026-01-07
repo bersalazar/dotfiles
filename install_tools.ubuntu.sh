@@ -64,6 +64,9 @@ sudo apt install zsh -y
 # install shutter - screenshot tool
 sudo apt install shutter
 
+# install dolphin file manager
+sudo apt install dolphin
+
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
