@@ -255,7 +255,7 @@ bindsym $mod+Shift+p workspace 9; exec pavucontrol
 bindsym $mod+Shift+y workspace 10; exec spotify
 
 # lock the screen
-bindsym $mod+Shift+q exec i3lock -t -i $HOME/Pictures/sunset-mountain.png
+bindsym $mod+Shift+q exec i3lock -t -i $HOME/Pictures/infernus.jpg
 
 # copy email to clipboard
 bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i -sel clipboard

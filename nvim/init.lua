@@ -37,6 +37,7 @@ require "autocmds"
 require('dap-go').setup()
 require('dapui').setup()
 
+-- load keymaps
 vim.schedule(function()
   require "mappings"
 end)

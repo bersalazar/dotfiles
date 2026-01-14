@@ -49,6 +49,10 @@
 # resize-overlay-duration = 4s 200ms
 #
 font-family = Fira Code Nerd Font
+font-size = 10
 window-decoration = none
 window-padding-x = 0
 window-padding-y = 0
+
+# paste from clipboard using super+v
+keybind = super+v=paste_from_clipboard

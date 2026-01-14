@@ -79,7 +79,8 @@ brew install \
   yaml-language-server \
   pylsp \
   vscode-langservers-extracted \
-  docker-language-server
+  docker-language-server \
+  hugo
 
 # install pyright using pipx as root
 sudo /home/linuxbrew/.linuxbrew/bin/pipx install --global pyright
