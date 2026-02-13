@@ -73,6 +73,7 @@ return {
     },
     {
       "tpope/vim-fugitive",
+      lazy = false,
     },
     {
       "hrsh7th/nvim-cmp",
@@ -84,7 +85,24 @@ return {
           enabled = false,
         })
       end,
-    }
+    },
+    {
+      "CopilotC-Nvim/CopilotChat.nvim",
+      lazy = false,
+      dependencies = {
+        { "nvim-lua/plenary.nvim", branch = "master" },
+      },
+      build = "make tiktoken",
+      opts = {
+        model = "gpt-4o",          -- Model to use
+        temperature = 0.1,           -- Lower = focused, higher = creative
+        window = {
+          layout = 'vertical',       -- 'vertical', 'horizontal', 'float'
+          width = 0.5,              -- 50% of screen width
+        },
+        auto_insert_mode = true,     -- Enter insert mode when opening
+      },
+    },
     -- {
     --   "mfussenegger/nvim-jdtls",
     -- },

@@ -57,6 +57,9 @@ exec --no-startup-id xinput --set-prop 12 "libinput Natural Scrolling Enabled" 1
 # start diodon, a copy/paste enabler
 exec --no-startup-id diodon
 
+# set wallpaper with feh
+exec --no-startup-id feh  --bg-fill ~/Pictures/boat.jpg
+
 # load the xrandr screen setup
 #exec --no-startup-id source "$HOME/.scripts/screens.sh
 
@@ -255,7 +258,7 @@ bindsym $mod+Shift+p workspace 9; exec pavucontrol
 bindsym $mod+Shift+y workspace 10; exec spotify
 
 # lock the screen
-bindsym $mod+Shift+q exec i3lock -t -i $HOME/Pictures/infernus.jpg
+bindsym $mod+Shift+q exec i3lock -i $HOME/Pictures/xinyi.png
 
 # copy email to clipboard
 bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i -sel clipboard

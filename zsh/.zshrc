@@ -10,9 +10,6 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-#
-# -- linuxbrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # -- zsh
 setopt NO_BEEP # disable error sounds from zsh
@@ -30,6 +27,9 @@ SAVEHIST=1000000
 source "$HOME/.aliases"
 source "$HOME/.functions"
 
+# -- linuxbrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # -- mise
 eval "$(mise activate zsh)"
 
@@ -38,8 +38,6 @@ export PATH="$HOME/.scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-#export PATH="$HOME/.asdf/bin:$PATH"
-export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 # -- other sources
 # -- must go before autocompleters
@@ -65,5 +63,3 @@ export GPG_TTY=$(tty)
 export TG_PROVIDER_CACHE=1
 export TG_PROVIDER_CACHE_DIR="$HOME/.cache/terragrunt-cache"
 export AWS_PAGER=""
-
-#source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

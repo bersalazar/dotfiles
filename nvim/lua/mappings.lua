@@ -52,6 +52,7 @@ map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
     expr = true,
     replace_keycodes = false
 })
+map('v', '<C-M>', ":'<,'>CopilotChatFix<CR>")
 map("n", "zO", "zz")
 
 -- dap debugging
