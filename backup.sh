@@ -45,4 +45,7 @@ cp -r ~/.config/nvim/* ./nvim/
 echo "ghostty"
 cp -r ~/.config/ghostty/* ./ghostty/
 
+echo "k9s"
+cp -r ~/.config/k9s/* ./k9s/
+
 echo "all done!"

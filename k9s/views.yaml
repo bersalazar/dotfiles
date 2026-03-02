@@ -1,0 +1,11 @@
+views:
+  v1/nodes:
+    sortColumn: NODEGROUP:asc
+    columns:
+      - NAME
+      - STATUS
+      - NODEGROUP:.metadata.labels.weareadaptive\.com\/nodegroup
+      - INSTANCE_TYPE:.metadata.labels.node\.kubernetes\.io\/instance-type
+      - AMI:.metadata.labels.eks\.amazonaws\.com\/nodegroup-image
+      - CAPACITY_TYPE:.metadata.labels.eks\.amazonaws\.com\/capacityType
+      - AGE
