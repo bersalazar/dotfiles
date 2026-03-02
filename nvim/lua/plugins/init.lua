@@ -28,15 +28,9 @@ return {
     },
     {
       "nvim-tree/nvim-tree.lua",
-      opts = {
-        actions = {
-          open_file = {
-            window_picker = {
-              enable = false
-            }
-          }
-        }
-      }
+      config = function()
+        require "configs.nvim-tree"
+      end,
     },
     {
       "iamcco/markdown-preview.nvim",
@@ -63,13 +57,6 @@ return {
         "mfussenegger/nvim-dap",
         "nvim-neotest/nvim-nio",
       }
-    },
-    {
-      "nvim-java/nvim-java",
-      config = function()
-        require('java').setup()
-        vim.lsp.enable('jdtls')
-      end,
     },
     {
       "tpope/vim-fugitive",
@@ -103,7 +90,4 @@ return {
         auto_insert_mode = true,     -- Enter insert mode when opening
       },
     },
-    -- {
-    --   "mfussenegger/nvim-jdtls",
-    -- },
 }

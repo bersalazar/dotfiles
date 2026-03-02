@@ -1,9 +1,9 @@
-return {
-    actions = {
-        open_file = {
-            window_picker = {
-                enable = false
-            }
-        }
+require("nvim-tree").setup({
+  actions = {
+    open_file = {
+      window_picker = {
+        enable = false
+      }
     }
-}
+  }
+})
