@@ -1,8 +1,10 @@
 require "nvchad.mappings"
 
 local map = vim.keymap.set
-
 local nomap = vim.keymap.del
+
+-- require custom functions, useful for custom behavior mapped to keys, like nvim-tree's adaptive resize.
+local funcs = require("funcs")
 
 -- disable default mappings
 nomap("n", "<leader>h")
@@ -77,14 +79,8 @@ cmds("FormatJson", ":%!jq .", {})
 cmds("SourceVimrc", ":source ~/.config/nvim/init.lua", {})
 cmds("RemoveWhitespace", ":%s/\\s\\+$//e", {})
 cmds("Mdp", ":MarkdownPreview", {})
-cmds("CopilotToggle", ":lua ToggleCopilot()", {})
+cmds("CopilotToggle", funcs.toggle_copilot, {})
 cmds("IsCopilotEnabled", ":lua print(vim.g.copilot_enabled)", {})
 
--- supporting functions
-function ToggleCopilot()
-    if vim.g.copilot_enabled == 1 then
-        vim.g.copilot_enabled = 0
-    else
-        vim.g.copilot_enabled = 1
-    end
-end
+-- toggle nvim-tree width between fixed and adaptive
+map("n", "<C-a>", funcs.toggle_width_adaptive)
