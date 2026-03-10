@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+function _create_tmux_window {
+    local session_name="$1"
+    local window_name="$2"
+    local directory="$3"
+
+    if ! tmux list-windows -t "${session_name}" | grep "${window_name}"; then
+        tmux new-window -n "${window_name}" -c "${directory}" -d
+    fi
+}
+
+function _new_simple_session {
+    local session_name="$1"
+    local directory="$2"
+    tmux new-session -s "$session_name" -c "$directory" -d
+}
+
+function _new_repo_session {
+    local session_name="$1"
+    local directory="$2"
+    local window_name="repo"
+
+    tmux new-session -s "$session_name" -n "$window_name" -c "$directory" -d
+    tmux send-keys -t "$window_name" "vim ." Enter
+
+    _create_tmux_window "$session_name" "zsh" "$directory"
+}
+
+function _new_multi_session {
+  local session_name="$1"
+  local directory="$2"
+
+  if tmux has-session -t "$session_name*"; then
+    echo "Session '$session_name' exists"
+  else
+    echo "Session '$session_name' does NOT exist. Creating..."
+    tmux new-session -s "$session_name" -c "$directory" -d
+    tmux split-window -t "$session_name"
+    tmux split-window -t "$session_name"
+    tmux send-keys -t "$1:1.0" "id=0" Enter
+    tmux send-keys -t "$1:1.1" "id=1" Enter
+    tmux send-keys -t "$1:1.2" "id=2" Enter
+    tmux setw -t "$session_name" synchronize-panes
+  fi
+}
+
+function gitprune {
+  git checkout main
+  git branch --merged | grep -E -v "(^\*|master|develop|main)" | xargs git branch -d
+  git fetch --prune
+}
+
+function myIp() {
+    local ip
+
+    ip=$(curl -s https://ifconfig.me/ip)
+    echo "${ip}" | clip
+    echo "${ip}"
+}
+
+function yoink {
+    local _branch="${1:-main}"
+    git fetch origin "${_branch}:${_branch}"; git rebase "${_branch}"
+}
