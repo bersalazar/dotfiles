@@ -3,6 +3,7 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 local nomap = vim.keymap.del
 
+
 -- require custom functions, useful for custom behavior mapped to keys, like nvim-tree's adaptive resize.
 local funcs = require("funcs")
 
@@ -56,7 +57,7 @@ map("n", "zO", "zz")
 map("n", "<S-f>", ":lua vim.diagnostic.open_float()<CR>")
 map('v', '<leader>fix', ":'<,'>CopilotChatFix<CR>")
 map('n', '<leader>ch', ":CopilotChat<CR>")
-map('n', '<C-M>', ":'<,'>CopilotChat<CR>")
+map('n', '<C-M>', ":CopilotChat<CR>")
 map('v', '<C-M>', ":'<,'>CopilotChat<CR>")
 map('n', '<leader>ex', ":'<,'>CopilotExplain<CR>")
 map('n', '<leader>opt', ":'<,'>CopilotOptimize<CR>")

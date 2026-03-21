@@ -37,6 +37,7 @@ require "autocmds"
 require('dap-go').setup()
 require('dap-python').setup("/usr/bin/python3")
 require('dapui').setup()
+require("telescope").load_extension("ui-select")
 
 -- load keymaps
 vim.schedule(function()

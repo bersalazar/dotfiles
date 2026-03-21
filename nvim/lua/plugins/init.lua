@@ -27,6 +27,9 @@ return {
       end,
     },
     {
+      "nvim-telescope/telescope-ui-select.nvim",
+    },
+    {
       "nvim-tree/nvim-tree.lua",
       config = function()
         require("configs.nvim-tree")
@@ -87,23 +90,33 @@ return {
         model = "gpt-4o",          -- Model to use
         temperature = 0.1,           -- Lower = focused, higher = creative
         window = {
-          layout = 'float',
-          width = 120, -- Fixed width in columns
-          height = 40, -- Fixed height in rows
-          border = 'rounded', -- 'single', 'double', 'rounded', 'solid'
-          title = '� Copilot',
-          zindex = 100, -- Ensure window stays on top
+          layout = 'vertical', -- 'horizontal', float, 'vertical'
+          width = 100, -- Fixed width in columns
+          height = 10, -- Fixed height in rows
         },
 
         headers = {
-          user = '� You',
-          assistant = '� Copilot',
-          tool = '� Tool',
+          user = 'Bernardo',
+          assistant = 'Copilot',
+          tool = 'Tool',
         },
 
         separator = '━━',
         auto_fold = true, -- Automatically folds non-assistant messages
-          auto_insert_mode = false,     -- Enter insert mode when opening
+        auto_insert_mode = false,     -- Enter insert mode when opening
+        auto_follow_cursor = true,     -- Automatically follow the cursor
+        insert_at_end = true,
+
+        mappings = {
+          close = {
+            normal = "<C-c>",
+            insert = "<C-c>",
+          },
+          submit_prompt = {
+            normal = "<A-Enter>",
+            insert = "<A-Enter>",
+          },
         },
+      },
     },
 }
