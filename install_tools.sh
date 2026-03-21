@@ -67,21 +67,24 @@ sudo apt install shutter
 # install dolphin file manager
 sudo apt install dolphin
 
+# install fd - a simple, fast and user-friendly alternative to find
+sudo apt install fd
+
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install \
-  npm \
-  ripgrep \
-  git-delta
-  typescript-language-server \
-  jdtls \
-  yaml-language-server \
-  pylsp \
-  vscode-langservers-extracted \
-  docker-language-server \
-  hugo \
-  tree-sitter-cli
+brew install npm
+brew install ripgrep
+brew install git-delta
+brew install typescript-language-server
+brew install jdtls # java language server
+brew install yaml-language-server
+brew install pylsp
+brew install vscode-langservers-extracted # language servers for css, html, json, markdown, etc.
+brew install docker-language-server
+brew install hugo # static site generator for my blog
+brew install tree-sitter-cli # required by neovim checkhealth for treesitter
+brew install luarocks # package manager for Lua, required for neovim plugins
 
 # install pyright using pipx as root
 sudo /home/linuxbrew/.linuxbrew/bin/pipx install --global pyright
