@@ -80,7 +80,8 @@ brew install \
   pylsp \
   vscode-langservers-extracted \
   docker-language-server \
-  hugo
+  hugo \
+  tree-sitter-cli
 
 # install pyright using pipx as root
 sudo /home/linuxbrew/.linuxbrew/bin/pipx install --global pyright
@@ -91,3 +92,9 @@ sudo npm install -g bash-language-server
 # set firefox as default browser
 xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
 xdg-settings "set default-web-browser firefox.desktop"
+
+# install debugpy (python debugger)
+# debugpy is not available using brew, so we install via pip.
+# if Python is installed with brew, it's marked as externally managed (PEP668).
+# pip normally refuses modifications in this case, so we override this with --break-system-packages.
+python3 -m pip install debugpy --user --break-system-packages

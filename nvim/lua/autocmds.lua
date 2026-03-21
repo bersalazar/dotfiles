@@ -14,6 +14,7 @@ autocmd("BufReadPost", {
   callback = funcs.restore_cursor_position,
 })
 
+-- set specific settings when opening markdown files
 autocmd("BufRead", {
   pattern = "*",
   callback = function()

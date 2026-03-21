@@ -35,6 +35,7 @@ require "autocmds"
 
 -- load other plugins
 require('dap-go').setup()
+require('dap-python').setup("/usr/bin/python3")
 require('dapui').setup()
 
 -- load keymaps

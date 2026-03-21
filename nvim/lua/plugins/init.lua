@@ -4,7 +4,7 @@ return {
       lazy = false,
       config = function()
         require("nvchad.configs.lspconfig").defaults()
-        require "configs.lspconfig"
+        require("configs.lspconfig")
       end,
     },
     {
@@ -23,13 +23,13 @@ return {
     {
       "nvim-telescope/telescope.nvim",
       config = function()
-        require "configs.telescope"
+        require("configs.telescope")
       end,
     },
     {
       "nvim-tree/nvim-tree.lua",
       config = function()
-        require "configs.nvim-tree"
+        require("configs.nvim-tree")
       end,
     },
     {
@@ -44,6 +44,9 @@ return {
     },
     {
      "mfussenegger/nvim-dap",
+    },
+    {
+     "mfussenegger/nvim-dap-python",
     },
     {
      "leoluz/nvim-dap-go",
@@ -84,10 +87,23 @@ return {
         model = "gpt-4o",          -- Model to use
         temperature = 0.1,           -- Lower = focused, higher = creative
         window = {
-          layout = 'vertical',       -- 'vertical', 'horizontal', 'float'
-          width = 0.5,              -- 50% of screen width
+          layout = 'float',
+          width = 120, -- Fixed width in columns
+          height = 40, -- Fixed height in rows
+          border = 'rounded', -- 'single', 'double', 'rounded', 'solid'
+          title = '� Copilot',
+          zindex = 100, -- Ensure window stays on top
         },
-        auto_insert_mode = true,     -- Enter insert mode when opening
-      },
+
+        headers = {
+          user = '� You',
+          assistant = '� Copilot',
+          tool = '� Tool',
+        },
+
+        separator = '━━',
+        auto_fold = true, -- Automatically folds non-assistant messages
+          auto_insert_mode = false,     -- Enter insert mode when opening
+        },
     },
 }

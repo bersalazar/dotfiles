@@ -31,7 +31,6 @@ map("n", "<leader>gs", "<cmd>Telescope git_status<CR>")
 map("n", "<leader>sr", ":source ~/.config/nvim/init.vim")
 map("n", "<leader>ff", ":NvimTreeFindFile<CR>")
 map("n", "<leader>nn", ":nohlsearch<CR>")
-map("n", "<leader>mdp", ":MarkdownPreview<CR>")
 map("n", "<leader>co", ":CopilotToggle<CR>")
 map("n", "<leader>cs", ":Copilot status<CR>")
 map("n", "<leader>h", ":Copilot status<CR>")
@@ -49,13 +48,18 @@ map("n", "<A-4>", ":tabnext 4<CR>")
 map("n", "<A-5>", ":tabnext 5<CR>")
 
 -- coding goodies
-map("n", "<C-/>", "gcc")
 map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
     expr = true,
     replace_keycodes = false
 })
-map('v', '<C-M>', ":'<,'>CopilotChatFix<CR>")
 map("n", "zO", "zz")
+map("n", "<S-f>", ":lua vim.diagnostic.open_float()<CR>")
+map('v', '<leader>fix', ":'<,'>CopilotChatFix<CR>")
+map('n', '<leader>ch', ":CopilotChat<CR>")
+map('n', '<C-M>', ":'<,'>CopilotChat<CR>")
+map('v', '<C-M>', ":'<,'>CopilotChat<CR>")
+map('n', '<leader>ex', ":'<,'>CopilotExplain<CR>")
+map('n', '<leader>opt', ":'<,'>CopilotOptimize<CR>")
 
 -- dap debugging
 map("n", "<leader>db", ":DapToggleBreakpoint<CR>")
