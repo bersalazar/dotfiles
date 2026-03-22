@@ -22,12 +22,13 @@ return {
     },
     {
       "nvim-telescope/telescope.nvim",
-      config = function()
-        require("configs.telescope")
+      dependencies = {
+        "nvim-telescolpe/telescope-ui-select.nvim",
+      },
+      opts = function(_, opts)
+        require("telescope").load_extension("ui-select")
+        return opts
       end,
-    },
-    {
-      "nvim-telescope/telescope-ui-select.nvim",
     },
     {
       "nvim-tree/nvim-tree.lua",
@@ -50,19 +51,30 @@ return {
     },
     {
      "mfussenegger/nvim-dap-python",
+      ft = "python",
+      config = function()
+        require("dap-python").setup("/usr/bin/python3")
+      end,
     },
     {
-     "leoluz/nvim-dap-go",
-    },
-    {
-      "nvim-neotest/nvim-nio",
+      "leoluz/nvim-dap-go",
+      ft = "go",
+      config = function()
+        require("dap-go").setup()
+      end,
     },
     {
       "rcarriga/nvim-dap-ui",
       dependencies = {
         "mfussenegger/nvim-dap",
         "nvim-neotest/nvim-nio",
-      }
+      },
+      config = function()
+        require("dapui").setup()
+      end,
+    },
+    {
+      "nvim-neotest/nvim-nio",
     },
     {
       "tpope/vim-fugitive",
@@ -80,6 +92,29 @@ return {
       end,
     },
     {
+      'MeanderingProgrammer/render-markdown.nvim',
+      lazy = false,
+      dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+      ---@module 'render-markdown'
+      ---@type render.md.UserConfig
+      opts = {
+        sign = {
+          enabled = false,
+        },
+        heading = {
+          sign = false,
+          position = "inline",
+          icons = { '' },
+        },
+        code = {
+          sign = true,
+          language_pad = 2,
+        },
+        file_types = { 'markdown', 'copilot-chat' },
+      },
+      ft = { 'markdown', 'copilot-chat' },
+    },
+    {
       "CopilotC-Nvim/CopilotChat.nvim",
       lazy = false,
       dependencies = {
@@ -87,7 +122,7 @@ return {
       },
       build = "make tiktoken",
       opts = {
-        model = "gpt-4o",          -- Model to use
+        model = "claude-opus-4.6",
         temperature = 0.1,           -- Lower = focused, higher = creative
         window = {
           layout = 'vertical', -- 'horizontal', float, 'vertical'
@@ -101,7 +136,10 @@ return {
           tool = 'Tool',
         },
 
+        highlight_headers = false,
         separator = '━━',
+        error_header = '> [Error]',
+
         auto_fold = true, -- Automatically folds non-assistant messages
         auto_insert_mode = false,     -- Enter insert mode when opening
         auto_follow_cursor = true,     -- Automatically follow the cursor

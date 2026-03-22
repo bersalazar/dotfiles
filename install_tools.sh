@@ -67,9 +67,6 @@ sudo apt install shutter
 # install dolphin file manager
 sudo apt install dolphin
 
-# install fd - a simple, fast and user-friendly alternative to find
-sudo apt install fd
-
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -85,6 +82,8 @@ brew install docker-language-server
 brew install hugo # static site generator for my blog
 brew install tree-sitter-cli # required by neovim checkhealth for treesitter
 brew install luarocks # package manager for Lua, required for neovim plugins
+brew install fd # find files in the terminal, faster than find
+
 
 # install pyright using pipx as root
 sudo /home/linuxbrew/.linuxbrew/bin/pipx install --global pyright

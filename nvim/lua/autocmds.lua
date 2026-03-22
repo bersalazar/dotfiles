@@ -30,13 +30,23 @@ autocmd("BufEnter", {
   pattern = "copilot-chat",
   callback = function()
     vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.conceallevel = 0
     vim.b.copilot_enabled = false
 
     -- create a unique namespace, useful for changing the background only to the copilot-chat buffer
-    local ns = vim.api.nvim_create_namespace('MyCustomBackground')
+    local ns = vim.api.nvim_create_namespace('CustomBackground')
     -- set the background color for the Normal highlight group in this namespace
     vim.api.nvim_set_hl(ns, "Normal", { bg = "#343434" })
     -- apply the namespace to the current window
     vim.api.nvim_win_set_hl_ns(0, ns)
+  end,
+})
+
+autocmd("User", {
+  pattern = "CopilotChatResponse",
+  callback = function()
+    local buf = vim.api.nvim_get_current_buf()
+    vim.api.nvim_exec_autocmds("BufWinEnter", { buffer = buf })
   end,
 })

@@ -55,12 +55,12 @@ map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
 })
 map("n", "zO", "zz")
 map("n", "<S-f>", ":lua vim.diagnostic.open_float()<CR>")
+map('n', '<C-M>', ":CopilotChatToggle<CR>")
+map('v', '<C-M>', ":'<,'>CopilotChatToggle<CR>")
 map('v', '<leader>fix', ":'<,'>CopilotChatFix<CR>")
-map('n', '<leader>ch', ":CopilotChat<CR>")
-map('n', '<C-M>', ":CopilotChat<CR>")
-map('v', '<C-M>', ":'<,'>CopilotChat<CR>")
-map('n', '<leader>ex', ":'<,'>CopilotExplain<CR>")
-map('n', '<leader>opt', ":'<,'>CopilotOptimize<CR>")
+map('v', '<leader>ex', ":'<,'>CopilotChatExplain<CR>")
+map('n', '<leader>opt', ":'<,'>CopilotChatOptimize<CR>")
+map('n', '<leader>mod', ":CopilotChatModels<CR>")
 
 -- dap debugging
 map("n", "<leader>db", ":DapToggleBreakpoint<CR>")

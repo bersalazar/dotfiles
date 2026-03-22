@@ -18,7 +18,7 @@ M.base46 = {
 M.ui = {
   -- I don't enjoy tabufline. It has a funky way of dealing with tabs.
   tabufline = {
-      enabled = false,
+    enabled = false,
   },
 
   statusline = {
@@ -35,6 +35,9 @@ M.ui = {
       "cwd",
       "cursor"
     },
+    disabled_filetypes = {
+      "NvimTree*",
+    }
   }
 }
 

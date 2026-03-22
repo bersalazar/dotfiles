@@ -1,17 +1,17 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46/"
 vim.g.mapleader = " "
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+-- bootstrap lazy.nvim and plugins
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
   local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+  vim.fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
 end
 
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_config = require "configs.lazy"
+local lazy_config = require("configs.lazy")
 
 -- load plugins
 require("lazy").setup({
@@ -21,7 +21,6 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-
   { import = "plugins" },
 }, lazy_config)
 
@@ -30,16 +29,12 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 -- load settings files
-require "options"
-require "autocmds"
-
--- load other plugins
-require('dap-go').setup()
-require('dap-python').setup("/usr/bin/python3")
-require('dapui').setup()
-require("telescope").load_extension("ui-select")
+require("options")
+require("autocmds")
 
 -- load keymaps
 vim.schedule(function()
-  require "mappings"
+  require("mappings")
 end)
+
+vim.treesitter.language.register('markdown', 'vimwiki')

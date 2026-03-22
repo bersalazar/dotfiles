@@ -35,7 +35,8 @@ local g = vim.g
 g.copilot_enabled = 1
 g.copilot_no_tab_map = true
 
--- Filetypes
+-- Filetypes: files within certain directories and with certain extensions will be treated as a specific filetype.
+-- Useful for Helm templates, which are YAML files with Go templating syntax.
 vim.filetype.add(
   {
   extension = {
