@@ -1,13 +1,5 @@
 return {
     {
-      "neovim/nvim-lspconfig",
-      lazy = false,
-      config = function()
-        require("nvchad.configs.lspconfig").defaults()
-        require("configs.lspconfig")
-      end,
-    },
-    {
       "jose-elias-alvarez/null-ls.nvim",
     },
     {
@@ -18,22 +10,6 @@ return {
           ["*"] = true,
           markdown = false,
         }
-      end,
-    },
-    {
-      "nvim-telescope/telescope.nvim",
-      dependencies = {
-        "nvim-telescolpe/telescope-ui-select.nvim",
-      },
-      opts = function(_, opts)
-        require("telescope").load_extension("ui-select")
-        return opts
-      end,
-    },
-    {
-      "nvim-tree/nvim-tree.lua",
-      config = function()
-        require("configs.nvim-tree")
       end,
     },
     {
@@ -95,8 +71,6 @@ return {
       'MeanderingProgrammer/render-markdown.nvim',
       lazy = false,
       dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-      ---@module 'render-markdown'
-      ---@type render.md.UserConfig
       opts = {
         sign = {
           enabled = false,
@@ -156,5 +130,21 @@ return {
           },
         },
       },
+    },
+    {
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      ---@type Flash.Config
+      opts = {},
+      keys = {
+        { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+        { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+        { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+        { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+        { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      },
+    },
+    {
+      "ngalaiko/tree-sitter-go-template"
     },
 }

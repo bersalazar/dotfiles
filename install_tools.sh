@@ -9,6 +9,7 @@ echo "Installing basic tools"
 sudo apt install bat
 sudo apt install htop
 sudo apt install iftop
+sudo apt install pipx
 
 echo "Installing and configure tmux"
 sudo apt install tmux
@@ -84,9 +85,11 @@ brew install tree-sitter-cli # required by neovim checkhealth for treesitter
 brew install luarocks # package manager for Lua, required for neovim plugins
 brew install fd # find files in the terminal, faster than find
 
-
 # install pyright using pipx as root
-sudo /home/linuxbrew/.linuxbrew/bin/pipx install --global pyright
+sudo pipx install --global pyright
+
+# install argcomplete for bash completion of pyright and other python tools
+sudo pipx install --global argcomplete
 
 # install bash language server
 sudo npm install -g bash-language-server
@@ -100,3 +103,8 @@ xdg-settings "set default-web-browser firefox.desktop"
 # if Python is installed with brew, it's marked as externally managed (PEP668).
 # pip normally refuses modifications in this case, so we override this with --break-system-packages.
 python3 -m pip install debugpy --user --break-system-packages
+
+# Gnome tool removals
+sudo apt remove gnome-accessibility-themes
+sudo apt remove gnome-bluetooth
+sudo apt remove gnome-startup-applications

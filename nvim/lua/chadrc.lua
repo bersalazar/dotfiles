@@ -8,7 +8,6 @@ M.base46 = {
   theme = "everforest",
   theme_toggle = {
     "everforest",
-    "material-lighter",
   },
   integrations = {
     "statusline",

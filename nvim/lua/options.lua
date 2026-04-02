@@ -47,4 +47,8 @@ vim.filetype.add(
     [".*/templates/.*%.ya?ml"] = "helm",
     ["helmfile.*%.ya?ml"] = "helm",
   },
+  callback = function() vim.treesitter.start() end,
 })
+
+
+--vim.treesitter.language.register('gotmpl', 'gotmpl')

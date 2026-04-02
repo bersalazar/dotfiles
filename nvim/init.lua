@@ -32,9 +32,9 @@ dofile(vim.g.base46_cache .. "statusline")
 require("options")
 require("autocmds")
 
--- load keymaps
+-- load key mappings
 vim.schedule(function()
   require("mappings")
 end)
 
-vim.treesitter.language.register('markdown', 'vimwiki')
+--vim.treesitter.language.register('markdown', 'vimwiki')
