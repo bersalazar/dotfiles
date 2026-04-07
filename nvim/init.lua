@@ -29,6 +29,7 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 -- load settings files
+require("lspconfig")
 require("options")
 require("autocmds")
 

@@ -104,7 +104,8 @@ xdg-settings "set default-web-browser firefox.desktop"
 # pip normally refuses modifications in this case, so we override this with --break-system-packages.
 python3 -m pip install debugpy --user --break-system-packages
 
-# Gnome tool removals
+# Gnome and other tool removals
 sudo apt remove gnome-accessibility-themes
 sudo apt remove gnome-bluetooth
 sudo apt remove gnome-startup-applications
+sudo apt remove nano
