@@ -15,7 +15,7 @@ echo "Installing and configure tmux"
 sudo apt install tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-echo "Installing tools that replace gnome-desktop"
+echo "Installing tools that replaces gnome-desktop"
 
 # sound switcher indicator. Allows me to select which audio sources I want to use, and switch between them.
 sudo apt-add-repository ppa:yktooo/ppa
@@ -52,9 +52,6 @@ sudo apt install acpi
 
 # media playback controller
 sudo apt install playerctl
-
-# go formatting
-go install -v github.com/incu6us/goimports-reviser/v3@latest
 
 # install Dell Display Manager utility
 sudo apt install ddcutil -y
@@ -94,18 +91,22 @@ sudo pipx install --global argcomplete
 # install bash language server
 sudo npm install -g bash-language-server
 
-# set firefox as default browser
-xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
-xdg-settings "set default-web-browser firefox.desktop"
-
 # install debugpy (python debugger)
 # debugpy is not available using brew, so we install via pip.
 # if Python is installed with brew, it's marked as externally managed (PEP668).
 # pip normally refuses modifications in this case, so we override this with --break-system-packages.
 python3 -m pip install debugpy --user --break-system-packages
 
-# Gnome and other tool removals
+# Gnome tool removals. I no longer wish to use gnome tools.
 sudo apt remove gnome-accessibility-themes
 sudo apt remove gnome-bluetooth
 sudo apt remove gnome-startup-applications
 sudo apt remove nano
+
+# go formatting and language server
+go install -v github.com/incu6us/goimports-reviser/v3@latest
+go install golang.org/x/tools/gopls@latest
+
+# set firefox as default browser
+xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
+xdg-settings "set default-web-browser firefox.desktop"
