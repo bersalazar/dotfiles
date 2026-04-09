@@ -47,7 +47,7 @@ autocmd("BufEnter", {
 --
 -- set specific settings and color palette for when working on my notes
 autocmd("BufEnter", {
-  pattern = "/home/bernardo/Dropbox/notes/*.md",
+  pattern = "*/notes/*.md",
   callback = function()
     vim.opt_local.conceallevel = 0
     vim.b.copilot_enabled = false
@@ -112,28 +112,11 @@ autocmd("User", {
   end,
 })
 
--- start treesitter when opening helm files, since they have a lot of syntax highlighting and indenting issues without it
+-- start treesitter when opening certain file types,
+-- since they have a lot of syntax highlighting and indenting issues without it
 autocmd("FileType", {
-  pattern = { "helm", "gotmpl" },
+  pattern = { "helm", "gotmpl", "markdown" },
   callback = function()
     vim.treesitter.start()
   end,
 })
-
-autocmd("FileType", {
-  pattern = "markdown",
-  callback = function(args)
-    local file = vim.api.nvim_buf_get_name(args.buf)
-
-    if file:match("/home/bernardo/Dropbox/notes/the-law.md") then
-      vim.cmd("colorscheme gruvbox")
-    end
-  end,
-})
--- -- change the theme on markdown files from the notes directory
--- autocmd("BufRead", {
---   pattern = "~/notes/**/*.md",
---   callback = function()
---     vim.cmd("colorscheme material-lighter")
---   end,
--- })
