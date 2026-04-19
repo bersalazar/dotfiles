@@ -53,53 +53,55 @@ autocmd("BufEnter", {
     vim.b.copilot_enabled = false
 
     local ns_notes = vim.api.nvim_create_namespace("notes_colors")
-    local ns_copilot = vim.api.nvim_create_namespace("copilot_colors")
+    --local ns_copilot = vim.api.nvim_create_namespace("copilot_colors")
 
-    hl(ns_notes, "Normal", { fg = "#343434", bg = "#d4ced1" })
-    hl(ns_notes, "CursorLine", { bg = "#cbc4c7" })
-    hl(ns_notes, "Visual", { fg = "#343434", bg = "#b8b0b3" })
+    hl(ns_notes, "Normal", { bg = "#343434" })
+    hl(ns_notes, "CursorLine", { bg = "#3a3a3a" })
+    hl(ns_notes, "Visual", { bg = "#484848" })
 
-    -- Muted text (quotes, comments)
-    hl(ns_notes, "@markup.quote", { fg = "#737373", bg = "#d4ced1" })
-    hl(ns_notes, "@markup.heading.1.markdown", { fg = "#343434", bg = "#9da1ac" })
+    hl(ns_notes, "@markup.quote", { fg = "#808080" })
 
-    -- Diff / Heading palette (progressively shifting hue from cool to warm)
-    hl(ns_notes, "DiffText", { fg = "#343434", bg = "#9da1ac" })
-    hl(ns_notes, "@markup.heading.1.markdown", { fg = "#343434", bg = "#9da1ac" })
+    hl(ns_notes, "DiffText", { fg = "#c8c8c8", bold = true })
+    hl(ns_notes, "@markup.heading.1.markdown", { fg = "#c8c8c8", bold = true })
 
-    hl(ns_notes, "DiffAdd", { fg = "#343434", bg = "#a8b5a8" })
-    hl(ns_notes, "@markup.heading.2.markdown", { fg = "#343434", bg = "#a8b5a8" })
+    hl(ns_notes, "DiffAdd", { fg = "#a0a8a0", })
+    hl(ns_notes, "@markup.heading.2.markdown", { fg = "#a0a8a0", bold = true })
 
-    hl(ns_notes, "DiffChange", { fg = "#343434", bg = "#c4beb5" })
-    hl(ns_notes, "@markup.heading.3.markdown", { fg = "#343434", bg = "#c4beb5" })
+    hl(ns_notes, "DiffChange", { fg = "#a0a8a0", })
+    hl(ns_notes, "@markup.heading.3.markdown", { fg = "#a0a8a0" })
 
-    hl(ns_notes, "DiffDelete", { fg = "#343434", bg = "#c9b5b5" })
-    hl(ns_notes, "@markup.heading.4.markdown", { fg = "#343434", bg = "#c9b5b5" })
+    hl(ns_notes, "DiffDelete", { fg = "#ccb0b0" })
+    hl(ns_notes, "@markup.heading.4.markdown", { fg = "#ccb0b0" })
 
-    hl(ns_notes, "@markup.heading.5.markdown", { fg = "#343434", bg = "#b5b8c4" })
-    hl(ns_notes, "@markup.heading.6.markdown", { fg = "#343434", bg = "#bfc4be" })
+    hl(ns_notes, "@markup.heading.5.markdown", { fg = "#b0b4cc" })
+    hl(ns_notes, "@markup.heading.6.markdown", { fg = "#a0a8a0" })
 
-    hl(ns_notes, "RenderMarkdownCode", { fg = "#343434", bg = "#b8b0b3" })
-    hl(ns_notes, "@markup.raw.block.markdown", { fg = "#343434", bg = "#b8b0b3" })
+    -- hl(ns_notes, "RenderMarkdownCode", { fg = "#b0b0b0", })
+    -- hl(ns_notes, "@markup.raw.block.markdown", { fg = "#b0b0b0",})
 
     -- CopilotChat palette (cool, distinct from notes)
-    hl(ns_copilot, "Normal", { fg = "#343434", bg = "#ced2d4" })
-    hl(ns_copilot, "CursorLine", { bg = "#c4c9cb" })
-    hl(ns_copilot, "Visual", { fg = "#343434", bg = "#b0b5b8" })
-    hl(ns_copilot, "@markup.heading.1.markdown", { fg = "#343434", bg = "#9da1ac" })
-    hl(ns_copilot, "@markup.heading.2.markdown", { fg = "#343434", bg = "#a1acb5" })
+    -- hl(ns_copilot, "Normal", { fg = "#c8c8c8", bg = "#1c1e20" })
+    -- hl(ns_copilot, "CursorLine", { bg = "#242628" })
+    -- hl(ns_copilot, "Visual", { fg = "#c8c8c8", bg = "#383a3c" })
+    -- hl(ns_copilot, "@markup.heading.1.markdown", { fg = "#d0d4dc", bg = "#2a2d35" })
+    -- hl(ns_copilot, "@markup.heading.2.markdown", { fg = "#b4bcc8", bg = "#282c32" })
 
     -- Detect buffer type and apply the appropriate namespace
     local buf = vim.api.nvim_win_get_buf(0)
     local ft = vim.bo[buf].filetype
     local bufname = vim.api.nvim_buf_get_name(buf)
 
-    if ft == "copilot-chat" then
-      vim.api.nvim_win_set_hl_ns(0, ns_copilot)
-    elseif bufname:match("notes") or ft == "markdown" then
+    -- if ft == "copilot-chat" then
+    --   vim.api.nvim_win_set_hl_ns(0, ns_copilot)
+    -- elseif bufname:match("notes") or ft == "markdown" then
+    --   vim.api.nvim_win_set_hl_ns(0, ns_notes)
+    -- else
+    --   vim.api.nvim_win_set_hl_ns(0, 0)
+    -- end
+    if bufname:match("notes") or ft == "markdown" then
       vim.api.nvim_win_set_hl_ns(0, ns_notes)
     else
-      vim.api.nvim_win_set_hl_ns(0, 0) -- reset to global
+      vim.api.nvim_win_set_hl_ns(0, 0)
     end
   end,
 })

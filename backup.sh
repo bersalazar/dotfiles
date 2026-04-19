@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -uo pipefail
 
 os="$(uname)"
 
@@ -33,8 +33,8 @@ if [[ "${os}" == "Linux" ]]; then
     echo "zshrc"
     cp ~/.zshrc ./zsh/.zshrc
 
-    echo "gnome-terminal"
-    dconf dump /org/gnome/terminal/ > ./gnome-terminal/gnome-terminal.dconf
+    # echo "gnome-terminal"
+    # dconf dump /org/gnome/terminal/ > ./gnome-terminal/gnome-terminal.dconf
     # to restore: 
     # dconf load /org/gnome/terminal/ < gnome-terminal/gnome-terminal.dconf
 fi
