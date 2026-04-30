@@ -52,7 +52,7 @@ map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
     replace_keycodes = false
 })
 map("n", "zO", "zz")
-map("n", "<S-f>", ":lua vim.diagnostic.open_float()<CR>")
+map("n", "<S-d>", ":lua vim.diagnostic.open_float()<CR>")
 map('n', '<C-x>', ":CopilotChatToggle<CR>")
 map('x', '<C-x>', ":'<,'>CopilotChat<CR>")
 map('x', '<leader>fix', ":'<,'>CopilotChatFix<CR>")
@@ -84,6 +84,7 @@ cmds("RemoveWhitespace", ":%s/\\s\\+$//e", {})
 cmds("Mdp", ":MarkdownPreview", {})
 cmds("CopilotToggle", funcs.toggle_copilot, {})
 cmds("IsCopilotEnabled", ":lua print(vim.g.copilot_enabled)", {})
+cmds("LspInfo", "checkhealth vim.lsp", {})
 
 -- toggle nvim-tree width between fixed and adaptive
 map("n", "<C-a>", funcs.toggle_width_adaptive)

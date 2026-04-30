@@ -47,13 +47,13 @@ autocmd("BufEnter", {
 --
 -- set specific settings and color palette for when working on my notes
 autocmd("BufEnter", {
-  pattern = "*/notes/*.md",
+  pattern = "*.md",
   callback = function()
     vim.opt_local.conceallevel = 0
     vim.b.copilot_enabled = false
 
     local ns_notes = vim.api.nvim_create_namespace("notes_colors")
-    --local ns_copilot = vim.api.nvim_create_namespace("copilot_colors")
+    local ns_copilot = vim.api.nvim_create_namespace("copilot_colors")
 
     hl(ns_notes, "Normal", { bg = "#343434" })
     hl(ns_notes, "CursorLine", { bg = "#3a3a3a" })
@@ -80,29 +80,29 @@ autocmd("BufEnter", {
     -- hl(ns_notes, "@markup.raw.block.markdown", { fg = "#b0b0b0",})
 
     -- CopilotChat palette (cool, distinct from notes)
-    -- hl(ns_copilot, "Normal", { fg = "#c8c8c8", bg = "#1c1e20" })
-    -- hl(ns_copilot, "CursorLine", { bg = "#242628" })
-    -- hl(ns_copilot, "Visual", { fg = "#c8c8c8", bg = "#383a3c" })
-    -- hl(ns_copilot, "@markup.heading.1.markdown", { fg = "#d0d4dc", bg = "#2a2d35" })
-    -- hl(ns_copilot, "@markup.heading.2.markdown", { fg = "#b4bcc8", bg = "#282c32" })
+    hl(ns_copilot, "Normal", { fg = "#c8c8c8", bg = "#1c1e20" })
+    hl(ns_copilot, "CursorLine", { bg = "#242628" })
+    hl(ns_copilot, "Visual", { fg = "#c8c8c8", bg = "#383a3c" })
+    hl(ns_copilot, "@markup.heading.1.markdown", { fg = "#d0d4dc", bg = "#2a2d35" })
+    hl(ns_copilot, "@markup.heading.2.markdown", { fg = "#b4bcc8", bg = "#282c32" })
 
     -- Detect buffer type and apply the appropriate namespace
     local buf = vim.api.nvim_win_get_buf(0)
     local ft = vim.bo[buf].filetype
     local bufname = vim.api.nvim_buf_get_name(buf)
 
-    -- if ft == "copilot-chat" then
-    --   vim.api.nvim_win_set_hl_ns(0, ns_copilot)
-    -- elseif bufname:match("notes") or ft == "markdown" then
-    --   vim.api.nvim_win_set_hl_ns(0, ns_notes)
-    -- else
-    --   vim.api.nvim_win_set_hl_ns(0, 0)
-    -- end
-    if bufname:match("notes") or ft == "markdown" then
+    if ft == "copilot-chat" then
+      vim.api.nvim_win_set_hl_ns(0, ns_copilot)
+    elseif bufname:match("notes") or ft == "markdown" then
       vim.api.nvim_win_set_hl_ns(0, ns_notes)
     else
       vim.api.nvim_win_set_hl_ns(0, 0)
     end
+    -- if bufname:match("notes") or ft == "markdown" then
+    --   vim.api.nvim_win_set_hl_ns(0, ns_notes)
+    -- else
+    --   vim.api.nvim_win_set_hl_ns(0, 0)
+    -- end
   end,
 })
 

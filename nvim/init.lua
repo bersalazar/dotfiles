@@ -37,5 +37,3 @@ require("autocmds")
 vim.schedule(function()
   require("mappings")
 end)
-
---vim.treesitter.language.register('markdown', 'vimwiki')
