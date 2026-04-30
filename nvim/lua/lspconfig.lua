@@ -4,12 +4,28 @@ local servers = {
   dockerls = {},
   eslint = {},
   gopls = {
-    completeUnimported = true,
-    staticcheck = true,
-    usePlaceholders = true,
+    settings = {
+      completeUnimported = true,
+      staticcheck = true,
+      usePlaceholders = true,
+    },
   },
   jsonls = {},
-  pylsp = {},
+  pylsp = {
+    settings = {
+      pylsp = {
+         plugins = {
+          pyflakes = {
+            enabled = true,
+          },
+          pycodestyle = {
+            enabled = false,
+            maxLineLength = 200,
+          },
+        },
+      },
+    },
+  },
   pyright = {},
 }
 
