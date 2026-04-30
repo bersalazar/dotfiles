@@ -4,18 +4,20 @@
 
 sudo apt update
 
-echo "Installing basic tools"
+# ===== APT =====
 
+echo "Installing basic tools"
 sudo apt install bat
 sudo apt install htop
 sudo apt install iftop
 sudo apt install pipx
+sudo apt install zsh -y
 
-echo "Installing and configure tmux"
+echo "Installing and configuring tmux"
 sudo apt install tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-echo "Installing tools that replaces gnome-desktop"
+echo "Installing tools that replace gnome-desktop"
 
 # sound switcher indicator. Allows me to select which audio sources I want to use, and switch between them.
 sudo apt-add-repository ppa:yktooo/ppa
@@ -56,16 +58,20 @@ sudo apt install playerctl
 # install Dell Display Manager utility
 sudo apt install ddcutil -y
 
-# install zsh
-sudo apt install zsh -y
-
 # install shutter - screenshot tool
 sudo apt install shutter
 
 # install dolphin file manager
 sudo apt install dolphin
 
-# install homebrew
+# Gnome tool removals. I no longer wish to use gnome tools.
+sudo apt remove gnome-accessibility-themes
+sudo apt remove gnome-bluetooth
+sudo apt remove gnome-startup-applications
+sudo apt remove nano
+
+# ===== HOMEBREW =====
+
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew install npm
@@ -82,14 +88,16 @@ brew install tree-sitter-cli # required by neovim checkhealth for treesitter
 brew install luarocks # package manager for Lua, required for neovim plugins
 brew install fd # find files in the terminal, faster than find
 
-# install pyright using pipx as root
-sudo pipx install --global pyright
+# ===== PIPX =====
 
-# install argcomplete for bash completion of pyright and other python tools
+sudo pipx install --global pyright
 sudo pipx install --global argcomplete
 
-# install bash language server
+# ===== NPM =====
+
 sudo npm install -g bash-language-server
+
+# ===== PIP =====
 
 # install debugpy (python debugger)
 # debugpy is not available using brew, so we install via pip.
@@ -97,15 +105,12 @@ sudo npm install -g bash-language-server
 # pip normally refuses modifications in this case, so we override this with --break-system-packages.
 python3 -m pip install debugpy --user --break-system-packages
 
-# Gnome tool removals. I no longer wish to use gnome tools.
-sudo apt remove gnome-accessibility-themes
-sudo apt remove gnome-bluetooth
-sudo apt remove gnome-startup-applications
-sudo apt remove nano
+# ===== GO =====
 
-# go formatting and language server
 go install -v github.com/incu6us/goimports-reviser/v3@latest
 go install golang.org/x/tools/gopls@latest
+
+# ===== SYSTEM CONFIGURATION =====
 
 # set firefox as default browser
 xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
