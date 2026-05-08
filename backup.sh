@@ -35,7 +35,7 @@ if [[ "${os}" == "Linux" ]]; then
 fi
 
 echo "neovim config"
-cp -r ~/.config/nvim/* ./nvim/
+rsync -a --exclude='undodir' ~/.config/nvim/ ./nvim/
 
 echo "ghostty"
 cp -r ~/.config/ghostty/* ./ghostty/
