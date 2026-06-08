@@ -2,7 +2,14 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-telescope/telescope-ui-select.nvim",
+    "debugloop/telescope-undo.nvim",
   },
+  config = function(_, opts)
+    local telescope = require("telescope")
+    telescope.setup(opts)
+    telescope.load_extension("ui-select")
+    telescope.load_extension("undo")
+  end,
   opts = {
     pickers = {
       find_files = {
@@ -25,9 +32,8 @@ return {
       ["ui-select"] = {
         require("telescope.themes").get_dropdown {
         }
-      }
+      },
+      undo = {},
     },
   }
 }
-
---require("telescope").load_extension("ui-select")

@@ -223,13 +223,12 @@ bindsym $mod+Shift+q exec i3lock -i $HOME/Pictures/xinyi.png
 # copy email to clipboard
 bindsym $mod+Control+b exec echo "bernardo.salazar@weareadaptive.com" | xclip -i -sel clipboard
 
-# auto configure display settings
-bindsym Shift+Control+u exec $HOME/.scripts/reset.sh
+# auto configure display and eth/wifi settings
+bindsym Shift+Control+u exec $HOME/.scripts/screens.sh
 
 # set keyboard layout shortcuts for language and caps lock
-#exec --no-startup-id xkbcomp $HOME/.xkb/custom.xkb
-bindsym $mod+Control+e exec setxkbmap -layout es
-bindsym $mod+Control+u exec setxkbmap -layout us
+bindsym $mod+Control+e exec --no-startup-id "$HOME/.scripts/toggle_layout.sh es"
+bindsym $mod+Control+u exec --no-startup-id "$HOME/.scripts/toggle_layout.sh us"
 
 # move windows between monitors
 bindsym Control+Shift+k move workspace to output up

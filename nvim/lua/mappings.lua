@@ -33,6 +33,7 @@ map("n", "<leader>ff", ":NvimTreeFindFile<CR>")
 map("n", "<leader>nn", ":nohlsearch<CR>")
 map("n", "<leader>co", ":CopilotToggle<CR>")
 map("n", "<leader>cs", ":Copilot status<CR>")
+map("n", "<leader>un", ":Telescope undo<CR>")
 
 --tab management
 map("n", "<A-t>", ":tabnew<CR>")
@@ -52,9 +53,9 @@ map('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
     replace_keycodes = false
 })
 map("n", "zO", "zz")
-map("n", "<S-d>", ":lua vim.diagnostic.open_float()<CR>")
 map('n', '<C-x>', ":CopilotChatToggle<CR>")
 map('x', '<C-x>', ":'<,'>CopilotChat<CR>")
+map("n", "<leader>d", ":lua vim.diagnostic.open_float()<CR>")
 map('x', '<leader>fix', ":'<,'>CopilotChatFix<CR>")
 map('x', '<leader>ex', ":'<,'>CopilotChatExplain<CR>")
 map('n', '<leader>opt', ":'<,'>CopilotChatOptimize<CR>")
