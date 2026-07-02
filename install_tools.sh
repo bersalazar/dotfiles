@@ -115,3 +115,7 @@ go install golang.org/x/tools/gopls@latest
 # set firefox as default browser
 xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
 xdg-settings "set default-web-browser firefox.desktop"
+
+# Enable usb-storage module to allow mounting USB drives.
+# as a one-shot, run: sudo modprobe usb-storage
+echo usb-storage | sudo tee /etc/modules-load.d/usb-storage.conf
