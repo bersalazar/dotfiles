@@ -5,7 +5,7 @@ set -uo pipefail
 os="$(uname)"
 
 echo "Creating backup folders"
-mkdir -p {dunst,git,i3,nvim,powerlevel10k,tmux,xserver,zsh}
+mkdir -p {dunst,git,i3,nvim,opencode,powerlevel10k,tmux,xserver,zsh}
 
 echo "Backing up dotfiles..."
 
@@ -42,5 +42,8 @@ cp -r ~/.config/ghostty/* ./ghostty/
 
 echo "k9s"
 cp -r ~/.config/k9s/* ./k9s/
+
+echo "opencode"
+rsync -a --exclude='service.json' --exclude='auth.json' ~/.config/opencode/ ./opencode/
 
 echo "all done!"
