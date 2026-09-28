@@ -116,6 +116,11 @@ go install golang.org/x/tools/gopls@latest
 xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
 xdg-settings "set default-web-browser firefox.desktop"
 
+# set evince (document viewer) as the default PDF viewer
+xdg-mime default org.gnome.Evince.desktop application/pdf
+
 # Enable usb-storage module to allow mounting USB drives.
 # as a one-shot, run: sudo modprobe usb-storage
 echo usb-storage | sudo tee /etc/modules-load.d/usb-storage.conf
+
+
