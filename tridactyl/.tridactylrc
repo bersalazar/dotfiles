@@ -1,0 +1,35 @@
+" Sourced automatically from ~/.tridactylrc on startup (needs :nativeinstall).
+" Symlink it: ln -s ~/proj/dotfiles/tridactyl/.tridactylrc ~/.tridactylrc
+" Dump live config anytime with :mkt! and merge the output back here.
+
+" --- appearance ---
+set modeindicator false
+
+" --- hints ---
+set hintchars hjklasdfgyuiopqwertnmzxcvb
+set hintfiltermode vimperator-reflow
+
+" --- behaviour ---
+set searchengine duckduckgo
+set yankto both
+set viewsource vsplit
+set followpagepatterns.next next|more|>>|→
+set followpagepatterns.prev prev|previous|<<|←
+
+" --- updates ---
+set update.nag false
+
+" --- examples (uncomment to use) ---
+" External editor (Ctrl-i) via the native messenger:
+" set editorcmd nvim
+" Faster tab switching:
+" bind J tabprev
+" bind K tabnext
+" Ignore keys on an app-like site, except for your pass-through key:
+" autocmd DocStart mail.google.com mode ignore
+" Site-specific bind:
+" bindurl ^https://github.com f hint -Jc [title]
+" Custom ex command:
+" command h tabopen {args}
+
+:composite js tri.styling.THEMES | fillcmdline

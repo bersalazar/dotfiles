@@ -5,7 +5,7 @@ set -uo pipefail
 os="$(uname)"
 
 echo "Creating backup folders"
-mkdir -p {dunst,git,i3,nvim,opencode,powerlevel10k,tmux,xserver,zsh}
+mkdir -p {dunst,git,i3,nvim,opencode,powerlevel10k,tmux,tridactyl,xserver,zsh}
 
 echo "Backing up dotfiles..."
 
@@ -44,6 +44,9 @@ echo "k9s"
 cp -r ~/.config/k9s/* ./k9s/
 
 echo "opencode"
-rsync -a --exclude='service.json' --exclude='auth.json' ~/.config/opencode/ ./opencode/
+rsync -a --exclude='service.json' --exclude='auth.json' --exclude='cli.json' ~/.config/opencode/ ./opencode/
+
+echo "tridactyl"
+cp ~/.tridactylrc ./tridactyl/ 2>/dev/null || echo "no ~/.tridactylrc found, skipping"
 
 echo "all done!"
