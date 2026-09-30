@@ -52,6 +52,9 @@ font-family = FiraCodeNerdFont
 font-size = 10
 font-feature = -calt
 
+# Machine-specific overrides (optional; "?" ignores the file if missing)
+config-file = ?config.local
+
 window-decoration = none
 window-padding-x = 0
 window-padding-y = 0

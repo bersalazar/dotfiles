@@ -1,8 +1,28 @@
 {
   "$schema": "https://opencode.ai/v2/cli.json",
   "keybinds": {
-    "leader": "ctrl+x",
+    "leader": "ctrl+space",
     "input.submit": "return",
     "input.newline": ["shift+return", "ctrl+return", "ctrl+j"]
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false
+  },
+  "tabs": {
+    "scope": "cwd",
+    "enabled": false,
+    "layout": "horizontal",
+    "indicators": "numbers"
+  },
+  "leader": {
+    "timeout": 2000
+  },
+  "attention": {
+    "notifications": true
+  },
+  "terminal": {
+    "title": true,
+    "copy": "select"
   }
 }
