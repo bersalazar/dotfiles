@@ -20,22 +20,17 @@ return {
         },
       },
       jsonls = {},
-      pylsp = {
+      pyright = {
         settings = {
-          pylsp = {
-            plugins = {
-              pyflakes = {
-                enabled = true,
-              },
-              pycodestyle = {
-                enabled = false,
-                maxLineLength = 200,
-              },
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              typeCheckingMode = "basic",
             },
           },
         },
       },
-      pyright = {},
+      ruff = {},
       yamlls = {
         settings = {
           yaml = {
