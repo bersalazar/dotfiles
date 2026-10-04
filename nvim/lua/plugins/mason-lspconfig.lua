@@ -1,22 +1,22 @@
 -- Guarantees every server in plugins/lspconfig.lua is installed.
--- Names are mason packages (not lspconfig names). Servers are enabled
--- explicitly over there, so automatic_enable stays off: leftover mason
--- packages must never start on their own.
+-- Names are lspconfig server names, matching the keys in plugins/lspconfig.lua.
+-- Servers are enabled explicitly over there, so automatic_enable stays off:
+-- leftover mason packages must never start on their own.
 return {
   "mason-org/mason-lspconfig.nvim",
   lazy = false,
   dependencies = { "mason-org/mason.nvim" },
   opts = {
     ensure_installed = {
-      "bash-language-server",
-      "dockerfile-language-server",
-      "eslint-lsp",
+      "bashls",
+      "dockerls",
+      "eslint",
       "gopls",
-      "html-lsp",
-      "json-lsp",
+      "html",
+      "jsonls",
       "pyright",
       "ruff",
-      "yaml-language-server",
+      "yamlls",
     },
     automatic_enable = false,
   },
