@@ -23,9 +23,6 @@ if [[ "${os}" == "Linux" ]]; then
 
     echo "powerlevel10k"
     cp ~/.p10k.zsh ./powerlevel10k/
-    
-    echo "tmux"
-    cp ~/.tmux.conf ./tmux/
 
     echo "xserver"
     cp ~/.Xmodmap ./xserver/
@@ -33,9 +30,6 @@ if [[ "${os}" == "Linux" ]]; then
     echo "zshrc"
     cp ~/.zshrc ./zsh/.zshrc
 fi
-
-echo "neovim config"
-rsync -a --exclude='undodir' ~/.config/nvim/ ./nvim/
 
 echo "ghostty"
 cp -r ~/.config/ghostty/* ./ghostty/
