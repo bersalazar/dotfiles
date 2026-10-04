@@ -6,7 +6,7 @@ return {
   },
   build = "make tiktoken",
   opts = {
-    model = "claude-opus-4.6",
+    model = "claude-opus-5.5",
     temperature = 0.1,           -- Lower = focused, higher = creative
     window = {
       layout = 'vertical', -- 'horizontal', float, 'vertical'
