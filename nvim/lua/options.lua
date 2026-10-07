@@ -46,8 +46,9 @@ vim.filetype.add(
     [".*/templates/.*%.tpl"] = "helm",
     [".*/templates/.*%.ya?ml"] = "helm",
     ["helmfile.*%.ya?ml"] = "helm",
+    [".*%.yaml%.gotmpl$"] = "helm",
+    [".*%.yml%.gotmpl$"] = "helm",
   },
-  callback = function() vim.treesitter.start() end,
 })
 
 

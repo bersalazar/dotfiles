@@ -7,6 +7,7 @@ return {
             "go",
             "html",
             "helm",
+            "gotmpl",
             "terraform",
             "javascript",
             "json",
