@@ -48,7 +48,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-font-family = FiraCodeNerdFont
+font-family = Ubuntu Nerd Font Mono
 font-size = 10
 font-feature = -calt
 
