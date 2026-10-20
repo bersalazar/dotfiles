@@ -447,4 +447,9 @@
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
 #
+
+[slack]
+    appname = Slack
+    override_dbus_timeout = 5
+
 # vim: ft=cfg
